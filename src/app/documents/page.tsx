@@ -10,32 +10,38 @@ export const metadata = {
 };
 
 export default async function DocumentsPage() {
-  const docs = await prisma.document.findMany({
-    orderBy: { createdAt: "desc" },
-    include: {
-      examination: {
-        select: { code: true, title: true },
-      },
-      unit: {
-        select: { unitNumber: true, title: true },
-      },
-    },
-  });
+  let serializedDocs: any[] = [];
 
-  const serializedDocs = docs.map((d: any) => ({
-    id: d.id,
-    originalFilename: d.originalFilename,
-    category: d.category as "FAT" | "SEMESTER" | "STUDY_MATERIAL",
-    subfolder: d.subfolder,
-    documentType: d.documentType,
-    fileType: d.fileType,
-    fileSize: d.fileSize,
-    description: d.description,
-    tags: d.tags,
-    createdAt: d.createdAt.toISOString(),
-    examination: d.examination,
-    unit: d.unit,
-  }));
+  try {
+    const docs = await prisma.document.findMany({
+      orderBy: { createdAt: "desc" },
+      include: {
+        examination: {
+          select: { code: true, title: true },
+        },
+        unit: {
+          select: { unitNumber: true, title: true },
+        },
+      },
+    });
+
+    serializedDocs = docs.map((d: any) => ({
+      id: d.id,
+      originalFilename: d.originalFilename,
+      category: d.category as "FAT" | "SEMESTER" | "STUDY_MATERIAL",
+      subfolder: d.subfolder,
+      documentType: d.documentType,
+      fileType: d.fileType,
+      fileSize: d.fileSize,
+      description: d.description,
+      tags: d.tags,
+      createdAt: d.createdAt.toISOString(),
+      examination: d.examination,
+      unit: d.unit,
+    }));
+  } catch (error) {
+    console.error("Failed to load documents from database:", error);
+  }
 
   return <AllDocumentsClient initialDocuments={serializedDocs} />;
 }

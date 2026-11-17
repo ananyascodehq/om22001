@@ -11,30 +11,47 @@ export const metadata = {
 };
 
 export default async function StudyMaterialsPage() {
-  const documents = await prisma.document.findMany({
-    where: {
-      category: "STUDY_MATERIAL",
-    },
-    include: {
-      unit: true,
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+  let serializedDocs: Array<{
+    id: string;
+    originalFilename: string;
+    subfolder: string;
+    documentType: string;
+    fileType: string;
+    fileSize: number;
+    description: string | null;
+    tags: string | null;
+    createdAt: string;
+    unit: { unitNumber: number; title: string } | null;
+  }> = [];
 
-  const serializedDocs = documents.map((d) => ({
-    id: d.id,
-    originalFilename: d.originalFilename,
-    subfolder: d.subfolder,
-    documentType: d.documentType,
-    fileType: d.fileType,
-    fileSize: d.fileSize,
-    description: d.description,
-    tags: d.tags,
-    createdAt: d.createdAt.toISOString(),
-    unit: d.unit ? { unitNumber: d.unit.unitNumber, title: d.unit.title } : null,
-  }));
+  try {
+    const documents = await prisma.document.findMany({
+      where: {
+        category: "STUDY_MATERIAL",
+      },
+      include: {
+        unit: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    serializedDocs = documents.map((d) => ({
+      id: d.id,
+      originalFilename: d.originalFilename,
+      subfolder: d.subfolder,
+      documentType: d.documentType,
+      fileType: d.fileType,
+      fileSize: d.fileSize,
+      description: d.description,
+      tags: d.tags,
+      createdAt: d.createdAt.toISOString(),
+      unit: d.unit ? { unitNumber: d.unit.unitNumber, title: d.unit.title } : null,
+    }));
+  } catch (error) {
+    console.error("Failed to load study materials from database:", error);
+  }
 
   return (
     <Suspense fallback={<div className="p-12 text-center text-slate-400">Loading study materials...</div>}>
