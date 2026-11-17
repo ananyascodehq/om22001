@@ -134,3 +134,15 @@ model FormulaSheet {
   updatedAt   DateTime @updatedAt
 }
 
+
+model Comment {
+  id        String   @id @default(cuid())
+  pagePath  String   // e.g. "/sem/2024-dec-sem5-147184"
+  name      String
+  body      String
+  ipHash    String?  // salted hash, used only for rate limiting
+  createdAt DateTime @default(now())
+
+  @@index([pagePath, createdAt])
+  @@index([ipHash, createdAt])
+}
