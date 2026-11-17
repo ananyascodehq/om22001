@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
@@ -21,25 +21,12 @@ import {
 } from "lucide-react";
 import { DocumentViewerModal } from "./DocumentViewerModal";
 import { UploadModal } from "./UploadModal";
-
-interface StudyDoc {
-  id: string;
-  originalFilename: string;
-  subfolder: string;
-  documentType: string;
-  fileType: string;
-  fileSize: number;
-  description?: string | null;
-  tags?: string | null;
-  createdAt: string;
-  unit?: {
-    unitNumber: number;
-    title: string;
-  } | null;
-}
+import { EditDocumentModal } from "./documents/EditDocumentModal";
+import { useDocumentList } from "@/hooks/useDocumentList";
+import { formatFileSize, type DocumentSummary } from "@/lib/documents";
 
 interface StudyMaterialsBrowserClientProps {
-  initialDocuments: StudyDoc[];
+  initialDocuments: DocumentSummary[];
 }
 
 const FOLDERS = [
@@ -199,24 +186,22 @@ export function StudyMaterialsBrowserClient({
   const searchParams = useSearchParams();
   const folderParam = searchParams.get("folder") || searchParams.get("unit");
 
-  const [documents, setDocuments] = useState<StudyDoc[]>(initialDocuments);
+  const { documents, setDocuments, deleteDocument, updateDocument } =
+    useDocumentList(initialDocuments);
   const [activeFolderId, setActiveFolderId] = useState<string>(() =>
     normalizeFolderId(folderParam)
   );
   const [selectedDocId, setSelectedDocId] = useState<string | null>(null);
   const [uploadModalOpen, setUploadModalOpen] = useState(false);
 
-  useEffect(() => {
-    if (folderParam) {
-      setActiveFolderId(normalizeFolderId(folderParam));
-    }
-  }, [folderParam]);
+  // Follow the URL parameter when it changes (adjusting state during render).
+  const [prevFolderParam, setPrevFolderParam] = useState(folderParam);
+  if (prevFolderParam !== folderParam) {
+    setPrevFolderParam(folderParam);
+    if (folderParam) setActiveFolderId(normalizeFolderId(folderParam));
+  }
 
-  // Rename / Edit metadata modal
-  const [editDoc, setEditDoc] = useState<StudyDoc | null>(null);
-  const [editFilename, setEditFilename] = useState("");
-  const [editDescription, setEditDescription] = useState("");
-  const [editTags, setEditTags] = useState("");
+  const [editDoc, setEditDoc] = useState<DocumentSummary | null>(null);
 
   const activeFolder = FOLDERS.find((f) => f.id === activeFolderId) || FOLDERS[0];
 
@@ -226,49 +211,6 @@ export function StudyMaterialsBrowserClient({
     }
     return d.subfolder === activeFolder.id;
   });
-
-  const handleDelete = async (id: string, name: string) => {
-    if (!confirm(`Are you sure you want to delete "${name}"?`)) return;
-    try {
-      const res = await fetch(`/api/documents/${id}`, { method: "DELETE" });
-      if (res.ok) {
-        setDocuments((prev) => prev.filter((d) => d.id !== id));
-      }
-    } catch (e) {
-      console.error("Delete error:", e);
-    }
-  };
-
-  const handleOpenEdit = (doc: StudyDoc) => {
-    setEditDoc(doc);
-    setEditFilename(doc.originalFilename);
-    setEditDescription(doc.description || "");
-    setEditTags(doc.tags || "");
-  };
-
-  const handleSaveEdit = async () => {
-    if (!editDoc) return;
-    try {
-      const res = await fetch(`/api/documents/${editDoc.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          originalFilename: editFilename.trim(),
-          description: editDescription.trim(),
-          tags: editTags.trim(),
-        }),
-      });
-      const data = await res.json();
-      if (data.success) {
-        setDocuments((prev) =>
-          prev.map((d) => (d.id === editDoc.id ? { ...d, ...data.document } : d))
-        );
-        setEditDoc(null);
-      }
-    } catch (e) {
-      console.error("Edit error:", e);
-    }
-  };
 
   const refreshDocuments = async () => {
     try {
@@ -460,7 +402,7 @@ export function StudyMaterialsBrowserClient({
                         {doc.fileType}
                       </span>
                       <span className="text-[11px] text-slate-400 dark:text-[#4a7fa0]">
-                        {(doc.fileSize / 1024).toFixed(1)} KB
+                        {formatFileSize(doc.fileSize)}
                       </span>
                     </div>
 
@@ -520,14 +462,14 @@ export function StudyMaterialsBrowserClient({
 
                     <div className="flex items-center gap-1">
                       <button
-                        onClick={() => handleOpenEdit(doc)}
+                        onClick={() => setEditDoc(doc)}
                         className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
                         title="Edit Details"
                       >
                         <Edit2 className="w-4 h-4" />
                       </button>
                       <button
-                        onClick={() => handleDelete(doc.id, doc.originalFilename)}
+                        onClick={() => deleteDocument(doc.id, doc.originalFilename)}
                         className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition"
                         title="Delete Document"
                       >
@@ -542,69 +484,15 @@ export function StudyMaterialsBrowserClient({
         </div>
       </div>
 
-      {/* Edit Document Modal */}
-      {editDoc && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 max-w-md w-full space-y-4 shadow-xl text-xs">
-            <h3 className="font-bold text-base text-slate-900 dark:text-white">
-              Edit Document Details
-            </h3>
-
-            <div className="space-y-3">
-              <div>
-                <label className="block font-semibold text-slate-600 dark:text-slate-300 mb-1">
-                  File Display Name:
-                </label>
-                <input
-                  type="text"
-                  value={editFilename}
-                  onChange={(e) => setEditFilename(e.target.value)}
-                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
-                />
-              </div>
-
-              <div>
-                <label className="block font-semibold text-slate-600 dark:text-slate-300 mb-1">
-                  Description:
-                </label>
-                <textarea
-                  value={editDescription}
-                  onChange={(e) => setEditDescription(e.target.value)}
-                  rows={3}
-                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
-                />
-              </div>
-
-              <div>
-                <label className="block font-semibold text-slate-600 dark:text-slate-300 mb-1">
-                  Tags (comma separated):
-                </label>
-                <input
-                  type="text"
-                  value={editTags}
-                  onChange={(e) => setEditTags(e.target.value)}
-                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
-                />
-              </div>
-            </div>
-
-            <div className="flex justify-end gap-2 pt-2">
-              <button
-                onClick={() => setEditDoc(null)}
-                className="px-4 py-2 rounded-xl font-semibold text-slate-500 hover:bg-slate-100"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleSaveEdit}
-                className="px-4 py-2 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-500"
-              >
-                Save Changes
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <EditDocumentModal
+        doc={editDoc}
+        onClose={() => setEditDoc(null)}
+        onSave={updateDocument}
+        withMetadata
+        accent="emerald"
+        title="Edit Document Details"
+        filenameLabel="File Display Name:"
+      />
 
       <DocumentViewerModal
         documentId={selectedDocId}

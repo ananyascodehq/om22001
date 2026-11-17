@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
@@ -17,123 +17,45 @@ import {
 } from "lucide-react";
 import { DocumentViewerModal } from "./DocumentViewerModal";
 import { UploadModal } from "./UploadModal";
+import { EditDocumentModal } from "./documents/EditDocumentModal";
+import { useDocumentList } from "@/hooks/useDocumentList";
+import { formatFileSize, type LinkedDocumentSummary } from "@/lib/documents";
 import { getChatGptAnswerUrl, CHATGPT_ANSWER_LINKS } from "@/lib/answerLinks";
 
-interface FatDocument {
-  id: string;
-  originalFilename: string;
-  documentType: string;
-  subfolder: string;
-  fileType: string;
-  fileSize: number;
-  description?: string | null;
-  tags?: string | null;
-  createdAt: string;
-  examination?: {
-    code: string;
-    title: string;
-  } | null;
-  unit?: {
-    unitNumber: number;
-    title: string;
-  } | null;
-  answersFor: Array<{
-    answerDoc: {
-      id: string;
-      originalFilename: string;
-    };
-  }>;
-  questionPaperFor: Array<{
-    questionPaper: {
-      id: string;
-      originalFilename: string;
-    };
-  }>;
+interface FatBrowserClientProps {
+  initialDocuments: LinkedDocumentSummary[];
 }
 
-interface FatBrowserClientProps {
-  initialDocuments: FatDocument[];
+type FatCode = "FAT_1" | "FAT_2" | "FAT_3";
+
+function parseFatCode(param: string | null): FatCode {
+  const lower = (param ?? "").toLowerCase();
+  if (lower.includes("2")) return "FAT_2";
+  if (lower.includes("3")) return "FAT_3";
+  return "FAT_1";
 }
 
 export function FatBrowserClient({ initialDocuments }: FatBrowserClientProps) {
   const searchParams = useSearchParams();
   const folderParam = searchParams.get("folder") || searchParams.get("exam") || searchParams.get("fat");
 
-  const [documents, setDocuments] = useState<FatDocument[]>(initialDocuments);
-  const [activeFat, setActiveFat] = useState<"FAT_1" | "FAT_2" | "FAT_3">(() => {
-    if (folderParam) {
-      const lower = folderParam.toLowerCase();
-      if (lower.includes("2")) return "FAT_2";
-      if (lower.includes("3")) return "FAT_3";
-      return "FAT_1";
-    }
-    return "FAT_1";
-  });
+  const { documents, deleteDocument, updateDocument } = useDocumentList(initialDocuments);
+  const [activeFat, setActiveFat] = useState<FatCode>(() => parseFatCode(folderParam));
 
-  useEffect(() => {
-    if (folderParam) {
-      const lower = folderParam.toLowerCase();
-      if (lower.includes("2")) setActiveFat("FAT_2");
-      else if (lower.includes("3")) setActiveFat("FAT_3");
-      else setActiveFat("FAT_1");
-    }
-  }, [folderParam]);
+  // Follow the ?folder= parameter when it changes (adjusting state during render).
+  const [prevFolderParam, setPrevFolderParam] = useState(folderParam);
+  if (prevFolderParam !== folderParam) {
+    setPrevFolderParam(folderParam);
+    if (folderParam) setActiveFat(parseFatCode(folderParam));
+  }
   const [activeSubfolder, setActiveSubfolder] = useState<
     "ALL" | "Question_Papers" | "Answers"
   >("ALL");
 
   const [selectedDocId, setSelectedDocId] = useState<string | null>(null);
   const [uploadModalOpen, setUploadModalOpen] = useState(false);
-  const [uploadTargetQP, setUploadTargetQP] = useState<string | undefined>(undefined);
 
-  // Rename state
-  const [editDoc, setEditDoc] = useState<FatDocument | null>(null);
-  const [editFilename, setEditFilename] = useState("");
-
-  const handleOpenEdit = (doc: FatDocument) => {
-    setEditDoc(doc);
-    setEditFilename(doc.originalFilename);
-  };
-
-  const handleSaveEdit = async () => {
-    if (!editDoc || !editFilename.trim()) return;
-    try {
-      const res = await fetch(`/api/documents/${editDoc.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ originalFilename: editFilename.trim() }),
-      });
-      const data = await res.json();
-      if (data.success) {
-        setDocuments((prev) =>
-          prev.map((d) => (d.id === editDoc.id ? { ...d, originalFilename: editFilename.trim() } : d))
-        );
-        setEditDoc(null);
-      }
-    } catch (e) {
-      console.error("Rename error:", e);
-    }
-  };
-
-  const handleDeleteDoc = async (id: string, name: string) => {
-    if (!confirm(`Are you sure you want to delete "${name}"?`)) return;
-    try {
-      const res = await fetch(`/api/documents/${id}`, {
-        method: "DELETE",
-      });
-      const data = await res.json();
-      if (data.success) {
-        setDocuments((prev) => prev.filter((d) => d.id !== id));
-      }
-    } catch (e) {
-      console.error("Delete error:", e);
-    }
-  };
-
-  const handleUploadAnswerForQP = (qpId: string) => {
-    setUploadTargetQP(qpId);
-    setUploadModalOpen(true);
-  };
+  const [editDoc, setEditDoc] = useState<LinkedDocumentSummary | null>(null);
 
   const fatDocs = documents.filter((d) => d.examination?.code === activeFat);
 
@@ -221,10 +143,7 @@ export function FatBrowserClient({ initialDocuments }: FatBrowserClientProps) {
         </div>
 
         <button
-          onClick={() => {
-            setUploadTargetQP(undefined);
-            setUploadModalOpen(true);
-          }}
+          onClick={() => setUploadModalOpen(true)}
           className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs transition shadow-md shadow-amber-500/20 shrink-0"
         >
           <Plus className="w-4 h-4" />
@@ -361,10 +280,7 @@ export function FatBrowserClient({ initialDocuments }: FatBrowserClientProps) {
             </p>
           </div>
           <button
-            onClick={() => {
-              setUploadTargetQP(undefined);
-              setUploadModalOpen(true);
-            }}
+            onClick={() => setUploadModalOpen(true)}
             className="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs transition shadow-md shadow-amber-500/20"
           >
             Upload {currentFolder.label} Documents
@@ -373,7 +289,6 @@ export function FatBrowserClient({ initialDocuments }: FatBrowserClientProps) {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {displayedDocs.map((doc) => {
-            const isQP = doc.documentType === "QUESTION_PAPER";
             const chatGptUrl = getChatGptAnswerUrl(doc);
             const isFat2 = activeFat === "FAT_2";
             const isFat3 = activeFat === "FAT_3";
@@ -423,7 +338,7 @@ export function FatBrowserClient({ initialDocuments }: FatBrowserClientProps) {
                         {doc.originalFilename}
                       </h4>
                       <p className="text-[11px] dark:text-[#4a7fa0] text-slate-400 mt-0.5">
-                        {(doc.fileSize / 1024).toFixed(1)} KB • Uploaded on{" "}
+                        {formatFileSize(doc.fileSize)} • Uploaded on{" "}
                         {new Date(doc.createdAt).toLocaleDateString()}
                       </p>
                     </div>
@@ -462,14 +377,14 @@ export function FatBrowserClient({ initialDocuments }: FatBrowserClientProps) {
 
                   <div className="flex items-center gap-1">
                     <button
-                      onClick={() => handleOpenEdit(doc)}
+                      onClick={() => setEditDoc(doc)}
                       className="p-1.5 rounded-lg text-slate-400 hover:text-sky-600 hover:bg-sky-50 dark:hover:bg-sky-950/40 transition"
                       title="Rename document"
                     >
                       <Edit2 className="w-4 h-4" />
                     </button>
                     <button
-                      onClick={() => handleDeleteDoc(doc.id, doc.originalFilename)}
+                      onClick={() => deleteDocument(doc.id, doc.originalFilename)}
                       className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition"
                       title="Delete document"
                     >
@@ -483,44 +398,13 @@ export function FatBrowserClient({ initialDocuments }: FatBrowserClientProps) {
         </div>
       )}
 
-      {/* Rename Document Modal */}
-      {editDoc && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in">
-          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 max-w-md w-full shadow-2xl space-y-4">
-            <h3 className="font-extrabold text-base text-slate-900 dark:text-white">
-              Rename Document
-            </h3>
-            <p className="text-xs text-slate-500">
-              Update the original filename for this document in the repository.
-            </p>
-            <div>
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                Filename:
-              </label>
-              <input
-                type="text"
-                value={editFilename}
-                onChange={(e) => setEditFilename(e.target.value)}
-                className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
-              />
-            </div>
-            <div className="flex justify-end gap-2 pt-2">
-              <button
-                onClick={() => setEditDoc(null)}
-                className="px-4 py-2 text-xs font-bold rounded-xl text-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleSaveEdit}
-                className="px-4 py-2 text-xs font-bold rounded-xl bg-amber-500 text-white hover:bg-amber-600"
-              >
-                Save
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <EditDocumentModal
+        doc={editDoc}
+        onClose={() => setEditDoc(null)}
+        onSave={updateDocument}
+        accent="amber"
+        description="Update the original filename for this document in the repository."
+      />
 
       {/* Document Viewer Modal */}
       <DocumentViewerModal
@@ -531,13 +415,9 @@ export function FatBrowserClient({ initialDocuments }: FatBrowserClientProps) {
       {/* Upload Modal */}
       <UploadModal
         isOpen={uploadModalOpen}
-        onClose={() => {
-          setUploadModalOpen(false);
-          setUploadTargetQP(undefined);
-        }}
+        onClose={() => setUploadModalOpen(false)}
         defaultCategory="FAT"
         defaultExamCode={activeFat}
-        defaultQuestionPaperIdToLink={uploadTargetQP}
       />
     </div>
   );

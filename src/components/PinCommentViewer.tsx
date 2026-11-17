@@ -3,6 +3,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { MessageSquarePlus, MessageSquare, X, Send } from "lucide-react";
 import type { PDFDocumentProxy } from "pdfjs-dist";
+import { STORAGE_KEYS } from "@/lib/storageKeys";
 
 export interface PinComment {
   id: string;
@@ -29,7 +30,6 @@ interface PinCommentViewerProps {
 }
 
 const POLL_MS = 15000;
-const NAME_KEY = "om22001-comment-name";
 const MAX_BODY = 1000;
 
 function timeAgo(iso: string): string {
@@ -208,7 +208,7 @@ function CommentForm({
   onPosted: (comment: PinComment) => void;
 }) {
   const [name, setName] = useState(() =>
-    typeof window === "undefined" ? "" : localStorage.getItem(NAME_KEY) ?? ""
+    typeof window === "undefined" ? "" : localStorage.getItem(STORAGE_KEYS.commenterName) ?? ""
   );
   const [body, setBody] = useState("");
   const [website, setWebsite] = useState(""); // honeypot
@@ -231,7 +231,7 @@ function CommentForm({
         setError(data.error || "Could not post comment");
         return;
       }
-      localStorage.setItem(NAME_KEY, name.trim());
+      localStorage.setItem(STORAGE_KEYS.commenterName, name.trim());
       if (data.comment) onPosted(data.comment);
     } catch {
       setError("Network error. Please try again.");

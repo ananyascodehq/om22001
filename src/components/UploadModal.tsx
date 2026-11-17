@@ -12,6 +12,7 @@ import {
   RefreshCw,
 } from "lucide-react";
 import { ClassificationResult } from "@/lib/documentClassifier";
+import { formatFileSize } from "@/lib/documents";
 
 interface StagedFile {
   id: string;
@@ -339,7 +340,7 @@ export function UploadModal({
                             {file.originalFilename}
                           </h5>
                           <span className="text-[11px] dark:text-[#4a7fa0] text-slate-400">
-                            {(file.fileSize / 1024).toFixed(1)} KB • {file.fileType.toUpperCase()}
+                            {formatFileSize(file.fileSize)} • {file.fileType.toUpperCase()}
                           </span>
                         </div>
                       </div>

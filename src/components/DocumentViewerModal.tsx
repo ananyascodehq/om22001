@@ -17,41 +17,22 @@ import {
 } from "lucide-react";
 import { getChatGptAnswerUrl } from "@/lib/answerLinks";
 import { PinCommentViewer } from "./PinCommentViewer";
+import { formatFileSize, type DocumentSummary } from "@/lib/documents";
 
-export interface ViewerDocument {
-  id: string;
-  originalFilename: string;
-  category: "FAT" | "SEMESTER" | "STUDY_MATERIAL";
-  subfolder: string;
-  documentType: string;
-  fileType: string;
-  fileSize: number;
-  description?: string | null;
-  tags?: string | null;
-  createdAt: string;
+export interface ViewerDocument extends DocumentSummary {
   storagePath: string;
-  examination?: {
-    code: string;
-    title: string;
-  } | null;
-  unit?: {
-    unitNumber: number;
-    title: string;
-  } | null;
 }
 
 interface DocumentViewerModalProps {
   documentId: string | null;
   onClose: () => void;
   onSelectDocument?: (id: string) => void;
-  onUploadAnswer?: (questionPaperId: string) => void;
 }
 
 export function DocumentViewerModal({
   documentId,
   onClose,
   onSelectDocument,
-  onUploadAnswer,
 }: DocumentViewerModalProps) {
   const [doc, setDoc] = useState<ViewerDocument | null>(null);
   const [associatedAnswers, setAssociatedAnswers] = useState<ViewerDocument[]>([]);
@@ -59,20 +40,23 @@ export function DocumentViewerModal({
   const [loading, setLoading] = useState(false);
   const [zoom, setZoom] = useState(100);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  // Open the details sidebar by default on large desktop screens only.
+  const [sidebarOpen, setSidebarOpen] = useState(
+    () => typeof window !== "undefined" && window.innerWidth >= 1280
+  );
 
-  useEffect(() => {
-    // Open sidebar by default on large desktop screens only
-    if (typeof window !== "undefined" && window.innerWidth >= 1280) {
-      setSidebarOpen(true);
-    }
-  }, []);
+  // Show the spinner as soon as a different document is requested
+  // (adjusting state during render rather than inside the fetch effect).
+  const [prevDocumentId, setPrevDocumentId] = useState<string | null>(null);
+  if (prevDocumentId !== documentId) {
+    setPrevDocumentId(documentId);
+    if (documentId) setLoading(true);
+  }
 
   useEffect(() => {
     if (!documentId) return;
 
     let isMounted = true;
-    setLoading(true);
     fetch(`/api/documents/${documentId}`)
       .then((res) => res.json())
       .then((data) => {
@@ -97,7 +81,6 @@ export function DocumentViewerModal({
 
   const isPdf = doc?.fileType === "pdf";
   const isImage = ["png", "jpg", "jpeg"].includes(doc?.fileType || "");
-  const isJson = doc?.fileType === "json";
 
   const previewUrl = `/api/documents/${documentId}/preview?v=${doc?.fileSize || 0}`;
   const downloadUrl = `/api/documents/${documentId}/download`;
@@ -410,7 +393,7 @@ export function DocumentViewerModal({
                   </div>
                   <div className="flex justify-between py-1 border-b border-slate-100 dark:border-slate-800">
                     <span className="dark:text-[#4a7fa0] text-slate-400">File Size:</span>
-                    <span className="dark:text-[#93c5fd]">{(doc.fileSize / 1024).toFixed(1)} KB</span>
+                    <span className="dark:text-[#93c5fd]">{formatFileSize(doc.fileSize)}</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-slate-100 dark:border-slate-800">
                     <span className="dark:text-[#4a7fa0] text-slate-400">Upload Date:</span>

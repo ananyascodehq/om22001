@@ -15,33 +15,13 @@ import {
 } from "lucide-react";
 import { DocumentViewerModal } from "./DocumentViewerModal";
 import { CHATGPT_ANSWER_LINKS } from "@/lib/answerLinks";
+import type { DocumentSummary } from "@/lib/documents";
 
 interface DashboardClientProps {
-  stats: {
-    totalFiles: number;
-    totalQuestionPapers: number;
-    totalAnswers: number;
-    totalStudyMaterials: number;
-    fatCount: number;
-    semCount: number;
-  };
-  recentUploads: Array<{
-    id: string;
-    originalFilename: string;
-    category: "FAT" | "SEMESTER" | "STUDY_MATERIAL";
-    subfolder: string;
-    documentType: string;
-    fileType: string;
-    fileSize: number;
-    createdAt: string;
-    examination?: {
-      code: string;
-      title: string;
-    } | null;
-  }>;
+  recentUploads: DocumentSummary[];
 }
 
-export function DashboardClient({ stats, recentUploads }: DashboardClientProps) {
+export function DashboardClient({ recentUploads }: DashboardClientProps) {
   const [selectedDocId, setSelectedDocId] = useState<string | null>(null);
 
   const SEMESTER_PAPERS = [

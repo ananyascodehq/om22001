@@ -12,34 +12,16 @@ import {
   Edit2,
 } from "lucide-react";
 import { DocumentViewerModal } from "./DocumentViewerModal";
-
-interface RepoDoc {
-  id: string;
-  originalFilename: string;
-  category: "FAT" | "SEMESTER" | "STUDY_MATERIAL";
-  subfolder: string;
-  documentType: string;
-  fileType: string;
-  fileSize: number;
-  description?: string | null;
-  tags?: string | null;
-  createdAt: string;
-  examination?: {
-    code: string;
-    title: string;
-  } | null;
-  unit?: {
-    unitNumber: number;
-    title: string;
-  } | null;
-}
+import { EditDocumentModal } from "./documents/EditDocumentModal";
+import { useDocumentList } from "@/hooks/useDocumentList";
+import { formatFileSize, type DocumentSummary } from "@/lib/documents";
 
 interface AllDocumentsClientProps {
-  initialDocuments: RepoDoc[];
+  initialDocuments: DocumentSummary[];
 }
 
 export function AllDocumentsClient({ initialDocuments }: AllDocumentsClientProps) {
-  const [documents, setDocuments] = useState<RepoDoc[]>(initialDocuments);
+  const { documents, deleteDocument, updateDocument } = useDocumentList(initialDocuments);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("ALL");
   const [selectedExam, setSelectedExam] = useState<string>("ALL");
@@ -47,34 +29,7 @@ export function AllDocumentsClient({ initialDocuments }: AllDocumentsClientProps
   const [selectedUnit, setSelectedUnit] = useState<number | "ALL">("ALL");
   const [selectedDocId, setSelectedDocId] = useState<string | null>(null);
 
-  // Rename state
-  const [editDoc, setEditDoc] = useState<RepoDoc | null>(null);
-  const [editFilename, setEditFilename] = useState("");
-
-  const handleOpenEdit = (doc: RepoDoc) => {
-    setEditDoc(doc);
-    setEditFilename(doc.originalFilename);
-  };
-
-  const handleSaveEdit = async () => {
-    if (!editDoc || !editFilename.trim()) return;
-    try {
-      const res = await fetch(`/api/documents/${editDoc.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ originalFilename: editFilename.trim() }),
-      });
-      const data = await res.json();
-      if (data.success) {
-        setDocuments((prev) =>
-          prev.map((d) => (d.id === editDoc.id ? { ...d, originalFilename: editFilename.trim() } : d))
-        );
-        setEditDoc(null);
-      }
-    } catch (e) {
-      console.error("Rename error:", e);
-    }
-  };
+  const [editDoc, setEditDoc] = useState<DocumentSummary | null>(null);
 
   const filteredDocs = useMemo(() => {
     return documents.filter((doc) => {
@@ -97,18 +52,6 @@ export function AllDocumentsClient({ initialDocuments }: AllDocumentsClientProps
       return true;
     });
   }, [documents, selectedCategory, selectedExam, selectedDocType, selectedUnit, searchQuery]);
-
-  const handleDelete = async (id: string, name: string) => {
-    if (!confirm(`Are you sure you want to delete "${name}"?`)) return;
-    try {
-      const res = await fetch(`/api/documents/${id}`, { method: "DELETE" });
-      if (res.ok) {
-        setDocuments((prev) => prev.filter((d) => d.id !== id));
-      }
-    } catch (e) {
-      console.error("Delete error:", e);
-    }
-  };
 
   const resetFilters = () => {
     setSearchQuery("");
@@ -324,7 +267,7 @@ export function AllDocumentsClient({ initialDocuments }: AllDocumentsClientProps
                       {doc.documentType.replace(/_/g, " ")}
                     </td>
                     <td className="py-3.5 px-4 font-mono text-slate-400">
-                      {(doc.fileSize / 1024).toFixed(1)} KB
+                      {formatFileSize(doc.fileSize)}
                     </td>
                     <td className="py-3.5 px-4 text-slate-400">
                       {new Date(doc.createdAt).toLocaleDateString()}
@@ -345,14 +288,14 @@ export function AllDocumentsClient({ initialDocuments }: AllDocumentsClientProps
                           <Download className="w-3.5 h-3.5" />
                         </a>
                         <button
-                          onClick={() => handleOpenEdit(doc)}
+                          onClick={() => setEditDoc(doc)}
                           className="p-1 rounded-md text-slate-400 hover:text-sky-600"
                           title="Rename"
                         >
                           <Edit2 className="w-3.5 h-3.5" />
                         </button>
                         <button
-                          onClick={() => handleDelete(doc.id, doc.originalFilename)}
+                          onClick={() => deleteDocument(doc.id, doc.originalFilename)}
                           className="p-1 rounded-md text-slate-400 hover:text-rose-600"
                           title="Delete"
                         >
@@ -368,44 +311,12 @@ export function AllDocumentsClient({ initialDocuments }: AllDocumentsClientProps
         )}
       </div>
 
-      {/* Rename Document Modal */}
-      {editDoc && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-150">
-          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 max-w-md w-full space-y-4 shadow-xl">
-            <h3 className="font-bold text-base text-slate-900 dark:text-white">
-              Rename Document
-            </h3>
-            <p className="text-xs text-slate-500">
-              Update the display name of this document.
-            </p>
-            <div>
-              <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">
-                Filename:
-              </label>
-              <input
-                type="text"
-                value={editFilename}
-                onChange={(e) => setEditFilename(e.target.value)}
-                className="w-full text-xs p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-sky-500"
-              />
-            </div>
-            <div className="flex justify-end gap-2 pt-2">
-              <button
-                onClick={() => setEditDoc(null)}
-                className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleSaveEdit}
-                className="px-4 py-2 rounded-xl text-xs font-semibold bg-sky-600 text-white hover:bg-sky-500"
-              >
-                Save
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <EditDocumentModal
+        doc={editDoc}
+        onClose={() => setEditDoc(null)}
+        onSave={updateDocument}
+        accent="sky"
+      />
 
       <DocumentViewerModal
         documentId={selectedDocId}

@@ -1,6 +1,8 @@
 import React, { Suspense } from "react";
 import { prisma } from "@/lib/prisma";
-import { SemesterBrowserClient } from "@/components/SemesterBrowserClient";
+import { SemesterBrowserClient, type SemExam } from "@/components/SemesterBrowserClient";
+import { DOCUMENT_WITH_LINKS_INCLUDE, serializeDocument } from "@/lib/serializeDocument";
+import type { LinkedDocumentSummary } from "@/lib/documents";
 
 export const dynamic = "force-dynamic";
 
@@ -11,83 +13,38 @@ export const metadata = {
 };
 
 export default async function SemesterPage() {
-  let serializedExams: any[] = [];
-  let serializedDocs: any[] = [];
+  let examinations: SemExam[] = [];
+  let documents: LinkedDocumentSummary[] = [];
 
   try {
-    const [examinations, documents] = await Promise.all([
+    const [examRows, documentRows] = await Promise.all([
       prisma.examination.findMany({
         where: { type: "SEMESTER" },
         orderBy: { code: "asc" },
       }),
       prisma.document.findMany({
         where: { category: "SEMESTER" },
-        include: {
-          examination: true,
-          unit: true,
-          answersFor: {
-            include: {
-              answerDoc: true,
-            },
-          },
-          questionPaperFor: {
-            include: {
-              questionPaper: true,
-            },
-          },
-        },
+        include: DOCUMENT_WITH_LINKS_INCLUDE,
         orderBy: { createdAt: "desc" },
       }),
     ]);
 
-    serializedExams = examinations.map((e) => ({
+    examinations = examRows.map((e) => ({
       id: e.id,
       code: e.code,
       title: e.title,
       qCode: e.qCode,
       examDate: e.examDate,
       semester: e.semester,
-      documents: [],
     }));
-
-    serializedDocs = documents.map((d) => ({
-      id: d.id,
-      originalFilename: d.originalFilename,
-      documentType: d.documentType,
-      subfolder: d.subfolder,
-      fileType: d.fileType,
-      fileSize: d.fileSize,
-      description: d.description,
-      tags: d.tags,
-      createdAt: d.createdAt.toISOString(),
-      examination: d.examination
-        ? { code: d.examination.code, title: d.examination.title }
-        : null,
-      unit: d.unit ? { unitNumber: d.unit.unitNumber, title: d.unit.title } : null,
-      answersFor: d.answersFor.map((r) => ({
-        answerDoc: {
-          id: r.answerDoc.id,
-          originalFilename: r.answerDoc.originalFilename,
-        },
-      })),
-      questionPaperFor: d.questionPaperFor.map((r) => ({
-        questionPaper: {
-          id: r.questionPaper.id,
-          originalFilename: r.questionPaper.originalFilename,
-        },
-      })),
-    }));
+    documents = documentRows.map(serializeDocument);
   } catch (error) {
     console.error("Failed to load semester documents from database:", error);
   }
 
   return (
     <Suspense fallback={<div className="p-12 text-center text-slate-400">Loading semester examination materials...</div>}>
-      <SemesterBrowserClient
-        initialExaminations={serializedExams}
-        initialDocuments={serializedDocs}
-      />
+      <SemesterBrowserClient initialExaminations={examinations} initialDocuments={documents} />
     </Suspense>
   );
 }
-

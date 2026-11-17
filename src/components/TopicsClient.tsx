@@ -5,7 +5,8 @@ import Link from "next/link";
 import { Question } from "@/lib/types";
 import { QuestionCard } from "@/components/QuestionCard";
 import { useIsClient } from "@/hooks/useIsClient";
-import { useStoredIdList, STORAGE_KEYS } from "@/hooks/useStoredIdList";
+import { useStoredIdList } from "@/hooks/useStoredIdList";
+import { STORAGE_KEYS } from "@/lib/storageKeys";
 import {
   BarChart,
   Bar,

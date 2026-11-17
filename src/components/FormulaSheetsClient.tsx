@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { MathView } from "@/components/MathView";
 import { DocumentViewerModal } from "@/components/DocumentViewerModal";
@@ -48,6 +48,10 @@ interface FormulaSheetsClientProps {
   initialSheets: UnitFormulaSheet[];
 }
 
+function cloneSections(sheet: UnitFormulaSheet | undefined): FormulaSection[] {
+  return JSON.parse(JSON.stringify(sheet?.sections || []));
+}
+
 export function FormulaSheetsClient({ initialSheets }: FormulaSheetsClientProps) {
   const [sheets, setSheets] = useState<UnitFormulaSheet[]>(initialSheets);
   const [activeUnit, setActiveUnit] = useState<number>(1);
@@ -56,20 +60,25 @@ export function FormulaSheetsClient({ initialSheets }: FormulaSheetsClientProps)
 
   // Edit Mode State
   const [isEditing, setIsEditing] = useState(false);
-  const [editSections, setEditSections] = useState<FormulaSection[]>([]);
   const [saving, setSaving] = useState(false);
 
   const currentSheet = sheets.find((s) => s.unitNumber === activeUnit) || sheets[0];
 
-  useEffect(() => {
-    if (currentSheet) {
-      setEditSections(JSON.parse(JSON.stringify(currentSheet.sections || [])));
-    }
-  }, [activeUnit, sheets]);
+  const [editSections, setEditSections] = useState<FormulaSection[]>(() =>
+    cloneSections(currentSheet)
+  );
+
+  // Reset the editable copy whenever the visible sheet changes (adjusting state
+  // during render rather than in an effect).
+  const [syncedSheet, setSyncedSheet] = useState(currentSheet);
+  if (syncedSheet !== currentSheet) {
+    setSyncedSheet(currentSheet);
+    if (currentSheet) setEditSections(cloneSections(currentSheet));
+  }
 
   const handleStartEdit = () => {
     if (currentSheet) {
-      setEditSections(JSON.parse(JSON.stringify(currentSheet.sections || [])));
+      setEditSections(cloneSections(currentSheet));
       setIsEditing(true);
     }
   };

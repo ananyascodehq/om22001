@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
@@ -18,54 +18,37 @@ import {
 } from "lucide-react";
 import { DocumentViewerModal } from "./DocumentViewerModal";
 import { UploadModal } from "./UploadModal";
+import { EditDocumentModal } from "./documents/EditDocumentModal";
+import { useDocumentList } from "@/hooks/useDocumentList";
+import { formatFileSize, type LinkedDocumentSummary } from "@/lib/documents";
 import { getChatGptAnswerUrl, CHATGPT_ANSWER_LINKS } from "@/lib/answerLinks";
 
-interface SemExam {
+export interface SemExam {
   id: string;
   code: string;
   title: string;
   qCode: string | null;
   examDate: string | null;
   semester: number | null;
-  documents: SemDocument[];
 }
 
-interface SemDocument {
-  id: string;
-  originalFilename: string;
-  documentType: string;
-  subfolder: string;
-  fileType: string;
-  fileSize: number;
-  description?: string | null;
-  tags?: string | null;
-  createdAt: string;
-  examinationId?: string | null;
-  examination?: {
-    code: string;
-    title: string;
-  } | null;
-  unit?: {
-    unitNumber: number;
-    title: string;
-  } | null;
-  answersFor: Array<{
-    answerDoc: {
-      id: string;
-      originalFilename: string;
-    };
-  }>;
-  questionPaperFor: Array<{
-    questionPaper: {
-      id: string;
-      originalFilename: string;
-    };
-  }>;
+/** Maps a ?folder= / ?pyq= / ?exam= / ?id= value to an examination code. */
+function normalizeExamCode(param: string | null, examinations: SemExam[]): string {
+  const fallback = examinations[0]?.code || "SEM_PYQ_1";
+  if (!param) return fallback;
+  const lower = param.toLowerCase().trim();
+  if (lower.includes("1") || lower.includes("2024-dec") || lower.includes("147184")) return "SEM_PYQ_1";
+  if (lower.includes("2") || lower.includes("2025-may") || lower.includes("405686")) return "SEM_PYQ_2";
+  if (lower.includes("3") || lower.includes("2025-dec") || lower.includes("133554")) return "SEM_PYQ_3";
+  if (lower.includes("4") || lower.includes("2026-may") || lower.includes("323580")) return "SEM_PYQ_4";
+  if (lower.includes("5")) return "SEM_PYQ_5";
+  const found = examinations.find((e) => e.code.toLowerCase() === lower);
+  return found ? found.code : fallback;
 }
 
 interface SemesterBrowserClientProps {
   initialExaminations: SemExam[];
-  initialDocuments: SemDocument[];
+  initialDocuments: LinkedDocumentSummary[];
 }
 
 export function SemesterBrowserClient({
@@ -75,36 +58,25 @@ export function SemesterBrowserClient({
   const searchParams = useSearchParams();
   const folderParam = searchParams.get("folder") || searchParams.get("pyq") || searchParams.get("exam") || searchParams.get("id");
 
-  const normalizeExamCode = (param: string | null): string => {
-    if (!param) return initialExaminations[0]?.code || "SEM_PYQ_1";
-    const lower = param.toLowerCase().trim();
-    if (lower.includes("1") || lower.includes("2024-dec") || lower.includes("147184")) return "SEM_PYQ_1";
-    if (lower.includes("2") || lower.includes("2025-may") || lower.includes("405686")) return "SEM_PYQ_2";
-    if (lower.includes("3") || lower.includes("2025-dec") || lower.includes("133554")) return "SEM_PYQ_3";
-    if (lower.includes("4") || lower.includes("2026-may") || lower.includes("323580")) return "SEM_PYQ_4";
-    if (lower.includes("5")) return "SEM_PYQ_5";
-    const found = initialExaminations.find((e) => e.code.toLowerCase() === lower);
-    return found ? found.code : (initialExaminations[0]?.code || "SEM_PYQ_1");
-  };
-
   const [examinations, setExaminations] = useState<SemExam[]>(initialExaminations);
-  const [documents, setDocuments] = useState<SemDocument[]>(initialDocuments);
+  const { documents, setDocuments, deleteDocument, updateDocument } =
+    useDocumentList(initialDocuments);
   const [activeExamCode, setActiveExamCode] = useState<string>(() =>
-    normalizeExamCode(folderParam)
+    normalizeExamCode(folderParam, initialExaminations)
   );
 
-  useEffect(() => {
-    if (folderParam) {
-      setActiveExamCode(normalizeExamCode(folderParam));
-    }
-  }, [folderParam]);
+  // Follow the URL parameter when it changes (adjusting state during render).
+  const [prevFolderParam, setPrevFolderParam] = useState(folderParam);
+  if (prevFolderParam !== folderParam) {
+    setPrevFolderParam(folderParam);
+    if (folderParam) setActiveExamCode(normalizeExamCode(folderParam, examinations));
+  }
   const [activeSubfolder, setActiveSubfolder] = useState<
     "ALL" | "Question_Papers" | "Answers"
   >("ALL");
 
   const [selectedDocId, setSelectedDocId] = useState<string | null>(null);
   const [uploadModalOpen, setUploadModalOpen] = useState(false);
-  const [uploadTargetQP, setUploadTargetQP] = useState<string | undefined>(undefined);
   const [newPyqModalOpen, setNewPyqModalOpen] = useState(false);
   const [newPyqTitle, setNewPyqTitle] = useState("");
   const [newPyqQCode, setNewPyqQCode] = useState("");
@@ -122,46 +94,7 @@ export function SemesterBrowserClient({
   const qpCount = examDocs.filter((d) => d.documentType === "QUESTION_PAPER").length;
   const ansCount = examDocs.filter((d) => d.documentType === "ANSWER_KEY").length;
 
-  const handleDelete = async (id: string, name: string) => {
-    if (!confirm(`Are you sure you want to delete "${name}"?`)) return;
-    try {
-      const res = await fetch(`/api/documents/${id}`, { method: "DELETE" });
-      if (res.ok) {
-        setDocuments((prev) => prev.filter((d) => d.id !== id));
-      }
-    } catch (e) {
-      console.error("Delete error:", e);
-    }
-  };
-
-  // Rename state
-  const [editDoc, setEditDoc] = useState<SemDocument | null>(null);
-  const [editFilename, setEditFilename] = useState("");
-
-  const handleOpenEdit = (doc: SemDocument) => {
-    setEditDoc(doc);
-    setEditFilename(doc.originalFilename);
-  };
-
-  const handleSaveEdit = async () => {
-    if (!editDoc || !editFilename.trim()) return;
-    try {
-      const res = await fetch(`/api/documents/${editDoc.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ originalFilename: editFilename.trim() }),
-      });
-      const data = await res.json();
-      if (data.success) {
-        setDocuments((prev) =>
-          prev.map((d) => (d.id === editDoc.id ? { ...d, originalFilename: editFilename.trim() } : d))
-        );
-        setEditDoc(null);
-      }
-    } catch (e) {
-      console.error("Rename error:", e);
-    }
-  };
+  const [editDoc, setEditDoc] = useState<LinkedDocumentSummary | null>(null);
 
   const handleCreateNewPyq = async () => {
     if (!newPyqTitle.trim()) return;
@@ -237,10 +170,7 @@ export function SemesterBrowserClient({
           </button>
 
           <button
-            onClick={() => {
-              setUploadTargetQP(undefined);
-              setUploadModalOpen(true);
-            }}
+            onClick={() => setUploadModalOpen(true)}
             className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs transition shadow-md shadow-indigo-600/20"
           >
             <Upload className="w-4 h-4" />
@@ -387,10 +317,7 @@ export function SemesterBrowserClient({
             </p>
           </div>
           <button
-            onClick={() => {
-              setUploadTargetQP(undefined);
-              setUploadModalOpen(true);
-            }}
+            onClick={() => setUploadModalOpen(true)}
             className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs transition shadow-md shadow-indigo-600/20"
           >
             Upload to {activeExamCode}
@@ -426,7 +353,7 @@ export function SemesterBrowserClient({
                         {doc.originalFilename}
                       </h4>
                       <p className="text-[11px] dark:text-[#4a7fa0] text-slate-400 mt-0.5">
-                        {(doc.fileSize / 1024).toFixed(1)} KB • Uploaded on{" "}
+                        {formatFileSize(doc.fileSize)} • Uploaded on{" "}
                         {new Date(doc.createdAt).toLocaleDateString()}
                       </p>
                     </div>
@@ -487,14 +414,14 @@ export function SemesterBrowserClient({
 
                   <div className="flex items-center gap-1">
                     <button
-                      onClick={() => handleOpenEdit(doc)}
+                      onClick={() => setEditDoc(doc)}
                       className="p-1.5 rounded-lg text-slate-400 hover:text-sky-600 hover:bg-sky-50 dark:hover:bg-sky-950/40 transition"
                       title="Rename document"
                     >
                       <Edit2 className="w-4 h-4" />
                     </button>
                     <button
-                      onClick={() => handleDelete(doc.id, doc.originalFilename)}
+                      onClick={() => deleteDocument(doc.id, doc.originalFilename)}
                       className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition"
                       title="Delete document"
                     >
@@ -565,52 +492,17 @@ export function SemesterBrowserClient({
         </div>
       )}
 
-      {/* Rename Document Modal */}
-      {editDoc && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-150">
-          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 max-w-md w-full space-y-4 shadow-xl">
-            <h3 className="font-bold text-base text-slate-900 dark:text-white">
-              Rename Document
-            </h3>
-            <p className="text-xs text-slate-500">
-              Update the display name of this examination paper or answer document.
-            </p>
-            <div>
-              <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">
-                Filename:
-              </label>
-              <input
-                type="text"
-                value={editFilename}
-                onChange={(e) => setEditFilename(e.target.value)}
-                className="w-full text-xs p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              />
-            </div>
-            <div className="flex justify-end gap-2 pt-2">
-              <button
-                onClick={() => setEditDoc(null)}
-                className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleSaveEdit}
-                className="px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 text-white hover:bg-indigo-500"
-              >
-                Save
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <EditDocumentModal
+        doc={editDoc}
+        onClose={() => setEditDoc(null)}
+        onSave={updateDocument}
+        accent="indigo"
+        description="Update the display name of this examination paper or answer document."
+      />
 
       <DocumentViewerModal
         documentId={selectedDocId}
         onClose={() => setSelectedDocId(null)}
-        onUploadAnswer={(qpId) => {
-          setUploadTargetQP(qpId);
-          setUploadModalOpen(true);
-        }}
       />
 
       <UploadModal
@@ -618,7 +510,6 @@ export function SemesterBrowserClient({
         onClose={() => setUploadModalOpen(false)}
         defaultCategory="SEMESTER"
         defaultExamCode={activeExamCode}
-        defaultQuestionPaperIdToLink={uploadTargetQP}
         onUploadSuccess={refreshDocuments}
       />
     </div>

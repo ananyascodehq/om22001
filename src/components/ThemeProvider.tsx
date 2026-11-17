@@ -1,6 +1,8 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useSyncExternalStore } from "react";
+import { useIsClient } from "@/hooks/useIsClient";
+import { STORAGE_KEYS } from "@/lib/storageKeys";
 
 type Theme = "light" | "dark";
 
@@ -11,36 +13,37 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
-  const [mounted, setMounted] = useState(false);
+const listeners = new Set<() => void>();
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("om22001-theme") as Theme | null;
-    if (savedTheme === "dark" || savedTheme === "light") {
-      setTheme(savedTheme);
-      if (savedTheme === "dark") {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setTheme("dark");
-      document.documentElement.classList.add("dark");
-    }
-    setMounted(true);
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem("om22001-theme", newTheme);
-    if (newTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+function subscribe(onChange: () => void) {
+  listeners.add(onChange);
+  window.addEventListener("storage", onChange);
+  return () => {
+    listeners.delete(onChange);
+    window.removeEventListener("storage", onChange);
   };
+}
+
+/** The saved theme, or the OS preference when nothing has been saved yet. */
+function readTheme(): Theme {
+  const saved = localStorage.getItem(STORAGE_KEYS.theme);
+  if (saved === "dark" || saved === "light") return saved;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const theme = useSyncExternalStore<Theme>(subscribe, readTheme, () => "light");
+  const mounted = useIsClient();
+
+  // Keep the <html> class in sync with the theme.
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark");
+  }, [theme]);
+
+  const toggleTheme = useCallback(() => {
+    localStorage.setItem(STORAGE_KEYS.theme, theme === "light" ? "dark" : "light");
+    listeners.forEach((listener) => listener());
+  }, [theme]);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
@@ -56,4 +59,3 @@ export function useTheme() {
   }
   return context;
 }
-

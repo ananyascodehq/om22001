@@ -2,13 +2,6 @@
 
 import { useCallback, useMemo, useSyncExternalStore } from "react";
 
-/** localStorage keys used by the app for per-browser question state. */
-export const STORAGE_KEYS = {
-  done: "om22001-done",
-  bookmarks: "om22001-bookmarks",
-  theme: "om22001-theme",
-} as const;
-
 const EMPTY = "[]";
 const listeners = new Set<() => void>();
 
