@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Question } from "@/lib/types";
 import { useStoredIdList } from "@/hooks/useStoredIdList";
 import { STORAGE_KEYS } from "@/lib/storageKeys";
-import { MathView } from "./MathView";
+import { MathView } from "@/components/papers/MathView";
 import { 
   Bookmark, 
   Check, 

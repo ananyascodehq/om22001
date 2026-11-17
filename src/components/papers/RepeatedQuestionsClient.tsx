@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { RepeatedQuestion, Question } from "@/lib/types";
-import { QuestionCard } from "@/components/QuestionCard";
+import { QuestionCard } from "@/components/papers/QuestionCard";
 import { 
   Flame, 
   Sparkles, 

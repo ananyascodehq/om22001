@@ -4,7 +4,7 @@ import React from "react";
 import { X, ExternalLink, CheckCircle2, Link as LinkIcon, ArrowRight } from "lucide-react";
 import { getChatGptAnswerUrl } from "@/lib/answerLinks";
 import { formatFileSize } from "@/lib/documents";
-import type { ViewerDocument } from "../DocumentViewerModal";
+import type { ViewerDocument } from "@/components/documents/DocumentViewerModal";
 
 interface DocumentDetailsPanelProps {
   doc: ViewerDocument;

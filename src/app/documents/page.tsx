@@ -1,6 +1,6 @@
 import React from "react";
 import { prisma } from "@/lib/prisma";
-import { AllDocumentsClient } from "@/components/AllDocumentsClient";
+import { AllDocumentsClient } from "@/components/documents/AllDocumentsClient";
 import { serializeDocument } from "@/lib/serializeDocument";
 import type { DocumentSummary } from "@/lib/documents";
 

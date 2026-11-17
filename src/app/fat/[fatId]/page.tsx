@@ -1,7 +1,7 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import { getAllFatPapers, getFatPaperById } from "@/lib/data";
-import { PaperViewClient } from "@/components/PaperViewClient";
+import { PaperViewClient } from "@/components/papers/PaperViewClient";
 import Link from "next/link";
 import {
   ChevronRight,

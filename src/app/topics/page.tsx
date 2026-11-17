@@ -1,7 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import { getAllQuestions } from "@/lib/data";
-import { TopicsClient } from "@/components/TopicsClient";
+import { TopicsClient } from "@/components/papers/TopicsClient";
 import { Layers } from "lucide-react";
 import Link from "next/link";
 

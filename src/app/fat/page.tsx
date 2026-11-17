@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { prisma } from "@/lib/prisma";
-import { FatBrowserClient } from "@/components/FatBrowserClient";
+import { FatBrowserClient } from "@/components/papers/FatBrowserClient";
 import { DOCUMENT_WITH_LINKS_INCLUDE, serializeDocument } from "@/lib/serializeDocument";
 import type { LinkedDocumentSummary } from "@/lib/documents";
 

@@ -11,8 +11,8 @@ import {
   RotateCcw,
   Edit2,
 } from "lucide-react";
-import { DocumentViewerModal } from "./DocumentViewerModal";
-import { EditDocumentModal } from "./documents/EditDocumentModal";
+import { DocumentViewerModal } from "@/components/documents/DocumentViewerModal";
+import { EditDocumentModal } from "@/components/documents/EditDocumentModal";
 import { useDocumentList } from "@/hooks/useDocumentList";
 import { formatFileSize, type DocumentSummary } from "@/lib/documents";
 

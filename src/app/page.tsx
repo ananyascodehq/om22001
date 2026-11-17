@@ -1,6 +1,6 @@
 import React from "react";
 import { prisma } from "@/lib/prisma";
-import { DashboardClient } from "@/components/DashboardClient";
+import { DashboardClient } from "@/components/dashboard/DashboardClient";
 import { serializeDocument } from "@/lib/serializeDocument";
 import type { DocumentSummary } from "@/lib/documents";
 

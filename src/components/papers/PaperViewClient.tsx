@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Paper } from "@/lib/types";
-import { QuestionCard } from "./QuestionCard";
+import { QuestionCard } from "@/components/papers/QuestionCard";
 import { 
   Download, 
   Eye, 

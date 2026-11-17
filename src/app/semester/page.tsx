@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { prisma } from "@/lib/prisma";
-import { SemesterBrowserClient, type SemExam } from "@/components/SemesterBrowserClient";
+import { SemesterBrowserClient, type SemExam } from "@/components/papers/SemesterBrowserClient";
 import { DOCUMENT_WITH_LINKS_INCLUDE, serializeDocument } from "@/lib/serializeDocument";
 import type { LinkedDocumentSummary } from "@/lib/documents";
 

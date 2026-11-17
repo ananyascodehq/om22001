@@ -13,8 +13,8 @@ import {
   Menu,
   X,
 } from "lucide-react";
-import { ThemeToggle } from "./ThemeToggle";
-import { UploadModal } from "./UploadModal";
+import { ThemeToggle } from "@/components/layout/ThemeToggle";
+import { UploadModal } from "@/components/documents/UploadModal";
 
 interface NavLinkItem {
   href: string;

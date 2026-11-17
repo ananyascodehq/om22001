@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef, useMemo } from "react";
 import Link from "next/link";
 import Fuse from "fuse.js";
 import { Question } from "@/lib/types";
-import { QuestionCard } from "@/components/QuestionCard";
+import { QuestionCard } from "@/components/papers/QuestionCard";
 import { 
   Search, 
   X, 

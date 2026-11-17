@@ -3,9 +3,9 @@
 import React, { useMemo } from "react";
 import Link from "next/link";
 import { BookOpen } from "lucide-react";
-import { QuestionCard } from "@/components/QuestionCard";
-import { UNIT_META } from "./unitMeta";
-import type { TopicQuestion } from "./types";
+import { QuestionCard } from "@/components/papers/QuestionCard";
+import { UNIT_META } from "@/components/papers/topics/unitMeta";
+import type { TopicQuestion } from "@/components/papers/topics/types";
 
 interface TopicQuestionListProps {
   questions: TopicQuestion[];

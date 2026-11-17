@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { UploadModal } from "@/components/UploadModal";
+import { UploadModal } from "@/components/documents/UploadModal";
 import {
   Upload,
   Folder,

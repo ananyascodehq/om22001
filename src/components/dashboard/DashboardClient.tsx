@@ -2,11 +2,11 @@
 
 import React, { useState } from "react";
 import { FileCheck2, GraduationCap } from "lucide-react";
-import { DocumentViewerModal } from "./DocumentViewerModal";
-import { DashboardHero } from "./dashboard/DashboardHero";
-import { PaperSectionCard } from "./dashboard/PaperSectionCard";
-import { StudyMaterialsSection } from "./dashboard/StudyMaterialsSection";
-import { FAT_PAPERS, SEMESTER_PAPERS, type DashboardPaper } from "./dashboard/paperData";
+import { DocumentViewerModal } from "@/components/documents/DocumentViewerModal";
+import { DashboardHero } from "@/components/dashboard/DashboardHero";
+import { PaperSectionCard } from "@/components/dashboard/PaperSectionCard";
+import { StudyMaterialsSection } from "@/components/dashboard/StudyMaterialsSection";
+import { FAT_PAPERS, SEMESTER_PAPERS, type DashboardPaper } from "@/components/dashboard/paperData";
 import type { DocumentSummary } from "@/lib/documents";
 
 interface DashboardClientProps {

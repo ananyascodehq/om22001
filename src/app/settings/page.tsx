@@ -1,6 +1,6 @@
 import React from "react";
 import { prisma } from "@/lib/prisma";
-import { SettingsClient } from "@/components/SettingsClient";
+import { SettingsClient } from "@/components/settings/SettingsClient";
 
 export const dynamic = "force-dynamic";
 

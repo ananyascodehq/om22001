@@ -4,12 +4,12 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { BookOpen, FileText, Upload, Download, Trash2, Eye, Edit2, Plus, Image as ImageIcon } from "lucide-react";
-import { DocumentViewerModal } from "./DocumentViewerModal";
-import { UploadModal } from "./UploadModal";
-import { EditDocumentModal } from "./documents/EditDocumentModal";
+import { DocumentViewerModal } from "@/components/documents/DocumentViewerModal";
+import { UploadModal } from "@/components/documents/UploadModal";
+import { EditDocumentModal } from "@/components/documents/EditDocumentModal";
 import { useDocumentList } from "@/hooks/useDocumentList";
 import { formatFileSize, type DocumentSummary } from "@/lib/documents";
-import { FOLDERS, normalizeFolderId } from "./study-materials/folders";
+import { FOLDERS, normalizeFolderId } from "@/components/study-materials/folders";
 
 interface StudyMaterialsBrowserClientProps {
   initialDocuments: DocumentSummary[];

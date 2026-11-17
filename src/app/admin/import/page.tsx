@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { MathView } from "@/components/MathView";
+import { MathView } from "@/components/papers/MathView";
 import { 
   Code, 
   Copy, 

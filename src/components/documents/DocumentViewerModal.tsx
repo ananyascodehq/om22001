@@ -14,8 +14,8 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import { getChatGptAnswerUrl } from "@/lib/answerLinks";
-import { PinCommentViewer } from "./viewer/PinCommentViewer";
-import { DocumentDetailsPanel } from "./documents/DocumentDetailsPanel";
+import { PinCommentViewer } from "@/components/viewer/PinCommentViewer";
+import { DocumentDetailsPanel } from "@/components/documents/DocumentDetailsPanel";
 import type { DocumentSummary } from "@/lib/documents";
 
 export interface ViewerDocument extends DocumentSummary {

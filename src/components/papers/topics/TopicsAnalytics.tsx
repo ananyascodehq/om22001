@@ -4,7 +4,7 @@ import React from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts";
 import { BarChart3, Layers } from "lucide-react";
 import { useIsClient } from "@/hooks/useIsClient";
-import type { UnitStat } from "./types";
+import type { UnitStat } from "@/components/papers/topics/types";
 
 interface UnitBarChartCardProps {
   icon: React.ReactNode;

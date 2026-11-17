@@ -4,16 +4,16 @@ import React, { useState, useMemo } from "react";
 import { BookOpen, BarChart3 } from "lucide-react";
 import { useStoredIdList } from "@/hooks/useStoredIdList";
 import { STORAGE_KEYS } from "@/lib/storageKeys";
-import { TopicsAnalytics } from "./topics/TopicsAnalytics";
-import { TopicsFilterBar } from "./topics/TopicsFilterBar";
-import { TopicQuestionList } from "./topics/TopicQuestionList";
-import { UNIT_META } from "./topics/unitMeta";
+import { TopicsAnalytics } from "@/components/papers/topics/TopicsAnalytics";
+import { TopicsFilterBar } from "@/components/papers/topics/TopicsFilterBar";
+import { TopicQuestionList } from "@/components/papers/topics/TopicQuestionList";
+import { UNIT_META } from "@/components/papers/topics/unitMeta";
 import {
   DEFAULT_FILTERS,
   type TopicFilters,
   type TopicQuestion,
   type UnitStat,
-} from "./topics/types";
+} from "@/components/papers/topics/types";
 
 interface TopicsClientProps {
   allQuestions: TopicQuestion[];

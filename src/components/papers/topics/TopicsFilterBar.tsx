@@ -2,8 +2,8 @@
 
 import React from "react";
 import { Filter, Search, ChevronDown, ChevronUp, RotateCcw } from "lucide-react";
-import { PAPERS, UNIT_META } from "./unitMeta";
-import type { TopicFilters } from "./types";
+import { PAPERS, UNIT_META } from "@/components/papers/topics/unitMeta";
+import type { TopicFilters } from "@/components/papers/topics/types";
 
 interface TopicsFilterBarProps {
   filters: TopicFilters;

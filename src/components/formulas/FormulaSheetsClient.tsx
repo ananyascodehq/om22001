@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { MathView } from "@/components/MathView";
-import { DocumentViewerModal } from "@/components/DocumentViewerModal";
-import { UploadModal } from "@/components/UploadModal";
+import { MathView } from "@/components/papers/MathView";
+import { DocumentViewerModal } from "@/components/documents/DocumentViewerModal";
+import { UploadModal } from "@/components/documents/UploadModal";
 import {
   Sigma,
   Printer,

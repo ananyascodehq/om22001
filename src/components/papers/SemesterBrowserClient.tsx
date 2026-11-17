@@ -16,9 +16,9 @@ import {
   Edit2,
   ExternalLink,
 } from "lucide-react";
-import { DocumentViewerModal } from "./DocumentViewerModal";
-import { UploadModal } from "./UploadModal";
-import { EditDocumentModal } from "./documents/EditDocumentModal";
+import { DocumentViewerModal } from "@/components/documents/DocumentViewerModal";
+import { UploadModal } from "@/components/documents/UploadModal";
+import { EditDocumentModal } from "@/components/documents/EditDocumentModal";
 import { useDocumentList } from "@/hooks/useDocumentList";
 import { formatFileSize, type LinkedDocumentSummary } from "@/lib/documents";
 import { getChatGptAnswerUrl, CHATGPT_ANSWER_LINKS } from "@/lib/answerLinks";

@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { prisma } from "@/lib/prisma";
-import { StudyMaterialsBrowserClient } from "@/components/StudyMaterialsBrowserClient";
+import { StudyMaterialsBrowserClient } from "@/components/study-materials/StudyMaterialsBrowserClient";
 import { serializeDocument } from "@/lib/serializeDocument";
 import type { DocumentSummary } from "@/lib/documents";
 
