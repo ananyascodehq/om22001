@@ -1,0 +1,106 @@
+[
+  {
+    "id": "source-1",
+    "url": "https://chatgpt.com/share/6af49506-0a44-83ec-85c1-6ecbbadda047",
+    "mappedTo": {
+      "examCode": "SEM_PYQ_4",
+      "category": "SEMESTER",
+      "questionPaper": "OM22001-25211048.pdf",
+      "answerDocument": "SEM_PYQ_4_May_2026_Worked_Solutions.pdf",
+      "answerDocId": "c9f39a97a4d354ae2aec2e960"
+    },
+    "status": "mapped",
+    "notes": "Fully extracted and converted into publication-quality worked solutions PDF: SEM_PYQ_4_May_2026_Worked_Solutions.pdf"
+  },
+  {
+    "id": "source-2",
+    "url": "https://chatgpt.com/share/6af49517-7c80-83ec-a422-4c8bde96cd14",
+    "mappedTo": {
+      "examCode": "FAT_1",
+      "category": "FAT",
+      "questionPaper": "OE statistics fat 1.pdf",
+      "answerDocument": "FAT_1_AY2025_2026_Worked_Solutions.pdf",
+      "answerDocId": "c13f43a999b1f482c86b71c55"
+    },
+    "status": "mapped",
+    "notes": "Fully extracted and converted into publication-quality worked solutions PDF: FAT_1_AY2025_2026_Worked_Solutions.pdf"
+  },
+  {
+    "id": "source-3",
+    "url": "https://chatgpt.com/share/6af49529-ded8-83ee-ac96-a10049547724",
+    "mappedTo": {
+      "examCode": "SEM_PYQ_3",
+      "category": "SEMESTER",
+      "questionPaper": "OM22001.pdf",
+      "answerDocument": "SEM_PYQ_3_Dec_2025_Worked_Solutions.pdf",
+      "answerDocId": "cb70913ab43ef496ea8d71911"
+    },
+    "status": "mapped",
+    "notes": "Fully extracted and converted into publication-quality worked solutions PDF: SEM_PYQ_3_Dec_2025_Worked_Solutions.pdf"
+  },
+  {
+    "id": "source-4",
+    "url": "https://chatgpt.com/share/6af49542-88b8-83ee-9b4a-769b1ec3d454",
+    "mappedTo": {
+      "examCode": "SEM_PYQ_2",
+      "category": "SEMESTER",
+      "questionPaper": "OM22001 (1).pdf",
+      "answerDocument": "SEM_PYQ_2_May_2025_Worked_Solutions.pdf",
+      "answerDocId": "cef7f5f85e1874e98846a4156"
+    },
+    "status": "mapped",
+    "notes": "Fully extracted and converted into publication-quality worked solutions PDF: SEM_PYQ_2_May_2025_Worked_Solutions.pdf"
+  },
+  {
+    "id": "source-5",
+    "url": "https://chatgpt.com/share/6af4955a-b0f0-83ec-bfa4-a3257b13a4de",
+    "mappedTo": {
+      "examCode": "SEM_PYQ_1",
+      "category": "SEMESTER",
+      "questionPaper": "OM22001 (2).pdf",
+      "answerDocument": "SEM_PYQ_1_Dec_2024_Worked_Solutions.pdf",
+      "answerDocId": "cf1dcc7cf96e34e7e96bd53f5"
+    },
+    "status": "mapped",
+    "notes": "Fully extracted and converted into publication-quality worked solutions PDF: SEM_PYQ_1_Dec_2024_Worked_Solutions.pdf"
+  },
+  {
+    "id": "source-6",
+    "url": "https://chatgpt.com/share/6af49571-bafc-83e8-af94-15f7f6f48800",
+    "mappedTo": {
+      "examCode": "FAT_3",
+      "category": "FAT",
+      "questionPaper": "OE FAT PAPERS.pdf",
+      "answerDocument": "FAT_3_AY2024_2025_Worked_Solutions.pdf",
+      "answerDocId": "c71d50dc39ddd428cb930ba46"
+    },
+    "status": "mapped",
+    "notes": "Fully extracted and converted into publication-quality worked solutions PDF: FAT_3_AY2024_2025_Worked_Solutions.pdf"
+  },
+  {
+    "id": "source-7",
+    "url": "https://chatgpt.com/share/6af49588-ac1c-83ee-ab3e-b65021201e1d",
+    "mappedTo": {
+      "examCode": "FAT_2",
+      "category": "FAT",
+      "questionPaper": "OE FAT PAPERS.pdf",
+      "answerDocument": "FAT_2_AY2024_2025_Worked_Solutions.pdf",
+      "answerDocId": "c5932431beddc47e581afef55"
+    },
+    "status": "mapped",
+    "notes": "Fully extracted and converted into publication-quality worked solutions PDF: FAT_2_AY2024_2025_Worked_Solutions.pdf"
+  },
+  {
+    "id": "source-8",
+    "url": "https://chatgpt.com/share/6af4959d-3f40-83ee-a7bc-7562286c5b1b",
+    "mappedTo": {
+      "examCode": "FAT_1",
+      "category": "FAT",
+      "questionPaper": "OE FAT PAPERS.pdf",
+      "answerDocument": "FAT_1_AY2024_2025_Worked_Solutions.pdf",
+      "answerDocId": "cc5721ae0fff04c39aefe2c5e"
+    },
+    "status": "mapped",
+    "notes": "Fully extracted and converted into publication-quality worked solutions PDF: FAT_1_AY2024_2025_Worked_Solutions.pdf"
+  }
+]

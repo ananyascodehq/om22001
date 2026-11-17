@@ -1,0 +1,232 @@
+--- PAGE 1 ---
+Q. Code: 323580
+Page 1 of 5
+  
+B.E. / B.TECH. DEGREE EXAMINATIONS, MAY 2026
+Sixth Semester
+OM22001 –STATISTICAL METHODS FOR ENGINEERS 
+(Common to AE, CE, CS, EC, EE, IT, ME & MN)
+ (Regulation 2022)
+Use of statistical tables are permitted
+TIME: 3 HOURS                                                                         MAX. MARKS: 100
+COURSE 
+OUTCOMES
+STATEMENT RBT 
+LEVEL
+CO1 Have a fundamental knowledge of the concepts of Statistics. 3
+CO2 Have a notion of sampling distributions and statistical techniques used in Engineering 
+problems.
+3
+CO3 Analyse and interpret the data based on the sample tests. 3
+CO4 Apply the basic concepts of classification of design of Experiments in the field of  
+Engineering.
+3
+CO5 Design and interpret control charts for variables and attributes. 3
+PART- A (20 x 2 = 40 Marks)
+(Answer all Questions)
+CO RBT 
+LEVEL
+1. The mean marks scored by 100 students were found to be 40. Later on, it was  
+discovered that a score of 53 was misread as 85. Find the correct means.
+1 2
+2. Find the harmonic mean of the following distribution of data
+Dividend  yield  
+(percent)
+2–6 6–10 10–14
+Number of companies 10 12 18
+1 2
+3. For a certain distribution the upper and lower quartiles are 56 and 44 respectively. If  
+the median for the same data is 55 then identify the nature of skewness.
+1 2
+4. If the first quartile is 142 and the semi-interquartile range is 18, find the median  
+(assuming the distribution to be symmetrical).
+1 2
+5. An automobile company decided to introduce a new six-cylinder car whose mean  
+petrol consumption is claimed to be lower than that of the existing engine. It was  
+found that the mean petrol consumption for a sample of 50 cars was 10 km per litre  
+with a standard deviation of 3.5 km per litre. The company claims that the mean  
+petrol consumption of the new car is 9.5 km per litre. Calculate the test statistic.
+2 2
+6. A manufacturer claims that at least 95 per cent of the equipments which he supplied  
+to a factory conformed to the specification. An examination of the sample of 200  
+pieces of equipment revealed that 18 were faulty. Calculate the test statistic.
+2 2
+7. A wholesaler of eggs claims that only 4 per cent of the eggs supplied by him are  
+defective. A random sample of 600 eggs contained 36 defectives. Calculate the Z-
+value.
+2 2
+Reg. No.
+--- PAGE 2 ---
+Q. Code: 323580
+Page 2 of 5
+8. Two hospitals, X and Y, are testing the effectiveness of a new treatment. In Hospital  
+X, 120 out of 150 patients were successfully treated, while in Hospital Y, 130 out of  
+160 patients were successfully treated. Calculate the standard error of proportions in  
+the success rates of the treatment between the two hospitals.
+2 2
+9. The average breaking strength of steel rods is specified to be 18.5 thousand kg. For  
+this a sample of 14 rods was tested. The mean and standard deviation obtained were  
+17.85 and 1.955, respectively. Calculate the test statistic.
+3 3
+10. The mean life of a sample of 10 electric light bulbs was found to be 1456 hours with  
+standard deviation of 423 hours. A second sample of 17 bulbs chosen from a different 
+batch showed a mean life of 1280 hours with standard deviation of 398 hours.  
+Calculate the standard error of means of the two batches.
+3 2
+11. A research was conducted to understand whether women have a greater variation in  
+attitude on political issues than men. Two independent samples of 31 men and 41  
+women were used for the study. The sample variances so calculated were 120 for  
+women and 80 for men. Calculate the F-value.
+3 2
+12. A company received 100 customer ratings for its new product, with the following  
+ratings observed: 1 star: 10, 2 stars: 15, 3 stars: 30, 4 stars: 25, 5 stars: 20. If the  
+company expects the following proportions: 1 star (10%), 2 stars (20%), 3 stars  
+(30%), 4 stars (25%), 5 stars (15%). Calculate the Chi-square value.
+3 2
+13. In which situation would you use an ANOVA instead of a t-test? 4 2
+14. In one way ANOVA, given SSC = 2580, SSE = 1656, K = 4, N= 20, What is the  
+value of F ratio?
+4 2
+15. Given a two-way classification with 3 levels of factor A, 4 levels of factor B and 30  
+total observation, if SSA = 1800 and SSE = 1200, compute the mean square for factor 
+A.
+4 2
+16. Why a 2 × 2 Latin square design is not possible? Explain 4 2
+17. What are the specification limits in quality control? 5 2
+18. Measurements on averages ( X ) and ranges (R) from 20 samples each of 5 gave the  
+following results: X =99.6 , R=7.0. Determine the values of the control limits for  
+drawing a range chart.
+5 2
+19. Over a period of time, 12 samples are taken from a process, and the average number  
+of defects per unit is 3. Calculate the central line, UCL, and LCL for the c-chart.
+5 2
+20. Based on 15 sub-groups of size 200 taken at intervals of 45 minutes from a  
+manufacturing process the average fraction defective was found to be 0.068.  
+Calculate the value of central line, upper and lower control limits for np-chart.
+5 2
+PART- B (5 x 10 = 50 Marks)
+Marks CO RBT 
+LEVEL
+21. (a) The weekly sales of two products A and B were recorded as given below:
+Product A 59 75 27 63 27 28 56
+Product B 150 20
+0
+125 310 330 25
+0
+225
+Find out which of the two shows greater fluctuation in sales.
+(10) 1 3
+(OR)
+--- PAGE 3 ---
+Q. Code: 323580
+Page 3 of 5
+    (b) Find out Bowley’s coefficient of skewness for the following data:
+Class 40-50 50-60 60-
+70
+70-80 80-90 90-100
+Frequency 18 35 48 84 38 12
+(10) 1 3
+22. (a) In a sample of 1000, the mean is 17.5 and the standard deviation is 2.5. In 
+another sample of 800, the mean is 18 and the standard deviation is 2.7.  
+Assuming that the samples are independent, discuss whether the two  
+samples could have come from a population which have the same  
+standard deviation.
+(10) 2 3
+(OR)
+      (b) 500 units from a factory are inspected and 12 are found to be defective,  
+800 units from another factory are inspected and 12 are found to be  
+defective. Can it be concluded that at 5 per cent level of significance  
+production at the second factory is better than in first factory?
+(10) 2 3
+23. (a) In a test given to two groups of students, the marks obtained are as  
+follows:
+First group 18 2
+0
+36 5
+0
+49 3
+6
+34 4
+9
+41
+Second group 29 2
+8
+26 3
+5
+30 4
+4
+46 - -
+Examine the significance of the difference between the arithmetic mean  
+of the marks secured by the students of the above two groups.
+(10) 3 3
+(OR)
+     (b) Based on information from 1000 randomly selected fields about the  
+tenancy status of the cultivation of these fields and use of fertilizers,  
+collected in an agro-economic survey, the following classifications were  
+noted:
+Owned Rented Total
+Using fertilizers 416 184 600
+Not using fertilizers 64 336 400
+Total 480 520 1000
+Would you conclude that owner cultivators are more inclined towards the 
+use of fertilizers at α = 0.05 level of significance? Carry out the chi-
+square test as per testing procedures.
+(10) 3 3
+24. (a) During one year a student received marks in various subjects as shown in  
+the table below. Determine whether there is a significant difference  
+between the student’s grades at 0.01 level of significance.
+Mathematic
+s
+72 80 83 75
+(10) 4 3
+--- PAGE 4 ---
+Q. Code: 323580
+Page 4 of 5
+Science 81 74 77
+English 88 82 90 87 80
+Economics 74 71 77 70
+(OR)
+      (b) A company appoints four salesman A, B, C and D and observes their  
+sales in three seasons: summer, winter and monsoon. The figures (in lakh  
+of Rs.) are given in the following table.
+Salesman
+A B C D
+Seasons
+Summer 45 40 38 37
+Winter 43 41 45 38
+Monsoon 39 39 41 41
+Carry out analysis of variance.
+(10) 4 3
+25. (a) Given 10 samples of size 4, with the following data:
+Sample No. 1 2 3 4 5 6 7 8 9 10 Total
+Sample Mean 85 8
+9 84 83 88 86 87 85 88 86 861
+Sample Range 5 7 4 5 6 8 5 7 4 6 57
+Construct control charts for the mean and range. Comment on the state of 
+control.
+(10) 5 3
+(OR)
+      (b) The following data refers to visual defects found during the inspection of  
+the first 10 samples of size 50 each from a lot of two-wheelers  
+manufactured by an automobile company:
+Sample No. 1 2 3 4 5 6 7 8 9 10
+No.  of  
+Defectives
+4 3 2 3 4 4 4 1 3 2
+Draw the 'p' chart to show that the fraction defectives are under control.
+(10) 5 3
+P  ART  -   C (1     x 10   = 10   Ma  r  k  s)
+(Q.No.26 is compulsory)
+Marks CO RBT 
+LEVEL
+26. A study of 100 engineering companies gives the following information
+Profit (Rs in crore) 0-
+10
+10-20 20-30 30-40 40-50 50-60
+Number of companies 8 12 20 30 20 10
+Calculate the standard deviation and variance of the profit earned.
+(10) 1 3
+**********
+--- PAGE 5 ---
+Q. Code: 323580
+Page 5 of 5

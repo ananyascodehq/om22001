@@ -1,0 +1,10 @@
+storage/
+.env*
+.git/
+.next/
+node_modules/
+prisma/dev.db
+prisma/dev.db-journal
+*.db
+*.sqlite
+*.sqlite3

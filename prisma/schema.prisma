@@ -1,0 +1,136 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Subject {
+  id           String        @id @default(cuid())
+  code         String        @unique // e.g. "OM22001"
+  name         String        // e.g. "Statistical Methods for Engineers"
+  regulation   String        @default("2022")
+  departments  String        @default("Common to AE, CE, CS, EC, EE, IT, ME, MN, BT, CH")
+  units        Unit[]
+  examinations Examination[]
+  documents    Document[]
+  createdAt    DateTime      @default(now())
+}
+
+model Unit {
+  id          String     @id @default(cuid())
+  subjectId   String
+  subject     Subject    @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  unitNumber  Int        // 1 to 5
+  coNumber    String     // "CO1" to "CO5"
+  title       String     // e.g. "Descriptive Statistics"
+  description String?
+  topics      String     // JSON-encoded string array
+  documents   Document[]
+  questions   Question[]
+}
+
+model Examination {
+  id          String     @id @default(cuid())
+  subjectId   String
+  subject     Subject    @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  type        String     // "FAT" | "SEMESTER"
+  code        String     // "FAT_1", "FAT_2", "FAT_3", "SEM_PYQ_1", "SEM_PYQ_2", etc.
+  title       String     // e.g. "Semester Examination Dec 2024" or "FAT 1"
+  qCode       String?    // e.g. "147184"
+  examDate    String?    // e.g. "Dec 2024"
+  semester    Int?       // 5 or 6
+  duration    String?    @default("3 Hours")
+  maxMarks    Int?       @default(100)
+  documents   Document[]
+  createdAt   DateTime   @default(now())
+}
+
+model Document {
+  id                       String                 @id @default(cuid())
+  subjectId                String
+  subject                  Subject                @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  category                 String                 // "FAT" | "SEMESTER" | "STUDY_MATERIAL"
+  examinationId            String?
+  examination              Examination?           @relation(fields: [examinationId], references: [id], onDelete: SetNull)
+  unitId                   String?
+  unit                     Unit?                  @relation(fields: [unitId], references: [id], onDelete: SetNull)
+  
+  // Specific Folder / Subfolder
+  subfolder                String                 // "QUESTION_PAPERS", "ANSWERS", "TWO_MARK", "TEN_MARK", "NOTES", "FORMULA_SHEETS", "REFERENCE", "IMPORTANT_CONCEPTS", "ADDITIONAL"
+  documentType             String                 // "QUESTION_PAPER" | "ANSWER_KEY" | "TWO_MARK_BANK" | "TEN_MARK_BANK" | "NOTES" | "FORMULA_SHEET" | "REFERENCE" | "HANDWRITTEN"
+  
+  originalFilename         String
+  storedFilename           String
+  storagePath              String                 // Relative path in storage/
+  fileType                 String                 // "pdf", "docx", "pptx", "png", "jpg", "txt"
+  fileSize                 Int                    // In bytes
+  description              String?
+  tags                     String?                // Comma-separated or JSON
+  ocrText                  String?                // Extracted text content for search & classification
+  classificationConfidence Float?                 // 0.0 to 1.0
+  classificationStatus     String                 @default("CONFIRMED") // "SUGGESTED" | "CONFIRMED" | "MANUAL"
+  isVerified               Boolean                @default(false)
+  
+  // Relational linking between Question Paper and Answers
+  answersFor               DocumentRelationship[] @relation("QuestionPaperRelation")
+  questionPaperFor         DocumentRelationship[] @relation("AnswerRelation")
+  questions                Question[]
+  
+  createdAt                DateTime               @default(now())
+  updatedAt                DateTime               @updatedAt
+}
+
+model DocumentRelationship {
+  id               String   @id @default(cuid())
+  questionPaperId  String
+  questionPaper    Document @relation("QuestionPaperRelation", fields: [questionPaperId], references: [id], onDelete: Cascade)
+  answerDocId      String
+  answerDoc        Document @relation("AnswerRelation", fields: [answerDocId], references: [id], onDelete: Cascade)
+  relationshipType String   @default("ANSWERS_TO")
+  createdAt        DateTime @default(now())
+}
+
+model Question {
+  id           String   @id @default(cuid())
+  documentId   String
+  document     Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  unitId       String?
+  unit         Unit?    @relation(fields: [unitId], references: [id], onDelete: SetNull)
+  number       String   // "1", "21(a)", "21(b)", "26"
+  part         String   // "A", "B", "C"
+  marks        Int      // 2 or 10
+  co           Int?
+  rbt          Int?
+  topic        String?
+  questionText String
+  solutionText String?
+  needsReview  Boolean  @default(false)
+  tags         String?
+  createdAt    DateTime @default(now())
+}
+
+model UploadHistory {
+  id               String   @id @default(cuid())
+  filename         String
+  fileSize         Int
+  detectedCategory String
+  status           String   // "SUCCESS" | "FAILED" | "PENDING_CONFIRMATION"
+  details          String?
+  createdAt        DateTime @default(now())
+}
+
+model FormulaSheet {
+  id          String   @id @default(cuid())
+  unitNumber  Int      @unique
+  unitTitle   String
+  coNumber    String
+  description String
+  sections    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+

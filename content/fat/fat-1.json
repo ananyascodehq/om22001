@@ -1,0 +1,645 @@
+{
+  "id": "fat-1",
+  "title": "Formative Assessment Test 1 (FAT-1)",
+  "subjectCode": "OM22001",
+  "subjectName": "Statistical Methods for Engineers",
+  "regulation": "2022",
+  "assessmentType": "FAT",
+  "testNumber": 1,
+  "unitsCovered": [
+    1,
+    2
+  ],
+  "duration": "90 Minutes",
+  "maxMarks": 50,
+  "academicYear": "2024\u20132025",
+  "examDate": "08.03.2025",
+  "pdfUrl": "/api/documents/cmwd2u26z0001q795a01r19it/preview",
+  "isPlaceholder": false,
+  "questions": [
+    {
+      "id": "fat1-q1",
+      "paperId": "fat-1",
+      "part": "A",
+      "number": "1",
+      "marks": 2,
+      "co": 1,
+      "rbt": 2,
+      "unit": 1,
+      "topic": "Weighted Mean & Average Profit",
+      "questionText": "A firm of readymade garments makes both men's and women's shirts. Its profit average is 6% of sales. Its profit in men's shirts average 8% of sales, and women's shirts comprise 60% of output. What is the average profit per sales rupee in women's shirts?",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Let total sales output = 100.",
+          "Women's shirts comprise 60% of output ($w_1 = 60$), and Men's shirts comprise 40% of output ($w_2 = 40$).",
+          "Overall profit = $6\\% \\times 100 = 6$.",
+          "Profit from Men's shirts = $8\\% \\times 40 = 3.2$.",
+          "Profit from Women's shirts = $6 - 3.2 = 2.8$.",
+          "Average profit per sales rupee in Women's shirts = $\\frac{2.8}{60} = 0.0467$ or $4.67\\%$."
+        ],
+        "finalAnswer": "4.67% per sales rupee (or 0.0467)",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af4959d-3f40-83ee-a7bc-7562286c5b1b"
+      },
+      "needsReview": false,
+      "tags": [
+        "profit",
+        "weighted-mean",
+        "descriptive-statistics"
+      ]
+    },
+    {
+      "id": "fat1-q2",
+      "paperId": "fat-1",
+      "part": "A",
+      "number": "2",
+      "marks": 2,
+      "co": 1,
+      "rbt": 2,
+      "unit": 1,
+      "topic": "Quartile Deviation",
+      "questionText": "Calculate the quartile deviation of the following observations: 15, 20, 28, 35, 22, 27, 44, 48, 55, 50 and 60.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Arrange data in ascending order ($n=11$): 15, 20, 22, 27, 28, 35, 44, 48, 50, 55, 60.",
+          "$Q_1 = \\text{value of } \\frac{n+1}{4} = \\frac{12}{4} = 3\\text{rd observation} = 22$.",
+          "$Q_3 = \\text{value of } \\frac{3(n+1)}{4} = \\frac{36}{4} = 9\\text{th observation} = 50$.",
+          "Quartile Deviation $QD = \\frac{Q_3 - Q_1}{2} = \\frac{50 - 22}{2} = \\frac{28}{2} = 14$."
+        ],
+        "finalAnswer": "Quartile Deviation QD = 14",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af4959d-3f40-83ee-a7bc-7562286c5b1b"
+      },
+      "needsReview": false,
+      "tags": [
+        "quartiles",
+        "quartile-deviation",
+        "dispersion"
+      ]
+    },
+    {
+      "id": "fat1-q3",
+      "paperId": "fat-1",
+      "part": "A",
+      "number": "3",
+      "marks": 2,
+      "co": 1,
+      "rbt": 2,
+      "unit": 1,
+      "topic": "Variance",
+      "questionText": "Find the variance of 3, 6, 8, 1, 3.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Given observations ($n=5$): 3, 6, 8, 1, 3.",
+          "Mean $\\bar{x} = \\frac{3+6+8+1+3}{5} = \\frac{21}{5} = 4.2$.",
+          "Deviations $(x_i - \\bar{x})^2$: $(3-4.2)^2=1.44$, $(6-4.2)^2=3.24$, $(8-4.2)^2=14.44$, $(1-4.2)^2=10.24$, $(3-4.2)^2=1.44$.",
+          "$\\sum (x_i - \\bar{x})^2 = 1.44 + 3.24 + 14.44 + 10.24 + 1.44 = 30.8$.",
+          "Population Variance $\\sigma^2 = \\frac{30.8}{5} = 6.16$ (Sample variance $s^2 = \\frac{30.8}{4} = 7.7$)."
+        ],
+        "finalAnswer": "\\sigma^2 = 6.16",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af4959d-3f40-83ee-a7bc-7562286c5b1b"
+      },
+      "needsReview": false,
+      "tags": [
+        "variance",
+        "dispersion"
+      ]
+    },
+    {
+      "id": "fat1-q4",
+      "paperId": "fat-1",
+      "part": "A",
+      "number": "4",
+      "marks": 2,
+      "co": 1,
+      "rbt": 2,
+      "unit": 1,
+      "topic": "Geometric Mean & Growth Rate",
+      "questionText": "The rate of increase in population of a country during the last three decades is 5 percent, 8 percent, and 12 percent. Find the average rate of growth during the last three decades.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "When rates of growth over time are compounded, Geometric Mean is the appropriate average.",
+          "Growth factors: $1+r_1 = 1.05$, $1+r_2 = 1.08$, $1+r_3 = 1.12$.",
+          "Product = $1.05 \\times 1.08 \\times 1.12 = 1.27008$.",
+          "Compound factor $G = (1.27008)^{1/3} \\approx 1.0829$.",
+          "Average rate of growth = $(1.0829 - 1) \\times 100 = 8.29\\%$."
+        ],
+        "finalAnswer": "8.29% per decade",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af4959d-3f40-83ee-a7bc-7562286c5b1b"
+      },
+      "needsReview": false,
+      "tags": [
+        "geometric-mean",
+        "growth-rate"
+      ]
+    },
+    {
+      "id": "fat1-q5",
+      "paperId": "fat-1",
+      "part": "A",
+      "number": "5",
+      "marks": 2,
+      "co": 1,
+      "rbt": 2,
+      "unit": 1,
+      "topic": "Relationship between AM, GM, HM",
+      "questionText": "The AM of two numbers is 10, the GM of those numbers is 8. Find the HM.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "For any two positive numbers, the fundamental relation is: $GM^2 = AM \\times HM$.",
+          "Given $AM = 10$ and $GM = 8$.",
+          "$8^2 = 10 \\times HM \\implies 64 = 10 \\times HM$.",
+          "$HM = \\frac{64}{10} = 6.4$."
+        ],
+        "finalAnswer": "HM = 6.4",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af4959d-3f40-83ee-a7bc-7562286c5b1b"
+      },
+      "needsReview": false,
+      "tags": [
+        "harmonic-mean",
+        "arithmetic-mean",
+        "geometric-mean"
+      ]
+    },
+    {
+      "id": "fat1-q6",
+      "paperId": "fat-1",
+      "part": "A",
+      "number": "6",
+      "marks": 2,
+      "co": 1,
+      "rbt": 2,
+      "unit": 1,
+      "topic": "Coefficient of Variation",
+      "questionText": "Coefficients of variation of two distributions are 60 and 70 and their standard deviations are 21 and 16 respectively. What are their arithmetic means?",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Formula for Coefficient of Variation: $CV = \\frac{\\sigma}{\\bar{x}} \\times 100$.",
+          "For distribution 1: $60 = \\frac{21}{\\bar{x}_1} \\times 100 \\implies \\bar{x}_1 = \\frac{2100}{60} = 35$.",
+          "For distribution 2: $70 = \\frac{16}{\\bar{x}_2} \\times 100 \\implies \\bar{x}_2 = \\frac{1600}{70} = 22.86$."
+        ],
+        "finalAnswer": "\\bar{x}_1 = 35,\\ \\bar{x}_2 = 22.86",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af4959d-3f40-83ee-a7bc-7562286c5b1b"
+      },
+      "needsReview": false,
+      "tags": [
+        "coefficient-of-variation",
+        "mean",
+        "standard-deviation"
+      ]
+    },
+    {
+      "id": "fat1-q7",
+      "paperId": "fat-1",
+      "part": "A",
+      "number": "7",
+      "marks": 2,
+      "co": 1,
+      "rbt": 2,
+      "unit": 1,
+      "topic": "Quartiles & Median",
+      "questionText": "The first quartile is 48 and quartile deviation is 6. Find the median assuming symmetrical distribution.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Quartile Deviation $QD = \\frac{Q_3 - Q_1}{2} = 6 \\implies Q_3 - Q_1 = 12$.",
+          "Given $Q_1 = 48 \\implies Q_3 = 48 + 12 = 60$.",
+          "For a symmetrical distribution, $\\text{Median} = \\frac{Q_1 + Q_3}{2} = \\frac{48 + 60}{2} = 54$."
+        ],
+        "finalAnswer": "Median = 54",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af4959d-3f40-83ee-a7bc-7562286c5b1b"
+      },
+      "needsReview": false,
+      "tags": [
+        "quartiles",
+        "median",
+        "skewness"
+      ]
+    },
+    {
+      "id": "fat1-q8",
+      "paperId": "fat-1",
+      "part": "A",
+      "number": "8",
+      "marks": 2,
+      "co": 1,
+      "rbt": 2,
+      "unit": 1,
+      "topic": "Bowley Skewness",
+      "questionText": "Find the coefficient of skewness from the following information: Difference of two quartiles = 8, Mode = 11, sum of two quartiles = 22, Mean = 8.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Given $Q_3 - Q_1 = 8$ and $Q_3 + Q_1 = 22$.",
+          "Adding gives $2 Q_3 = 30 \\implies Q_3 = 15$ and $Q_1 = 7$.",
+          "From empirical relation: $\\text{Mode} = 3\\text{Median} - 2\\text{Mean} \\implies 11 = 3\\text{Median} - 16 \\implies 3\\text{Median} = 27 \\implies \\text{Median} = 9$.",
+          "Bowley's coefficient of skewness $S_b = \\frac{Q_3 + Q_1 - 2M}{Q_3 - Q_1} = \\frac{22 - 2(9)}{8} = \\frac{22 - 18}{8} = \\frac{4}{8} = 0.5$."
+        ],
+        "finalAnswer": "S_b = 0.5 (Moderately positively skewed)",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af4959d-3f40-83ee-a7bc-7562286c5b1b"
+      },
+      "needsReview": false,
+      "tags": [
+        "bowley-skewness",
+        "quartiles"
+      ]
+    },
+    {
+      "id": "fat1-q9",
+      "paperId": "fat-1",
+      "part": "A",
+      "number": "9",
+      "marks": 2,
+      "co": 1,
+      "rbt": 2,
+      "unit": 1,
+      "topic": "Central Moments Consistency",
+      "questionText": "Examine whether the following results of a piece of computation for obtaining the second central moment are consistent or not: N = 120, sum(fX) = -125, sum(fX^2) = 128.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "The second central moment $\\mu_2$ represents variance, which must always be non-negative ($\\mu_2 \\ge 0$).",
+          "Raw moments: $\\mu'_1 = \\frac{\\sum fX}{N} = \\frac{-125}{120} = -1.0417$.",
+          "$\\mu'_2 = \\frac{\\sum fX^2}{N} = \\frac{128}{120} = 1.0667$.",
+          "$\\mu_2 = \\mu'_2 - (\\mu'_1)^2 = 1.0667 - (-1.0417)^2 = 1.0667 - 1.0851 = -0.0184$.",
+          "Since $\\mu_2 = -0.0184 < 0$, variance cannot be negative. Hence, the results are INCONSISTENT."
+        ],
+        "finalAnswer": "Inconsistent (\\mu_2 = -0.0184 < 0)",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af4959d-3f40-83ee-a7bc-7562286c5b1b"
+      },
+      "needsReview": false,
+      "tags": [
+        "central-moments",
+        "consistency"
+      ]
+    },
+    {
+      "id": "fat1-q10",
+      "paperId": "fat-1",
+      "part": "A",
+      "number": "10",
+      "marks": 2,
+      "co": 2,
+      "rbt": 2,
+      "unit": 2,
+      "topic": "Test of Single Proportion (Z-test)",
+      "questionText": "A political candidate claims that at least 60% of the population supports her. A Poll is conducted where 1500 people are surveyed, and 870 of them support her. Test the candidate's claim at 1% significance level.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Null hypothesis $H_0: P \\ge 0.60$ vs Alternative $H_1: P < 0.60$ (One-tailed test).",
+          "Sample proportion $p = \\frac{870}{1500} = 0.58$.",
+          "Standard Error $SE = \\sqrt{\\frac{P(1-P)}{n}} = \\sqrt{\\frac{0.60 \\times 0.40}{1500}} = \\sqrt{\\frac{0.24}{1500}} = \\sqrt{0.00016} = 0.01265$.",
+          "Test statistic $Z = \\frac{p - P}{SE} = \\frac{0.58 - 0.60}{0.01265} = \\frac{-0.02}{0.01265} = -1.58$.",
+          "Critical value at $\\alpha = 0.01$ for left-tailed test is $-2.33$.",
+          "Since $Z_{calc} = -1.58 > -2.33$, it does not fall in the critical region. We fail to reject $H_0$ at 1% significance level. The candidate's claim is supported."
+        ],
+        "finalAnswer": "Fail to reject H0 (Z = -1.58 > -2.33; claim accepted at 1% level)",
+        "tableValuesUsed": "Z_critical = -2.33 at 1% one-tailed",
+        "sourceLink": "https://chatgpt.com/share/6af4959d-3f40-83ee-a7bc-7562286c5b1b"
+      },
+      "needsReview": false,
+      "tags": [
+        "proportion-test",
+        "large-sample",
+        "z-test"
+      ]
+    },
+    {
+      "id": "fat1-q11a",
+      "paperId": "fat-1",
+      "part": "B",
+      "number": "11(a)",
+      "marks": 10,
+      "co": 1,
+      "rbt": 3,
+      "unit": 1,
+      "topic": "Mean, Mode, and Standard Deviation (Grouped Data)",
+      "questionText": "Calculate Mean, Mode and Standard deviation for the following table: Class interval: 0-10, 10-20, 20-30, 30-40, 40-50; Frequency: 8, 10, 15, 7, 10.",
+      "tables": [
+        {
+          "headers": [
+            "Class Interval",
+            "Frequency (f)",
+            "Midpoint (m)",
+            "d = (m-25)/10",
+            "fd",
+            "fd^2"
+          ],
+          "rows": [
+            [
+              "0\u201310",
+              "8",
+              "5",
+              "-2",
+              "-16",
+              "32"
+            ],
+            [
+              "10\u201320",
+              "10",
+              "15",
+              "-1",
+              "-10",
+              "10"
+            ],
+            [
+              "20\u201330",
+              "15",
+              "25",
+              "0",
+              "0",
+              "0"
+            ],
+            [
+              "30\u201340",
+              "7",
+              "35",
+              "1",
+              "7",
+              "7"
+            ],
+            [
+              "40\u201350",
+              "10",
+              "45",
+              "2",
+              "20",
+              "40"
+            ],
+            [
+              "Total",
+              "N = 50",
+              "-",
+              "-",
+              "\\sum fd = 1",
+              "\\sum fd^2 = 89"
+            ]
+          ]
+        }
+      ],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Assumed mean $A = 25$, class width $h = 10$. Total frequency $N = 50$.",
+          "Arithmetic Mean $\\bar{x} = A + \\left(\\frac{\\sum fd}{N}\\right) h = 25 + \\left(\\frac{1}{50}\\right) 10 = 25 + 0.2 = 25.2$.",
+          "Modal class is 20\u201330 with highest frequency $f_1 = 15$, $f_0 = 10$, $f_2 = 7$, $L = 20$, $h = 10$.",
+          "$\\text{Mode} = L + \\left(\\frac{f_1 - f_0}{2f_1 - f_0 - f_2}\\right) h = 20 + \\left(\\frac{15 - 10}{30 - 10 - 7}\\right) 10 = 20 + \\frac{50}{13} = 20 + 3.85 = 23.85$.",
+          "Standard Deviation $\\sigma = h \\sqrt{\\frac{\\sum fd^2}{N} - \\left(\\frac{\\sum fd}{N}\\right)^2} = 10 \\sqrt{\\frac{89}{50} - (0.02)^2} = 10 \\sqrt{1.78 - 0.0004} = 10 \\sqrt{1.7796} = 10 \\times 1.3340 = 13.34$."
+        ],
+        "finalAnswer": "Mean = 25.2, Mode = 23.85, Standard Deviation = 13.34",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af4959d-3f40-83ee-a7bc-7562286c5b1b"
+      },
+      "needsReview": false,
+      "tags": [
+        "mean",
+        "mode",
+        "standard-deviation",
+        "grouped-data"
+      ]
+    },
+    {
+      "id": "fat1-q11b",
+      "paperId": "fat-1",
+      "part": "B",
+      "number": "11(b)",
+      "marks": 10,
+      "co": 1,
+      "rbt": 3,
+      "unit": 1,
+      "topic": "Interquartile Range & Quartile Deviation",
+      "questionText": "(OR) Find (i) Inter Quartile Range (ii) Quartile deviation (iii) coefficient of Quartile deviation for the following distribution: Class interval: 0-10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70; Frequency: 6, 5, 8, 15, 7, 6, 3.",
+      "tables": [
+        {
+          "headers": [
+            "Class Interval",
+            "Frequency (f)",
+            "Cumulative Frequency (cf)"
+          ],
+          "rows": [
+            [
+              "0\u201310",
+              "6",
+              "6"
+            ],
+            [
+              "10\u201320",
+              "5",
+              "11"
+            ],
+            [
+              "20\u201330",
+              "8",
+              "19"
+            ],
+            [
+              "30\u201340",
+              "15",
+              "34"
+            ],
+            [
+              "40\u201350",
+              "7",
+              "41"
+            ],
+            [
+              "50\u201360",
+              "6",
+              "47"
+            ],
+            [
+              "60\u201370",
+              "3",
+              "50"
+            ]
+          ]
+        }
+      ],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Total frequency $N = 50$.",
+          "$N/4 = 12.5$. $Q_1$ class is 20\u201330 ($L=20, cf=11, f=8, h=10$).",
+          "$Q_1 = 20 + \\frac{12.5 - 11}{8} \\times 10 = 20 + \\frac{15}{8} = 21.875$.",
+          "$3N/4 = 37.5$. $Q_3$ class is 40\u201350 ($L=40, cf=34, f=7, h=10$).",
+          "$Q_3 = 40 + \\frac{37.5 - 34}{7} \\times 10 = 40 + \\frac{35}{7} = 45$.",
+          "(i) Interquartile Range $IQR = Q_3 - Q_1 = 45 - 21.875 = 23.125$.",
+          "(ii) Quartile Deviation $QD = \\frac{IQR}{2} = \\frac{23.125}{2} = 11.5625$.",
+          "(iii) Coefficient of QD = $\\frac{Q_3 - Q_1}{Q_3 + Q_1} = \\frac{23.125}{66.875} = 0.3458$."
+        ],
+        "finalAnswer": "IQR = 23.125, QD = 11.56, Coefficient of QD = 0.3458",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af4959d-3f40-83ee-a7bc-7562286c5b1b"
+      },
+      "needsReview": false,
+      "tags": [
+        "interquartile-range",
+        "quartile-deviation"
+      ]
+    },
+    {
+      "id": "fat1-q12a",
+      "paperId": "fat-1",
+      "part": "B",
+      "number": "12(a)",
+      "marks": 10,
+      "co": 1,
+      "rbt": 3,
+      "unit": 1,
+      "topic": "Stability of Shares (Coefficient of Variation)",
+      "questionText": "From the prices X and Y of shares A and B respectively given below, State which share is more stable in value: Price of share A (X): 55, 54, 52, 53, 56, 58, 52, 50, 51, 49; Price of share B (Y): 108, 107, 105, 105, 106, 107, 104, 103, 104, 101.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "For Share A ($n=10$): $\\sum X = 530 \\implies \\bar{X} = 53$.",
+          "$\\sum (X - 53)^2 = 4 + 1 + 1 + 0 + 9 + 25 + 1 + 9 + 4 + 16 = 70$.",
+          "$\\sigma_X = \\sqrt{70/10} = \\sqrt{7} = 2.646$.",
+          "$CV_A = \\frac{2.646}{53} \\times 100 = 4.99\\%$.",
+          "For Share B ($n=10$): $\\sum Y = 1050 \\implies \\bar{Y} = 105$.",
+          "$\\sum (Y - 105)^2 = 9 + 4 + 0 + 0 + 1 + 4 + 1 + 4 + 1 + 16 = 40$.",
+          "$\\sigma_Y = \\sqrt{40/10} = \\sqrt{4} = 2.0$.",
+          "$CV_B = \\frac{2.0}{105} \\times 100 = 1.90\\%$.",
+          "Since $CV_B (1.90\\%) < CV_A (4.99\\%)$, Share B shows less variability and is more stable in value."
+        ],
+        "finalAnswer": "Share B is more stable in value (CV_B = 1.90% < CV_A = 4.99%)",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af4959d-3f40-83ee-a7bc-7562286c5b1b"
+      },
+      "needsReview": false,
+      "tags": [
+        "coefficient-of-variation",
+        "stability",
+        "shares"
+      ]
+    },
+    {
+      "id": "fat1-q12b",
+      "paperId": "fat-1",
+      "part": "B",
+      "number": "12(b)",
+      "marks": 10,
+      "co": 1,
+      "rbt": 3,
+      "unit": 1,
+      "topic": "Moments, Skewness, and Kurtosis",
+      "questionText": "(OR) Calculate the first four moments of the following distribution about the mean and hence find beta_1 and beta_2: x: 0, 1, 2, 3, 4, 5, 6, 7, 8; f: 1, 8, 28, 56, 70, 56, 28, 8, 1.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "The frequencies are perfectly symmetric around $x = 4$ with total $N = 256$.",
+          "Mean $\\bar{x} = 4$.",
+          "Due to exact symmetry: First central moment $\\mu_1 = 0$, Third central moment $\\mu_3 = 0$.",
+          "Second central moment $\\mu_2 = 2.0$.",
+          "Fourth central moment $\\mu_4 = 11.0$.",
+          "Skewness $\\beta_1 = \\frac{\\mu_3^2}{\\mu_2^3} = \\frac{0}{8} = 0$ (Distribution is perfectly symmetrical).",
+          "Kurtosis $\\beta_2 = \\frac{\\mu_4}{\\mu_2^2} = \\frac{11}{4} = 2.75$ (Platykurtic, since $\\beta_2 < 3$)."
+        ],
+        "finalAnswer": "\\mu_1=0, \\mu_2=2, \\mu_3=0, \\mu_4=11, \\beta_1=0, \\beta_2=2.75",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af4959d-3f40-83ee-a7bc-7562286c5b1b"
+      },
+      "needsReview": false,
+      "tags": [
+        "moments",
+        "skewness",
+        "kurtosis"
+      ]
+    },
+    {
+      "id": "fat1-q13a",
+      "paperId": "fat-1",
+      "part": "B",
+      "number": "13(a)",
+      "marks": 10,
+      "co": 2,
+      "rbt": 3,
+      "unit": 2,
+      "topic": "Test of Difference of Two Proportions",
+      "questionText": "In a random sample of 600 high school students from state, 400 are found to use dot pens. In one of 900 from neighbouring state, 450 are found to use dot pens. Do the data indicate that the states are significantly different with respect to the habit of using dot pens among the students?",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Sample 1: $n_1 = 600, x_1 = 400 \\implies p_1 = \\frac{400}{600} = 0.6667$.",
+          "Sample 2: $n_2 = 900, x_2 = 450 \\implies p_2 = \\frac{450}{900} = 0.5000$.",
+          "Null hypothesis $H_0: P_1 = P_2$ vs $H_1: P_1 \\ne P_2$.",
+          "Pooled proportion $\\hat{p} = \\frac{x_1 + x_2}{n_1 + n_2} = \\frac{850}{1500} = 0.5667$, $\\hat{q} = 0.4333$.",
+          "Standard Error $SE = \\sqrt{\\hat{p}\\hat{q}\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)} = \\sqrt{0.5667 \\times 0.4333 \\left(\\frac{1}{600} + \\frac{1}{900}\\right)} = 0.02611$.",
+          "Test statistic $Z = \\frac{p_1 - p_2}{SE} = \\frac{0.6667 - 0.5000}{0.02611} = 6.38$.",
+          "At $\\alpha = 0.05$, critical value is $1.96$.",
+          "Since $|Z| = 6.38 > 1.96$, we reject $H_0$. There is a highly significant difference between the two states."
+        ],
+        "finalAnswer": "Reject H0 (Z = 6.38 > 1.96; states are significantly different)",
+        "tableValuesUsed": "Z_critical = 1.96 at 5% two-tailed",
+        "sourceLink": "https://chatgpt.com/share/6af4959d-3f40-83ee-a7bc-7562286c5b1b"
+      },
+      "needsReview": false,
+      "tags": [
+        "two-proportions",
+        "z-test",
+        "large-samples"
+      ]
+    },
+    {
+      "id": "fat1-q13b",
+      "paperId": "fat-1",
+      "part": "B",
+      "number": "13(b)",
+      "marks": 10,
+      "co": 2,
+      "rbt": 3,
+      "unit": 2,
+      "topic": "Difference of Defective Proportions",
+      "questionText": "(OR) Two factories A and B produce the same type of electronic components. A quality control study was conducted where 400 components from factory A were tested and 48 were found to be defective. From factory B, 350 components were tested, and 35 were found to be defective. Test at the 5 % level whether there is a difference in the proportion of defective components between the two factories.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Factory A: $n_1 = 400, x_1 = 48 \\implies p_1 = \\frac{48}{400} = 0.120$.",
+          "Factory B: $n_2 = 350, x_2 = 35 \\implies p_2 = \\frac{35}{350} = 0.100$.",
+          "Null hypothesis $H_0: P_1 = P_2$ vs $H_1: P_1 \\ne P_2$.",
+          "Pooled proportion $\\hat{p} = \\frac{48 + 35}{400 + 350} = \\frac{83}{750} = 0.1107$, $\\hat{q} = 0.8893$.",
+          "Standard Error $SE = \\sqrt{0.1107 \\times 0.8893 \\left(\\frac{1}{400} + \\frac{1}{350}\\right)} = \\sqrt{0.09845 \\times 0.005357} = 0.02297$.",
+          "Test statistic $Z = \\frac{0.120 - 0.100}{0.02297} = \\frac{0.020}{0.02297} = 0.871$.",
+          "At $\\alpha = 0.05$, critical value is $1.96$.",
+          "Since $|Z| = 0.871 < 1.96$, we fail to reject $H_0$. There is no significant difference in defective rates between the two factories."
+        ],
+        "finalAnswer": "Fail to reject H0 (Z = 0.871 < 1.96; no significant difference at 5% level)",
+        "tableValuesUsed": "Z_critical = 1.96 at 5% two-tailed",
+        "sourceLink": "https://chatgpt.com/share/6af4959d-3f40-83ee-a7bc-7562286c5b1b"
+      },
+      "needsReview": false,
+      "tags": [
+        "two-proportions",
+        "defective-rates",
+        "z-test"
+      ]
+    }
+  ]
+}

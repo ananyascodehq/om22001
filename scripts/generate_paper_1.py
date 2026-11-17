@@ -1,0 +1,1028 @@
+import json
+import os
+
+base_dir = r"d:\OM22001\om22001-stats-hub"
+content_sem = os.path.join(base_dir, "content", "sem")
+os.makedirs(content_sem, exist_ok=True)
+
+# -------------------------------------------------------------
+# PAPER 1: 2024-dec-sem5-147184
+# -------------------------------------------------------------
+paper1 = {
+  "id": "2024-dec-sem5-147184",
+  "title": "B.E. / B.Tech. Degree Examinations, DEC 2024",
+  "subjectCode": "OM22001",
+  "subjectName": "Statistical Methods for Engineers",
+  "regulation": "2022",
+  "semester": 5,
+  "qCode": "147184",
+  "examMonthYear": "Dec 2024",
+  "departments": "Common to AE, CS, IT, ME & MN",
+  "duration": "3 Hours",
+  "maxMarks": 100,
+  "pdfUrl": "/papers/sem/2024-dec-sem5-147184/question-paper.pdf",
+  "questions": [
+    {
+      "id": "2024-dec-sem5-q1",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "1",
+      "marks": 2,
+      "co": 1,
+      "rbt": 2,
+      "unit": 1,
+      "topic": "Arithmetic Mean",
+      "questionText": "The mean marks scored by 100 students was found to be 40. Later on, it was discovered that a score of 53 was misread as 85. Find the correct means.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Original total score: $\\sum x_{wrong} = n \\times \\bar{x} = 100 \\times 40 = 4000$.",
+          "Subtract incorrect score (85) and add correct score (53): $\\sum x_{correct} = 4000 - 85 + 53 = 3968$.",
+          "Correct Mean: $\\bar{x}_{correct} = \\frac{3968}{100} = 39.68$."
+        ],
+        "finalAnswer": "$\\bar{x}_{correct} = 39.68$",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["mean", "arithmetic-mean", "correction-of-mean"]
+    },
+    {
+      "id": "2024-dec-sem5-q2",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "2",
+      "marks": 2,
+      "co": 1,
+      "rbt": 2,
+      "unit": 1,
+      "topic": "Median and Mode",
+      "questionText": "From the following data, calculate the percentage of workers getting wages more than Rs. 44.",
+      "tables": [
+        {
+          "title": "Wage Distribution",
+          "headers": ["Wages (Rs.)", "0-10", "10-20", "20-30", "30-40", "40-50", "50-60", "60-70", "70-80"],
+          "rows": [
+            ["No. of workers", "20", "45", "85", "160", "70", "55", "35", "30"]
+          ]
+        }
+      ],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Total number of workers $N = 20 + 45 + 85 + 160 + 70 + 55 + 35 + 30 = 495$.",
+          "For class 40-50: width $h = 10$, frequency $f = 70$. Workers earning between 40 and 44: $\\frac{44 - 40}{10} \\times 70 = 28$.",
+          "Workers earning above 44 in class 40-50: $70 - 28 = 42$.",
+          "Workers earning above 50: $55 + 35 + 30 = 120$. Total earning $> 44$: $42 + 120 = 162$.",
+          "Percentage $= \\left(\\frac{162}{495}\\right) \\times 100\\% \\approx 32.73\\%$."
+        ],
+        "finalAnswer": "32.73%",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["frequency-distribution", "continuous-series", "percentage"]
+    },
+    {
+      "id": "2024-dec-sem5-q3",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "3",
+      "marks": 2,
+      "co": 1,
+      "rbt": 2,
+      "unit": 1,
+      "topic": "Median and Mode",
+      "questionText": "Find out mode of the following distribution:",
+      "tables": [
+        {
+          "title": "Distribution",
+          "headers": ["x", "1", "3", "5", "7", "9", "10", "11"],
+          "rows": [
+            ["f", "11", "23", "29", "58", "55", "49", "21"]
+          ]
+        }
+      ],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "By inspection of the discrete frequency distribution, find the value of $x$ corresponding to the maximum frequency.",
+          "The maximum frequency is 58, which occurs at $x = 7$.",
+          "Therefore, Mode $Z = 7$."
+        ],
+        "finalAnswer": "Mode = 7",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["mode", "discrete-distribution"]
+    },
+    {
+      "id": "2024-dec-sem5-q4",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "4",
+      "marks": 2,
+      "co": 1,
+      "rbt": 2,
+      "unit": 1,
+      "topic": "Bowley's Coefficient of Skewness",
+      "questionText": "Find the coefficient of skewness from the following information: Difference of two quartiles = 8; Mode = 11, Sum of the two quartiles = 22; Mean = 8.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Given: $Q_3 - Q_1 = 8$, $Q_3 + Q_1 = 22$, $\\text{Mode} = 11$, $\\text{Mean} = 8$.",
+          "Using the empirical relation $\\text{Mode} = 3\\text{Median} - 2\\text{Mean}$: $11 = 3M - 2(8) \\implies 3M = 27 \\implies M = 9$.",
+          "Bowley's coefficient of skewness: $Sk_B = \\frac{Q_3 + Q_1 - 2M}{Q_3 - Q_1} = \\frac{22 - 2(9)}{8} = \\frac{4}{8} = +0.5$."
+        ],
+        "finalAnswer": "$Sk_B = +0.5$",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["skewness", "bowley-skewness", "quartiles"]
+    },
+    {
+      "id": "2024-dec-sem5-q5",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "5",
+      "marks": 2,
+      "co": 2,
+      "rbt": 2,
+      "unit": 2,
+      "topic": "Type I and Type II Errors",
+      "questionText": "Differentiate between Type I and Type II errors in hypothesis testing.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Type I Error ($\\alpha$): Rejecting the null hypothesis $H_0$ when it is actually true (False Positive).",
+          "Type II Error ($\\beta$): Failing to reject (accepting) the null hypothesis $H_0$ when it is false (False Negative).",
+          "Significance level $\\alpha = P(\\text{Reject } H_0 \\mid H_0 \\text{ is true})$; Power $= 1 - \\beta$."
+        ],
+        "finalAnswer": "Type I error is rejecting a true $H_0$; Type II error is accepting a false $H_0$.",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["hypothesis-testing", "type-I-error", "type-II-error"]
+    },
+    {
+      "id": "2024-dec-sem5-q6",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "6",
+      "marks": 2,
+      "co": 2,
+      "rbt": 2,
+      "unit": 2,
+      "topic": "Test of Significance for Single Proportion (Z-test)",
+      "questionText": "A pharmaceutical company claims that a new drug is effective in curing at least 80% of patients with a certain disease. In a clinical trial with 300 patients, 228 patients were cured. Calculate the Z-value.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Hypothesized proportion $P = 0.80$, sample size $n = 300$, cured $x = 228$.",
+          "Sample proportion $p = \\frac{x}{n} = \\frac{228}{300} = 0.76$.",
+          "Standard error: $SE = \\sqrt{\\frac{P(1-P)}{n}} = \\sqrt{\\frac{0.80 \\times 0.20}{300}} = \\sqrt{0.0005333} \\approx 0.02309$.",
+          "Test statistic $Z = \\frac{p - P}{SE} = \\frac{0.76 - 0.80}{0.02309} = \\frac{-0.04}{0.02309} = -1.732$."
+        ],
+        "finalAnswer": "$Z = -1.732$",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["z-test", "single-proportion", "large-sample"]
+    },
+    {
+      "id": "2024-dec-sem5-q7",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "7",
+      "marks": 2,
+      "co": 2,
+      "rbt": 2,
+      "unit": 2,
+      "topic": "Test of Significance for Difference of Proportions (Z-test)",
+      "questionText": "A company has the head office at Calcutta and a branch at Bombay. The personnel director wanted to know if the workers at the two places would like the introduction of a new plan of work and a survey was conducted for this purpose. Out of a sample of 500 workers at Calcutta, 62% favoured the new plan. At Bombay out of a sample of 400 workers, 41% were against the new plan. Compute the standard error of proportion between the two groups in their attitude towards the new plan.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Calcutta: $n_1 = 500$, proportion in favour $p_1 = 0.62$, $q_1 = 0.38$.",
+          "Bombay: $n_2 = 400$, against $= 41\\% \\implies$ proportion in favour $p_2 = 1 - 0.41 = 0.59$, $q_2 = 0.41$.",
+          "Standard error of difference in proportions: $SE = \\sqrt{\\frac{p_1 q_1}{n_1} + \\frac{p_2 q_2}{n_2}}$.",
+          "$SE = \\sqrt{\\frac{0.62 \\times 0.38}{500} + \\frac{0.59 \\times 0.41}{400}} = \\sqrt{0.0004712 + 0.00060475} = \\sqrt{0.001076} \\approx 0.0328$."
+        ],
+        "finalAnswer": "$SE = 0.0328$",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["standard-error", "difference-of-proportions", "large-sample"]
+    },
+    {
+      "id": "2024-dec-sem5-q8",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "8",
+      "marks": 2,
+      "co": 2,
+      "rbt": 2,
+      "unit": 2,
+      "topic": "Test of Significance for Single Mean (Z-test)",
+      "questionText": "A factory claims that the average weight of its product is 500 grams. A sample of 100 products was taken, and the sample mean weight was found to be 495 grams with a standard deviation of 20 grams. Compute the test statistic.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Hypothesized mean $\\mu = 500$, sample size $n = 100$, sample mean $\\bar{x} = 495$, standard deviation $s = 20$.",
+          "Test statistic $Z = \\frac{\\bar{x} - \\mu}{s / \\sqrt{n}}$.",
+          "$Z = \\frac{495 - 500}{20 / \\sqrt{100}} = \\frac{-5}{2} = -2.50$."
+        ],
+        "finalAnswer": "$Z = -2.50$",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["z-test", "single-mean", "large-sample"]
+    },
+    {
+      "id": "2024-dec-sem5-q9",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "9",
+      "marks": 2,
+      "co": 3,
+      "rbt": 2,
+      "unit": 3,
+      "topic": "Student's t-Test for Single Mean",
+      "questionText": "Differentiate between a one-sample t-test and a two-sample t-test.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "One-sample t-test: Tests whether the mean of a single small sample ($n < 30$) differs significantly from a known or hypothesized population mean $\\mu_0$, with degrees of freedom $df = n - 1$.",
+          "Two-sample t-test: Tests whether the means of two independent small samples differ significantly from each other (testing $H_0: \\mu_1 = \\mu_2$), with pooled degrees of freedom $df = n_1 + n_2 - 2$."
+        ],
+        "finalAnswer": "One-sample compares sample mean to a constant $\\mu_0$; two-sample compares two independent group means.",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["t-test", "small-sample", "degrees-of-freedom"]
+    },
+    {
+      "id": "2024-dec-sem5-q10",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "10",
+      "marks": 2,
+      "co": 3,
+      "rbt": 2,
+      "unit": 3,
+      "topic": "Student's t-Test for Single Mean",
+      "questionText": "A research team claims that the average IQ of students in a particular school is 110. You take a random sample of 15 students, and the sample mean IQ is 107 with a sample standard deviation of 10. Calculate the t-value.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Given: $\\mu = 110$, $n = 15$, $\\bar{x} = 107$, $s = 10$.",
+          "Formula: $t = \\frac{\\bar{x} - \\mu}{s / \\sqrt{n}}$ with $n-1 = 14$ degrees of freedom.",
+          "$t = \\frac{107 - 110}{10 / \\sqrt{15}} = \\frac{-3}{10 / 3.873} = \\frac{-3}{2.582} \\approx -1.162$."
+        ],
+        "finalAnswer": "$t = -1.162$",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["t-test", "single-mean", "small-sample"]
+    },
+    {
+      "id": "2024-dec-sem5-q11",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "11",
+      "marks": 2,
+      "co": 3,
+      "rbt": 2,
+      "unit": 3,
+      "topic": "Student's t-Test for Difference of Two Means",
+      "questionText": "A dietitian wants to test if the average weight loss for participants on the new diet plan (Sample 1) is significantly less than that of participants on the standard diet (Sample 2). Sample 1 consists of 12 participants with an average weight loss of 6 kg and a standard deviation of 1.5 kg, while Sample 2 consists of 14 participants with an average weight loss of 7 kg and a standard deviation of 2 kg. Calculate the standard error for the average weight loss for participants on the two diet plans.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Given: $n_1 = 12, \\bar{x}_1 = 6, s_1 = 1.5$ and $n_2 = 14, \\bar{x}_2 = 7, s_2 = 2.0$.",
+          "Pooled variance $S_p^2 = \\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1 + n_2 - 2} = \\frac{11(2.25) + 13(4.0)}{12 + 14 - 2} = \\frac{24.75 + 52.0}{24} = \\frac{76.75}{24} = 3.1979$.",
+          "Standard error: $SE = S_p \\sqrt{\\frac{1}{n_1} + \\frac{1}{n_2}} = \\sqrt{3.1979 \\times \\left(\\frac{1}{12} + \\frac{1}{14}\\right)} = \\sqrt{3.1979 \\times 0.15476} = \\sqrt{0.4949} \\approx 0.7035$ kg."
+        ],
+        "finalAnswer": "$SE = 0.7035$ kg",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["t-test", "standard-error", "two-sample"]
+    },
+    {
+      "id": "2024-dec-sem5-q12",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "12",
+      "marks": 2,
+      "co": 3,
+      "rbt": 2,
+      "unit": 3,
+      "topic": "F-Test for Equality of Two Variances",
+      "questionText": "An analyst wants to test if there is a significant difference in the variance of production times between Factory A (Sample size = 18) and Factory B (Sample size = 22). The sample variance for Factory A is 400, and for Factory B, it is 500. Calculate the F-value.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Factory A: $n_1 = 18, s_1^2 = 400$. Factory B: $n_2 = 22, s_2^2 = 500$.",
+          "In F-test, $F = \\frac{S_1^2}{S_2^2}$ where the larger variance is placed in the numerator: $F = \\frac{500}{400} = 1.25$.",
+          "Degrees of freedom: $\\nu_1 = 22 - 1 = 21$ and $\\nu_2 = 18 - 1 = 17$."
+        ],
+        "finalAnswer": "$F = 1.25$",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["f-test", "variance-ratio", "small-sample"]
+    },
+    {
+      "id": "2024-dec-sem5-q13",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "13",
+      "marks": 2,
+      "co": 4,
+      "rbt": 2,
+      "unit": 4,
+      "topic": "One-Way Classification ANOVA",
+      "questionText": "What is the purpose of one-way classification ANOVA?",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "One-way ANOVA (Analysis of Variance) tests the null hypothesis that three or more population means are equal ($H_0: \\mu_1 = \\mu_2 = \\dots = \\mu_k$).",
+          "It partitions the total variation into two components: variation between treatment groups (Between Groups Variance) and variation within treatment groups (Error/Residual Variance).",
+          "It avoids the inflation of Type I error rate that occurs when running multiple pairwise t-tests."
+        ],
+        "finalAnswer": "To test for significant differences among means of three or more groups based on a single factor.",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["anova", "one-way", "design-of-experiments"]
+    },
+    {
+      "id": "2024-dec-sem5-q14",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "14",
+      "marks": 2,
+      "co": 4,
+      "rbt": 2,
+      "unit": 4,
+      "topic": "Degrees of Freedom Calculation",
+      "questionText": "In a two-way classification, with 3 levels of factor A and 4 levels of factor B, the sum of squares for error (SSE) is 1200, and the sum of squares for factor A is 1800. If the total number of observations is 48, calculate the degrees of freedom for factor A, factor B and error.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Levels of Factor A: $a = 3 \\implies df_A = a - 1 = 3 - 1 = 2$.",
+          "Levels of Factor B: $b = 4 \\implies df_B = b - 1 = 4 - 1 = 3$.",
+          "Total observations $N = 48 \\implies df_{Total} = N - 1 = 47$.",
+          "In a two-way classification with replications ($ab = 12$ cells, $n = 48/12 = 4$ per cell): $df_{Error} = N - ab = 48 - 12 = 36$ (or if interaction is pooled: $(a-1)(b-1) = 6$ without replication)."
+        ],
+        "finalAnswer": "$df_A = 2$, $df_B = 3$, $df_{Error} = 36$ (with replication)",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["anova", "two-way", "degrees-of-freedom"]
+    },
+    {
+      "id": "2024-dec-sem5-q15",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "15",
+      "marks": 2,
+      "co": 4,
+      "rbt": 2,
+      "unit": 4,
+      "topic": "Latin Square Design (LSD)",
+      "questionText": "Write down the ANOVA table for Latin square.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "For an $m \\times m$ Latin Square Design, the ANOVA layout is:",
+          "1. Rows: $df = m - 1$, $SS = SSR$, $MS = MSR = \\frac{SSR}{m-1}$, $F = \\frac{MSR}{MSE}$.",
+          "2. Columns: $df = m - 1$, $SS = SSC$, $MS = MSC = \\frac{SSC}{m-1}$, $F = \\frac{MSC}{MSE}$.",
+          "3. Treatments: $df = m - 1$, $SS = SST$, $MS = MST = \\frac{SST}{m-1}$, $F = \\frac{MST}{MSE}$.",
+          "4. Error: $df = (m - 1)(m - 2)$, $SS = SSE$, $MS = MSE = \\frac{SSE}{(m-1)(m-2)}$.",
+          "5. Total: $df = m^2 - 1$, $SS = TSS$."
+        ],
+        "finalAnswer": "Sources: Rows ($m-1$), Columns ($m-1$), Treatments ($m-1$), Error ($(m-1)(m-2)$), Total ($m^2-1$).",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["latin-square", "anova-table", "design-of-experiments"]
+    },
+    {
+      "id": "2024-dec-sem5-q16",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "16",
+      "marks": 2,
+      "co": 4,
+      "rbt": 2,
+      "unit": 4,
+      "topic": "Latin Square Design (LSD)",
+      "questionText": "Why a $2 \\times 2$ Latin square is not possible? Explain.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "In an $m \\times m$ Latin Square Design, the degrees of freedom for experimental error is given by $(m - 1)(m - 2)$.",
+          "For a $2 \\times 2$ Latin square, $m = 2$. Substituting $m=2$: $df_{Error} = (2 - 1)(2 - 2) = 1 \\times 0 = 0$.",
+          "Because the error degrees of freedom is zero, the Mean Square Error (MSE) cannot be computed, and no statistical test of significance (F-test) can be performed."
+        ],
+        "finalAnswer": "Error degrees of freedom $(m-1)(m-2) = 0$, so MSE and F-ratio cannot be computed.",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["latin-square", "error-df", "repeated-question"]
+    },
+    {
+      "id": "2024-dec-sem5-q17",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "17",
+      "marks": 2,
+      "co": 5,
+      "rbt": 2,
+      "unit": 5,
+      "topic": "Control Charts for Variables: Range Chart (R chart)",
+      "questionText": "Measurements on averages ($\\bar{X}$) and ranges ($R$) from 20 samples each of 5 gave the following results: $\\bar{\\bar{X}} = 99.6, \\bar{R} = 7.0$. Determine the values of the control limits for drawing a range chart. (Assume sample size n=1000)",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "For an R-chart: Center Line $CL = \\bar{R} = 7.0$. Control limits: $UCL = D_4 \\bar{R}$, $LCL = D_3 \\bar{R}$.",
+          "Note on paper text: The paper states 'Assume sample size n=1000' which is an exam typo (the actual sub-group size given is $n = 5$ from '20 samples each of 5').",
+          "For standard subgroup size $n = 5$: from statistical tables, $D_3 = 0, D_4 = 2.114$.",
+          "$CL = 7.0$, $UCL = 2.114 \\times 7.0 = 14.80$, $LCL = 0 \\times 7.0 = 0$."
+        ],
+        "finalAnswer": "$CL = 7.0$, $UCL = 14.80$, $LCL = 0$ (for $n=5$)",
+        "tableValuesUsed": "For $n=5$: $D_3 = 0, D_4 = 2.114$",
+        "sourceLink": ""
+      },
+      "needsReview": True,
+      "tags": ["r-chart", "range-chart", "control-limits", "sqc"]
+    },
+    {
+      "id": "2024-dec-sem5-q18",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "18",
+      "marks": 2,
+      "co": 5,
+      "rbt": 2,
+      "unit": 5,
+      "topic": "Control Charts for Attributes: Fraction Defective Chart (p-chart)",
+      "questionText": "Compute the central line, the upper and the lower control limits for the proportion of defectives obtained in repeated random samples of size 100 from a process which is considered to be under control when the proportion of defective p is equal to 0.20.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Given standard proportion $p = 0.20$, sample size $n = 100$.",
+          "Center Line $CL = p = 0.20$.",
+          "Standard deviation: $\\sigma_p = \\sqrt{\\frac{p(1-p)}{n}} = \\sqrt{\\frac{0.20 \\times 0.80}{100}} = \\sqrt{0.0016} = 0.04$.",
+          "$UCL = p + 3\\sigma_p = 0.20 + 3(0.04) = 0.32$.",
+          "$LCL = p - 3\\sigma_p = 0.20 - 3(0.04) = 0.08$."
+        ],
+        "finalAnswer": "$CL = 0.20$, $UCL = 0.32$, $LCL = 0.08$",
+        "tableValuesUsed": "3-sigma limits ($Z = 3$)",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["p-chart", "control-limits", "sqc", "attributes"]
+    },
+    {
+      "id": "2024-dec-sem5-q19",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "19",
+      "marks": 2,
+      "co": 5,
+      "rbt": 2,
+      "unit": 5,
+      "topic": "Control Charts for Attributes: Fraction Defective Chart (p-chart)",
+      "questionText": "What is the difference between a p-chart and an np-chart?",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "p-Chart: Tracks fraction / proportion of defectives ($p = d/n$). Can be used when sample size $n$ is constant or varies from sample to sample.",
+          "np-Chart: Tracks actual number / count of defectives ($d$). Can only be used when the sample size $n$ is strictly constant across all sub-groups.",
+          "Limits: p-chart uses $p \\pm 3\\sqrt{p(1-p)/n}$; np-chart uses $np \\pm 3\\sqrt{np(1-p)}$."
+        ],
+        "finalAnswer": "p-chart plots proportion of defectives (variable/constant $n$); np-chart plots count of defectives (constant $n$).",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["p-chart", "np-chart", "sqc", "attributes"]
+    },
+    {
+      "id": "2024-dec-sem5-q20",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "A",
+      "number": "20",
+      "marks": 2,
+      "co": 5,
+      "rbt": 2,
+      "unit": 5,
+      "topic": "Control Limits vs Specification and Tolerance Limits",
+      "questionText": "What are specification limits in quality control?",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Specification limits (USL and LSL) are engineering or customer requirements placed on individual items to determine whether an item conforms to design standards.",
+          "They are set externally by designers/customers, unlike control limits which are calculated statistically from internal process data ($\\pm 3\\sigma$).",
+          "Parts outside specification limits are defective or non-conforming."
+        ],
+        "finalAnswer": "Externally prescribed limits (USL/LSL) defining acceptable product dimensions/performance.",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["specification-limits", "quality-control", "tolerances"]
+    },
+    {
+      "id": "2024-dec-sem5-q21a",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "B",
+      "number": "21(a)",
+      "marks": 10,
+      "co": 1,
+      "rbt": 3,
+      "unit": 1,
+      "topic": "Variance and Standard Deviation",
+      "questionText": "Find the mean and standard deviation for the following distribution:",
+      "tables": [
+        {
+          "title": "Frequency Distribution",
+          "headers": ["x", "3", "8", "13", "18", "23"],
+          "rows": [
+            ["f", "7", "10", "15", "10", "6"]
+          ]
+        }
+      ],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Let assumed mean $A = 13$, step $h = 5$. Compute $u_i = \\frac{x_i - 13}{5}$:",
+          "$x_i = 3: u = -2, f = 7, fu = -14, fu^2 = 28$.",
+          "$x_i = 8: u = -1, f = 10, fu = -10, fu^2 = 10$.",
+          "$x_i = 13: u = 0, f = 15, fu = 0, fu^2 = 0$.",
+          "$x_i = 18: u = 1, f = 10, fu = 10, fu^2 = 10$.",
+          "$x_i = 23: u = 2, f = 6, fu = 12, fu^2 = 24$.",
+          "Sums: $N = \\sum f = 48$, $\\sum fu = -14 - 10 + 0 + 10 + 12 = -2$, $\\sum fu^2 = 28 + 10 + 0 + 10 + 24 = 72$.",
+          "Mean $\\bar{x} = A + \\left(\\frac{\\sum fu}{N}\\right) h = 13 + \\left(\\frac{-2}{48}\\right) \\times 5 = 13 - 0.2083 = 12.7917$.",
+          "Variance $\\sigma^2 = h^2 \\left[ \\frac{\\sum fu^2}{N} - \\left(\\frac{\\sum fu}{N}\\right)^2 \\right] = 25 \\left[ \\frac{72}{48} - \\left(\\frac{-2}{48}\\right)^2 \\right] = 25 [1.5 - 0.001736] = 25 \\times 1.49826 = 37.4566$.",
+          "Standard Deviation $\\sigma = \\sqrt{37.4566} = 6.1202$."
+        ],
+        "finalAnswer": "$\\bar{x} = 12.79$, $\\sigma = 6.12$",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["mean", "standard-deviation", "frequency-distribution"]
+    },
+    {
+      "id": "2024-dec-sem5-q21b",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "B",
+      "number": "21(b)",
+      "marks": 10,
+      "co": 1,
+      "rbt": 3,
+      "unit": 1,
+      "topic": "Coefficient of Variation",
+      "questionText": "From the prices of shares X and Y below, find out which is more stable in value:",
+      "tables": [
+        {
+          "title": "Share Prices",
+          "headers": ["X", "55", "54", "52", "53", "56", "58", "52", "50", "51", "49"],
+          "rows": [
+            ["Y", "108", "107", "105", "105", "106", "107", "104", "103", "104", "101"]
+          ]
+        }
+      ],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "For Share X ($n = 10$): $\\sum X = 530 \\implies \\bar{X} = 53.0$.",
+          "Deviations $(X - 53): 2, 1, -1, 0, 3, 5, -1, -3, -2, -4$. Sum of squares $\\sum(X - \\bar{X})^2 = 4 + 1 + 1 + 0 + 9 + 25 + 1 + 9 + 4 + 16 = 70$.",
+          "$\\sigma_X = \\sqrt{70 / 10} = \\sqrt{7} \\approx 2.6458$.",
+          "Coefficient of Variation $CV_X = \\frac{\\sigma_X}{\\bar{X}} \\times 100 = \\frac{2.6458}{53} \\times 100 = 4.99\\%$.",
+          "For Share Y ($n = 10$): $\\sum Y = 1050 \\implies \\bar{Y} = 105.0$.",
+          "Deviations $(Y - 105): 3, 2, 0, 0, 1, 2, -1, -2, -1, -4$. Sum of squares $\\sum(Y - \\bar{Y})^2 = 9 + 4 + 0 + 0 + 1 + 4 + 1 + 4 + 1 + 16 = 40$.",
+          "$\\sigma_Y = \\sqrt{40 / 10} = 2.0$.",
+          "Coefficient of Variation $CV_Y = \\frac{\\sigma_Y}{\\bar{Y}} \\times 100 = \\frac{2.0}{105} \\times 100 = 1.90\\%$.",
+          "Conclusion: Since $CV_Y (1.90\\%) < CV_X (4.99\\%)$, Share Y has lower relative variability and is more stable in value."
+        ],
+        "finalAnswer": "Share Y is more stable ($CV_Y = 1.90\\% < CV_X = 4.99\\%$)",
+        "tableValuesUsed": "None",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["coefficient-of-variation", "stability", "dispersion"]
+    },
+    {
+      "id": "2024-dec-sem5-q22a",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "B",
+      "number": "22(a)",
+      "marks": 10,
+      "co": 2,
+      "rbt": 3,
+      "unit": 2,
+      "topic": "Test of Significance for Difference of Proportions (Z-test)",
+      "questionText": "Before an increase in excise duty on tea, 800 persons out of a sample of 1,000 persons were found to be tea drinkers. After an increase in excise duty, 800 people were tea drinkers in a sample of 1200 people. Using standard error of proportion, state whether there is a significant decrease in the consumption of tea after the increase in excise duty?",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Hypotheses: $H_0: P_1 = P_2$ (no change in proportion of tea drinkers), $H_1: P_1 > P_2$ (significant decrease after duty increase, one-tailed test).",
+          "Before: $n_1 = 1000, x_1 = 800 \\implies p_1 = 0.80$. After: $n_2 = 1200, x_2 = 800 \\implies p_2 = 800/1200 = 0.6667$.",
+          "Pooled proportion: $P = \\frac{x_1 + x_2}{n_1 + n_2} = \\frac{800 + 800}{1000 + 1200} = \\frac{1600}{2200} = \\frac{8}{11} \\approx 0.7273$, $Q = 1 - P = 0.2727$.",
+          "Standard Error $SE = \\sqrt{PQ \\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)} = \\sqrt{0.7273 \\times 0.2727 \\times \\left(\\frac{1}{1000} + \\frac{1}{1200}\\right)} = \\sqrt{0.19833 \\times 0.001833} = \\sqrt{0.0003636} \\approx 0.01907$.",
+          "Test statistic $Z = \\frac{p_1 - p_2}{SE} = \\frac{0.80 - 0.6667}{0.01907} = \\frac{0.1333}{0.01907} \\approx 6.99$.",
+          "Critical Value: At $\\alpha = 0.05$ (one-tailed), $Z_{tab} = 1.645$. At $\\alpha = 0.01$, $Z_{tab} = 2.33$.",
+          "Decision: Since $Z_{cal} = 6.99 > 1.645$, reject $H_0$. There is a highly significant decrease in tea consumption."
+        ],
+        "finalAnswer": "Reject $H_0$ ($Z = 6.99 > 1.645$); significant decrease in tea consumption.",
+        "tableValuesUsed": "One-tailed $Z$ at 5% = 1.645, at 1% = 2.33",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["z-test", "difference-of-proportions", "large-sample"]
+    },
+    {
+      "id": "2024-dec-sem5-q22b",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "B",
+      "number": "22(b)",
+      "marks": 10,
+      "co": 2,
+      "rbt": 3,
+      "unit": 2,
+      "topic": "Test of Significance for Difference of Means (Z-test)",
+      "questionText": "A hospital wants to compare the average recovery time for two treatments. Treatment A has an average recovery time of 14 days with a standard deviation of 3 days from 50 patients, while Treatment B has an average recovery time of 16 days with a standard deviation of 4 days from 60 patients. Test at the 5% significance level if Treatment A is faster.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Hypotheses: $H_0: \\mu_A = \\mu_B$ (no difference in recovery time), $H_1: \\mu_A < \\mu_B$ (Treatment A is faster / lower recovery time, one-tailed test).",
+          "Given: $n_1 = 50, \\bar{x}_1 = 14, s_1 = 3$; $n_2 = 60, \\bar{x}_2 = 16, s_2 = 4$.",
+          "Standard error: $SE = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}} = \\sqrt{\\frac{9}{50} + \\frac{16}{60}} = \\sqrt{0.18 + 0.2667} = \\sqrt{0.4467} \\approx 0.6683$.",
+          "Test statistic $Z = \\frac{\\bar{x}_1 - \\bar{x}_2}{SE} = \\frac{14 - 16}{0.6683} = \\frac{-2}{0.6683} \\approx -2.99$.",
+          "Critical value: For one-tailed test at $\\alpha = 0.05$, $Z_{critical} = -1.645$.",
+          "Decision: Since $Z_{cal} = -2.99 < -1.645$, $|Z_{cal}| = 2.99 > 1.645$, reject $H_0$. Treatment A is significantly faster."
+        ],
+        "finalAnswer": "Reject $H_0$ ($Z = -2.99$); Treatment A is significantly faster at 5% level.",
+        "tableValuesUsed": "One-tailed $Z$ at 5% = -1.645",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["z-test", "difference-of-means", "large-sample"]
+    },
+    {
+      "id": "2024-dec-sem5-q23a",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "B",
+      "number": "23(a)",
+      "marks": 10,
+      "co": 3,
+      "rbt": 3,
+      "unit": 3,
+      "topic": "Student's t-Test for Difference of Two Means",
+      "questionText": "The nicotine content in milligrams of two samples of tobacco were found to be as follows:\nSample A: 24, 27, 26, 21, 25\nSample B: 27, 30, 28, 31, 22, 36\nCan it be said that two samples come from normal populations having the same mean.",
+      "tables": [
+        {
+          "title": "Nicotine Content",
+          "headers": ["Sample", "Values"],
+          "rows": [
+            ["Sample A", "24, 27, 26, 21, 25"],
+            ["Sample B", "27, 30, 28, 31, 22, 36"]
+          ]
+        }
+      ],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Hypotheses: $H_0: \\mu_1 = \\mu_2$ (populations have the same mean), $H_1: \\mu_1 \\neq \\mu_2$ (two-tailed test).",
+          "Sample A ($n_1 = 5$): Values 24, 27, 26, 21, 25. $\\sum x_1 = 123 \\implies \\bar{x}_1 = 123/5 = 24.6$.",
+          "Deviations $(x_1 - 24.6): -0.6, 2.4, 1.4, -3.6, 0.4$. Sum of squares $\\sum(x_1 - \\bar{x}_1)^2 = 0.36 + 5.76 + 1.96 + 12.96 + 0.16 = 21.2$.",
+          "Sample B ($n_2 = 6$): Values 27, 30, 28, 31, 22, 36. $\\sum x_2 = 174 \\implies \\bar{x}_2 = 174/6 = 29.0$.",
+          "Deviations $(x_2 - 29): -2, 1, -1, 2, -7, 7$. Sum of squares $\\sum(x_2 - \\bar{x}_2)^2 = 4 + 1 + 1 + 4 + 49 + 49 = 108.0$.",
+          "Pooled variance: $S^2 = \\frac{\\sum(x_1-\\bar{x}_1)^2 + \\sum(x_2-\\bar{x}_2)^2}{n_1+n_2-2} = \\frac{21.2 + 108.0}{5+6-2} = \\frac{129.2}{9} = 14.3556 \\implies S = 3.7889$.",
+          "Test statistic $t = \\frac{\\bar{x}_1 - \\bar{x}_2}{S \\sqrt{1/n_1 + 1/n_2}} = \\frac{24.6 - 29.0}{3.7889 \\sqrt{1/5 + 1/6}} = \\frac{-4.4}{3.7889 \\times 0.6055} = \\frac{-4.4}{2.294} \\approx -1.918$.",
+          "Degrees of freedom: $df = 5 + 6 - 2 = 9$.",
+          "Table Value: Two-tailed critical value of $t$ at $\\alpha = 0.05$ with $df = 9$ is $2.262$.",
+          "Conclusion: Since $|t_{cal}| = 1.918 < 2.262$, accept $H_0$. The two samples can be regarded as coming from normal populations with the same mean."
+        ],
+        "finalAnswer": "Accept $H_0$ ($|t| = 1.918 < t_{0.05, 9} = 2.262$); no significant difference in mean nicotine content.",
+        "tableValuesUsed": "$t$ at 5% with $df=9$ is 2.262",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["t-test", "difference-of-means", "small-sample", "repeated-question"]
+    },
+    {
+      "id": "2024-dec-sem5-q23b",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "B",
+      "number": "23(b)",
+      "marks": 10,
+      "co": 3,
+      "rbt": 3,
+      "unit": 3,
+      "topic": "Chi-Square Test for Independence of Attributes",
+      "questionText": "A survey was conducted among 290 customers to determine their preferred type of product and their age group. The results are as follows:\nAge Group 18-24: Product A: 30, Product B: 25, Product C: 15\nAge Group 25-34: Product A: 40, Product B: 35, Product C: 25\nAge Group 35-44: Product A: 25, Product B: 30, Product C: 20\nAge Group 45+: Product A: 15, Product B: 20, Product C: 10\nTest if the product preference is independent of the age group at the 0.05 significance level.",
+      "tables": [
+        {
+          "title": "Product Preference by Age Group",
+          "headers": ["Age Group", "Product A", "Product B", "Product C", "Total"],
+          "rows": [
+            ["18-24", "30", "25", "15", "70"],
+            ["25-34", "40", "35", "25", "100"],
+            ["35-44", "25", "30", "20", "75"],
+            ["45+", "15", "20", "10", "45"],
+            ["Total", "110", "110", "70", "290"]
+          ]
+        }
+      ],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Hypotheses: $H_0$: Product preference is independent of age group. $H_1$: Product preference is dependent on age group.",
+          "Row totals: $R_1 = 70, R_2 = 100, R_3 = 75, R_4 = 45$. Column totals: $C_1 = 110, C_2 = 110, C_3 = 70$. Total $N = 290$.",
+          "Expected frequencies $E_{ij} = \\frac{R_i C_j}{N}$:",
+          "Row 1 (70): $E_{11} = 70 \\times 110 / 290 = 26.55, E_{12} = 26.55, E_{13} = 70 \\times 70 / 290 = 16.90$.",
+          "Row 2 (100): $E_{21} = 100 \\times 110 / 290 = 37.93, E_{22} = 37.93, E_{23} = 100 \\times 70 / 290 = 24.14$.",
+          "Row 3 (75): $E_{31} = 75 \\times 110 / 290 = 28.45, E_{32} = 28.45, E_{33} = 75 \\times 70 / 290 = 18.10$.",
+          "Row 4 (45): $E_{41} = 45 \\times 110 / 290 = 17.07, E_{42} = 17.07, E_{43} = 45 \\times 70 / 290 = 10.86$.",
+          "Calculate $\\chi^2 = \\sum \\frac{(O - E)^2}{E}$:",
+          "Row 1: $(30-26.55)^2/26.55 + (25-26.55)^2/26.55 + (15-16.90)^2/16.90 = 0.448 + 0.090 + 0.214 = 0.752$.",
+          "Row 2: $(40-37.93)^2/37.93 + (35-37.93)^2/37.93 + (25-24.14)^2/24.14 = 0.113 + 0.226 + 0.031 = 0.370$.",
+          "Row 3: $(25-28.45)^2/28.45 + (30-28.45)^2/28.45 + (20-18.10)^2/18.10 = 0.418 + 0.084 + 0.199 = 0.701$.",
+          "Row 4: $(15-17.07)^2/17.07 + (20-17.07)^2/17.07 + (10-10.86)^2/10.86 = 0.251 + 0.503 + 0.068 = 0.822$.",
+          "Total $\\chi^2_{cal} = 0.752 + 0.370 + 0.701 + 0.822 = 2.645$.",
+          "Degrees of freedom: $df = (r - 1)(c - 1) = (4 - 1)(3 - 1) = 3 \\times 2 = 6$.",
+          "Table Value: $\\chi^2_{0.05, 6} = 12.592$.",
+          "Conclusion: Since $\\chi^2_{cal} = 2.65 < 12.592$, accept $H_0$. Product preference is independent of age group."
+        ],
+        "finalAnswer": "Accept $H_0$ ($\\chi^2 = 2.65 < \\chi^2_{0.05, 6} = 12.59$); product preference is independent of age group.",
+        "tableValuesUsed": "$\\chi^2$ at 5% with $df=6$ is 12.592",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["chi-square", "independence-of-attributes", "contingency-table"]
+    },
+    {
+      "id": "2024-dec-sem5-q24a",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "B",
+      "number": "24(a)",
+      "marks": 10,
+      "co": 4,
+      "rbt": 3,
+      "unit": 4,
+      "topic": "One-Way Classification ANOVA",
+      "questionText": "A company wishes to test whether its three salesmen A, B, C tend to make sales of the same size or whether their selling ability as measured by the average size of their sales. The salesmen's sales record is given in the following table:\nA: 5000, 3000, 4000, 0, 3000\nB: 4000, 3000, 3000, 6000, 4000\nC: 6000, 7000, 3000, 4000, 5000\nPerform the analysis of variance and test the hypothesis whether there is any significant difference in the sales size of the salesmen at 5% level of significance.",
+      "tables": [
+        {
+          "title": "Salesmen Record",
+          "headers": ["Salesman", "Observation 1", "Observation 2", "Observation 3", "Observation 4", "Observation 5"],
+          "rows": [
+            ["A", "5000", "3000", "4000", "0", "3000"],
+            ["B", "4000", "3000", "3000", "6000", "4000"],
+            ["C", "6000", "7000", "3000", "4000", "5000"]
+          ]
+        }
+      ],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Hypotheses: $H_0: \\mu_A = \\mu_B = \\mu_C$ (no difference in salesmen ability), $H_1$: Means are not all equal.",
+          "Coding data: divide by 1000. Data becomes:",
+          "A: 5, 3, 4, 0, 3 $\\implies T_A = 15, \\sum x_A^2 = 25+9+16+0+9 = 59$.",
+          "B: 4, 3, 3, 6, 4 $\\implies T_B = 20, \\sum x_B^2 = 16+9+9+36+16 = 86$.",
+          "C: 6, 7, 3, 4, 5 $\\implies T_C = 25, \\sum x_C^2 = 36+49+9+16+25 = 135$.",
+          "Grand total $G = 15 + 20 + 25 = 60$. Total observations $N = 15$.",
+          "Correction factor $CF = G^2 / N = 60^2 / 15 = 3600 / 15 = 240$.",
+          "Total Sum of Squares $TSS = \\sum x^2 - CF = (59 + 86 + 135) - 240 = 280 - 240 = 40$.",
+          "Between Salesmen $SS_{Between} = \\frac{15^2}{5} + \\frac{20^2}{5} + \\frac{25^2}{5} - 240 = (45 + 80 + 125) - 240 = 250 - 240 = 10$.",
+          "Error $SSE = TSS - SS_{Between} = 40 - 10 = 30$.",
+          "Degrees of freedom: Between $= 3 - 1 = 2$, Error $= 15 - 3 = 12$.",
+          "Mean Squares: $MS_{Between} = 10 / 2 = 5$, $MSE = 30 / 12 = 2.5$.",
+          "Test statistic $F = \\frac{5}{2.5} = 2.0$.",
+          "Critical value: $F_{0.05}(2, 12) = 3.89$.",
+          "Conclusion: Since $F_{cal} = 2.0 < 3.89$, accept $H_0$. There is no significant difference in the selling abilities of the three salesmen."
+        ],
+        "finalAnswer": "Accept $H_0$ ($F = 2.0 < F_{0.05}(2, 12) = 3.89$); no significant difference among salesmen.",
+        "tableValuesUsed": "$F(2, 12)$ at 5% = 3.89",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["anova", "one-way", "f-test"]
+    },
+    {
+      "id": "2024-dec-sem5-q24b",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "B",
+      "number": "24(b)",
+      "marks": 10,
+      "co": 4,
+      "rbt": 3,
+      "unit": 4,
+      "topic": "Two-Way Classification ANOVA (Randomized Block Design)",
+      "questionText": "The following table gives monthly sales (in thousand rupees) of a certain firm in three states by its four salesmen.\nSetup the analysis of variance table and test whether there is any significant difference (i) between sales by the firm salesmen and (ii) between sales in the three states.",
+      "tables": [
+        {
+          "title": "Sales by States and Salesmen",
+          "headers": ["States", "Salesman I", "Salesman II", "Salesman III", "Salesman IV", "Total"],
+          "rows": [
+            ["A", "6", "5", "3", "8", "22"],
+            ["B", "8", "9", "6", "5", "28"],
+            ["C", "10", "7", "8", "7", "32"],
+            ["Total", "24", "21", "17", "20", "82"]
+          ]
+        }
+      ],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "States $r = 3$ (Rows), Salesmen $c = 4$ (Columns), Total $N = 12$.",
+          "Row totals: $R_1 = 22, R_2 = 28, R_3 = 32$. Column totals: $C_1 = 24, C_2 = 21, C_3 = 17, C_4 = 20$.",
+          "Grand total $G = 82$. Correction Factor $CF = 82^2 / 12 = 6724 / 12 = 560.33$.",
+          "Sum of squares of all values $\\sum x^2 = 6^2+5^2+3^2+8^2 + 8^2+9^2+6^2+5^2 + 10^2+7^2+8^2+7^2 = 36+25+9+64 + 64+81+36+25 + 100+49+64+49 = 602$.",
+          "Total $TSS = 602 - 560.33 = 41.67$.",
+          "SSR (Between States): $\\frac{22^2 + 28^2 + 32^2}{4} - 560.33 = \\frac{484 + 784 + 1024}{4} - 560.33 = 573 - 560.33 = 12.67$.",
+          "SSC (Between Salesmen): $\\frac{24^2 + 21^2 + 17^2 + 20^2}{3} - 560.33 = \\frac{576 + 441 + 289 + 400}{3} - 560.33 = \\frac{1706}{3} - 560.33 = 568.67 - 560.33 = 8.34$.",
+          "SSE (Error): $TSS - SSR - SSC = 41.67 - 12.67 - 8.34 = 20.66$.",
+          "Degrees of Freedom: Rows $df = 3 - 1 = 2$; Columns $df = 4 - 1 = 3$; Error $df = (2)(3) = 6$.",
+          "Mean Squares: $MSR = 12.67 / 2 = 6.335$, $MSC = 8.34 / 3 = 2.78$, $MSE = 20.66 / 6 = 3.443$.",
+          "(i) For Salesmen: $F_C = \\frac{MSC}{MSE} = \\frac{2.78}{3.443} = 0.807$. Table $F_{0.05}(3, 6) = 4.76$. Since $0.807 < 4.76$, no significant difference between salesmen.",
+          "(ii) For States: $F_R = \\frac{MSR}{MSE} = \\frac{6.335}{3.443} = 1.84$. Table $F_{0.05}(2, 6) = 5.14$. Since $1.84 < 5.14$, no significant difference between states."
+        ],
+        "finalAnswer": "(i) Salesmen: $F = 0.81 < 4.76$ (no difference); (ii) States: $F = 1.84 < 5.14$ (no difference).",
+        "tableValuesUsed": "$F(3, 6)$ at 5% = 4.76; $F(2, 6)$ at 5% = 5.14",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["anova", "two-way", "rbd", "salesmen"]
+    },
+    {
+      "id": "2024-dec-sem5-q25a",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "B",
+      "number": "25(a)",
+      "marks": 10,
+      "co": 5,
+      "rbt": 3,
+      "unit": 5,
+      "topic": "Control Charts for Variables: Mean Chart (X-bar chart)",
+      "questionText": "The following are the sample means and ranges for 10 samples, each of size 5. Calculate the control limits for the mean chart and state whether the process in a control or not.",
+      "tables": [
+        {
+          "title": "Sample Means and Ranges",
+          "headers": ["Sample No.", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+          "rows": [
+            ["Mean", "5.10", "4.98", "5.02", "4.96", "4.96", "5.04", "4.94", "4.92", "4.92", "4.98"],
+            ["Range", "0.3", "0.4", "0.2", "0.4", "0.1", "0.1", "0.8", "0.5", "0.3", "0.5"]
+          ]
+        }
+      ],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Sum of Means $\\sum \\bar{X} = 5.10 + 4.98 + 5.02 + 4.96 + 4.96 + 5.04 + 4.94 + 4.92 + 4.92 + 4.98 = 49.82$.",
+          "Grand Mean $\\bar{\\bar{X}} = \\frac{49.82}{10} = 4.982$.",
+          "Sum of Ranges $\\sum R = 0.3 + 0.4 + 0.2 + 0.4 + 0.1 + 0.1 + 0.8 + 0.5 + 0.3 + 0.5 = 3.6$.",
+          "Average Range $\\bar{R} = \\frac{3.6}{10} = 0.36$.",
+          "For sample size $n = 5$: factor $A_2 = 0.577$.",
+          "Center Line $CL = \\bar{\\bar{X}} = 4.982$.",
+          "$UCL = \\bar{\\bar{X}} + A_2 \\bar{R} = 4.982 + (0.577 \\times 0.36) = 4.982 + 0.2077 = 5.1897 \\approx 5.19$.",
+          "$LCL = \\bar{\\bar{X}} - A_2 \\bar{R} = 4.982 - 0.2077 = 4.7743 \\approx 4.77$.",
+          "Evaluation: All 10 sample means lie between $LCL = 4.77$ and $UCL = 5.19$ (lowest is 4.92, highest is 5.10).",
+          "Conclusion: The process is in statistical control with respect to the mean."
+        ],
+        "finalAnswer": "$CL = 4.982, UCL = 5.19, LCL = 4.77$. Process is in control.",
+        "tableValuesUsed": "For $n=5$: $A_2 = 0.577$",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["x-bar-chart", "control-limits", "sqc"]
+    },
+    {
+      "id": "2024-dec-sem5-q25b",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "B",
+      "number": "25(b)",
+      "marks": 10,
+      "co": 5,
+      "rbt": 3,
+      "unit": 5,
+      "topic": "Control Charts for Attributes: Fraction Defective Chart (p-chart)",
+      "questionText": "The following data refers to visual defects found during the inspection of the first 10 samples of size 50 each from a lot of two-wheelers manufactured by an automobile company:\nSample No: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10\nNo. of Defectives: 4, 3, 2, 3, 4, 4, 4, 1, 3, 2\nDraw the 'p' chart to show that the fraction defectives are under control.",
+      "tables": [
+        {
+          "title": "Defects in 10 Samples of Size 50",
+          "headers": ["Sample No.", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+          "rows": [
+            ["No. of Defectives", "4", "3", "2", "3", "4", "4", "4", "1", "3", "2"]
+          ]
+        }
+      ],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Subgroup size $n = 50$, number of samples $k = 10$. Total items inspected $N = 10 \\times 50 = 500$.",
+          "Total defectives $\\sum d = 4 + 3 + 2 + 3 + 4 + 4 + 4 + 1 + 3 + 2 = 30$.",
+          "Average fraction defective $\\bar{p} = \\frac{\\sum d}{N} = \\frac{30}{500} = 0.06$.",
+          "Center Line $CL = \\bar{p} = 0.06$.",
+          "Standard error: $SE = \\sqrt{\\frac{\\bar{p}(1 - \\bar{p})}{n}} = \\sqrt{\\frac{0.06 \\times 0.94}{50}} = \\sqrt{\\frac{0.0564}{50}} = \\sqrt{0.001128} \\approx 0.03358$.",
+          "$UCL = \\bar{p} + 3 SE = 0.06 + 3(0.03358) = 0.06 + 0.1007 = 0.1607$.",
+          "$LCL = \\bar{p} - 3 SE = 0.06 - 0.1007 = -0.0407 \\implies LCL = 0$ (since fraction cannot be negative).",
+          "Sample fraction defectives $p_i = d_i / 50$: [0.08, 0.06, 0.04, 0.06, 0.08, 0.08, 0.08, 0.02, 0.06, 0.04].",
+          "Every sample proportion $p_i$ lies between $LCL = 0$ and $UCL = 0.1607$ (max is 0.08).",
+          "Conclusion: The process is in a state of statistical control."
+        ],
+        "finalAnswer": "$CL = 0.06, UCL = 0.1607, LCL = 0$. Process is under control.",
+        "tableValuesUsed": "3-sigma limits",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["p-chart", "attributes", "sqc", "repeated-question"]
+    },
+    {
+      "id": "2024-dec-sem5-q26",
+      "paperId": "2024-dec-sem5-147184",
+      "part": "C",
+      "number": "26",
+      "marks": 10,
+      "co": 5,
+      "rbt": 3,
+      "unit": 5,
+      "topic": "Control Charts for Attributes: Number of Defectives Chart (np-chart)",
+      "questionText": "An inspection of 10 samples of size 400 each from 10 lots revealed the following number of defective units: 17, 15, 14, 26, 9, 4, 19, 12, 9, 15. Calculate control limits for the number of defective units and state whether the process is under control or not.",
+      "tables": [
+        {
+          "title": "Defective Units in 10 Lots (n = 400)",
+          "headers": ["Lot No.", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+          "rows": [
+            ["Defectives", "17", "15", "14", "26", "9", "4", "19", "12", "9", "15"]
+          ]
+        }
+      ],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Since sample size is constant ($n = 400$), we construct an np-chart (number of defectives). Number of samples $k = 10$.",
+          "Total defectives $\\sum d = 17 + 15 + 14 + 26 + 9 + 4 + 19 + 12 + 9 + 15 = 140$.",
+          "Average number of defectives: $n\\bar{p} = \\frac{140}{10} = 14.0 \\implies \\bar{p} = \\frac{14}{400} = 0.035$, $\\bar{q} = 0.965$.",
+          "Center Line $CL = n\\bar{p} = 14.0$.",
+          "Standard deviation: $\\sigma_{np} = \\sqrt{n\\bar{p}\\bar{q}} = \\sqrt{400 \\times 0.035 \\times 0.965} = \\sqrt{14 \\times 0.965} = \\sqrt{13.51} \\approx 3.6756$.",
+          "$UCL = n\\bar{p} + 3\\sigma_{np} = 14 + 3(3.6756) = 14 + 11.0268 = 25.03$.",
+          "$LCL = n\\bar{p} - 3\\sigma_{np} = 14 - 11.0268 = 2.97$.",
+          "Comparison with lot defectives: Lot 4 has 26 defectives, which exceeds $UCL = 25.03$.",
+          "Conclusion: Since sample 4 ($d = 26$) lies above the Upper Control Limit, the process is OUT OF STATISTICAL CONTROL."
+        ],
+        "finalAnswer": "$CL = 14, UCL = 25.03, LCL = 2.97$. Process is OUT OF CONTROL (Lot 4 has 26 > UCL).",
+        "tableValuesUsed": "3-sigma limits",
+        "sourceLink": ""
+      },
+      "needsReview": False,
+      "tags": ["np-chart", "attributes", "control-limits", "sqc", "compulsory"]
+    }
+  ]
+}
+
+out1 = os.path.join(content_sem, "2024-dec-sem5-147184.json")
+with open(out1, "w", encoding="utf-8") as f:
+  json.dump(paper1, f, indent=2)
+
+print(f"Generated 2024-dec-sem5-147184.json: {len(paper1['questions'])} questions.")

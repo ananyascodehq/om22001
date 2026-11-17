@@ -1,0 +1,217 @@
+--- PAGE 1 ---
+Q. Code:147184  
+Page 1 of 4 
+ 
+                                                                                                
+ 
+ 
+ 
+B.E. / B.TECH. DEGREE EXAMINATIONS, DEC 2024 
+Fifth Semester 
+OM22001 –STATISTICAL METHODS FOR ENGINEERS     
+(Common to AE, CS, IT, ME & MN) 
+ (Regulation 2022) 
+(Use of statistical tables are permitted) 
+TIME: 3 HOURS                                                                         MAX. MARKS: 100 
+COURSE 
+OUTCOMES 
+STATEMENT RBT 
+LEVEL 
+CO 1 Have a fundamental knowledge of the concepts of Statistics. 3 
+CO 2 Have a notion of sampling distributions and statistical techniques used in Engineering 
+problems.  
+3 
+CO 3 Analyse and interpret the data based on the sample tests. 3 
+CO 4 Apply the basic concepts of classification of design of Experiments in the field of 
+Engineering. 
+3 
+CO 5 Design and interpret control charts for variables and attributes. 3 
+ 
+PART- A (20 x 2 = 40 Marks) 
+(Answer all Questions) 
+  CO RBT 
+LEVEL 
+1. The mean marks scored by 100 students was found to be 40. Later on, it was 
+discovered that a score of 53 was misread as 85. Find the correct means. 
+1 2 
+2. From the following data, calculate the percentage of workers getting wages more than 
+Rs.44. 
+Wages(Rs.) 0-10 10-20 20-30 30-40 40-50 50-60 60-70 70-80 
+No. of workers 20 45 85 160 70 55 35 30 
+ 
+1 2 
+3. Find out mode of the following distribution: 
+x 1 3 5 7 9 10 11 
+f 11 23 29 58 55 49 21 
+ 
+1 2 
+4. Find the coefficient of skewness from the following information: 
+Difference of two quartiles = 8; Mode = 11, Sum of the two quartiles = 22; Mean = 8. 
+1 2 
+5. Differentiate between Type I and Type II errors in hypothesis testing. 2 2 
+6. A pharmaceutical company claims that a new drug is effective in curing at least 80% 
+of patients with a certain disease. In a clinical trial with 300 patients, 228 patients 
+were cured. Calculate the Z-value. 
+2 2 
+7. A company has the head office at Calcutta and a branch at Bombay. The personnel 
+director wanted to know if the workers at the two places’ would like the introduction 
+2 2 
+Reg. No. 
+ 
+             
+--- PAGE 2 ---
+Q. Code:147184  
+Page 2 of 4 
+ 
+of a new plan of work and a survey was conducted for this purpose. Out of a sample 
+of 500 workers at Calcutta, 62% favoured the new plan. At Bombay out of a sample 
+of 400 workers, 41% were against the new plan. Compute the standard error of 
+proportion between the two groups in their attitude towards the new plan. 
+8. A factory claims that the average weight of its product is 500 grams. A sample of 100 
+products was taken, and the sample mean weight was found to be 495 grams with a 
+standard deviation of 20 grams. Compute the test statistic. 
+2 2 
+9. Differentiate between a one-sample t-test and a two-sample t-test. 3 2 
+10. A research team claims that the average IQ of students in a particular school is 110. 
+You take a random sample of 15 students, and the sample mean IQ is 107 with a 
+sample standard deviation of 10. Calculate the t-value. 
+3 2 
+11. A dietitian wants to test if the average weight loss for participants on the new diet 
+plan (Sample 1) is significantly less than that of participants on the standard diet 
+(Sample 2). Sample 1 consists of 12 participants with an average weight loss of 6 kg 
+and a standard deviation of 1.5 kg, while Sample 2 consists of 14 participants with an 
+average weight loss of 7 kg and a standard deviation of 2 kg. Calculate the standard 
+error for the average weight loss for participants on the two diet plans. 
+3 2 
+12. An analyst wants to test if there is a significant difference in the variance of 
+production times between Factory A (Sample size = 18) and Factory B (Sample size 
+= 22). The sample variance for Factory A is 400, and for Factory B, it is 500. 
+Calculate the F- value. 
+3 2 
+13. What is the purpose of one-way classification ANOVA? 4 2 
+14. In a two-way classification, with 3 levels of factor A and 4 levels of factor B, the sum 
+of squares for error (SSE) is 1200, and the sum of squares for factor A is 1800. If the 
+total number of observations is 48, calculate the degrees of freedom for factor A, 
+factor B and error. 
+4 2 
+15. Write down the ANOVA table for Latin square 4 2 
+16. Why a 2 2 Latin square is not possible? Explain. 4 2 
+17. Measurements on averages (𝑋) and ranges (R) from 20 samples each of 5 gave the 
+following results: 𝑋 = 99.6, 𝑅 = 7.0. Determine the values of the control limits for 
+drawing a range chart. (Assume sample size n=1000) 
+5 2 
+18. Compute the central line, the upper and the lower control limits for the proportion of 
+defectives obtained in repeated random samples of size 100 from a process which is 
+5 2 
+--- PAGE 3 ---
+Q. Code:147184  
+Page 3 of 4 
+ 
+considered to be under control when the proportion of defective p is equal to 0.20.  
+19. What is the difference between a p-chart and an np-chart? 5 2 
+20. What are specification limits in quality control? 5 2 
+ 
+PART- B (5 x 10 = 50 Marks) 
+  Marks CO RBT 
+LEVEL 
+21.(a)  Find the mean and standard deviation for the following distribution: 
+x 3 8 13 18 23 
+f 7 10 15 10 6 
+ 
+(10) 1 3 
+(OR) 
+    (b)  From the prices of shares X and Y below, find out which is more stable in 
+value: 
+X 55 54 52 53 56 58 52 50 51 49 
+Y 108 107 105 105 106 107 104 103 104 101 
+ 
+(10) 1 3 
+ 
+22.(a)  Before an increase in excise duty on tea, 800 persons out of a sample of 1,000 
+persons were found to be tea drinkers. After an increase in excise duty, 800 
+people were tea drinkers in a sample of 1200 people. Using standard error of 
+proportion, state whether there is a significant decrease in the consumption of 
+tea after the increase in excise duty? 
+(10) 2 3 
+(OR) 
+     (b)  A hospital wants to compare the average recovery time for two treatments. 
+Treatment A has an average recovery time of 14 days with a standard deviation 
+of 3 days from 50 patients, while Treatment B has an average recovery time of 
+16 days with a standard deviation of 4 days from 60 patients. Test at the 5% 
+significance level if Treatment A is faster. 
+(10) 2 3 
+ 
+23.(a)  The nicotine content in milligrams of two samples of tobacco were found to be 
+as follows: 
+Sample A 24 27 26 21 25 - 
+Sample B 27 30 28 31 22 36 
+Can it be said that two samples come from normal populations having the same 
+mean.  
+(10) 3 3 
+(OR) 
+     (b)  A survey was conducted among 290 customers to determine their preferred type 
+of product and their age group. The results are as follows: 
+Age Group Product A Product B Product C 
+18-24 30 25 15 
+25-34 40 35 25 
+35-44 25 30 20 
+45+ 15 20 10 
+Test if the product preference is independent of the age group at the 0.05 
+significance level. 
+(10) 3 3 
+ 
+--- PAGE 4 ---
+Q. Code:147184  
+Page 4 of 4 
+ 
+24.(a)  A company wishes to test whether its three salesmen A, B, C tend to make sales 
+of the same size or whether their selling ability as measured by the average size 
+of their sales. The salesmen’s sales record is given in the following table. 
+A 5000 3000 4000 0 3000 
+B 4000 3000 3000 6000 4000 
+C 6000 7000 3000 4000 5000 
+Perform the analysis of variance and test the hypothesis whether there is any 
+significant difference in the sales size of the salesmen at 5% level of 
+significance. 
+(10) 4 3 
+(OR) 
+    (b)  The following table gives monthly sales (in thousand rupees) of a certain firm in 
+three states by its four salesmen. 
+ Salesmen 
+States I II III IV 
+A 6 5 3 8 
+B 8 9 6 5 
+C 10 7 8 7 
+Setup the analysis of variance table and test whether there is any significant 
+difference (i) between sales by the firm salesmen and (ii) between sales in the 
+three states.   
+(10) 4 3 
+ 
+  25.(a)  The following are the sample means and ranges for 10 samples, each of size 5. 
+Calculate the control limits for the mean chart and state whether the process in a 
+control or not. 
+Sample No. 1 2 3 4 5 6 7 8 9 10 
+Mean 5.10 4.98 5.02 4.96 4.96 5.04 4.94 4.92 4.92 4.98 
+Range 0.3 0.4 0.2 0.4 0.1 0.1 0.8 0.5 0.3 0.5 
+ 
+(10) 5 3 
+(OR) 
+     (b)  The following data refers to visual defects found during the inspection of the 
+first 10 samples of size 50 each from a lot of two-wheelers manufactured by an 
+automobile company:  
+Sample No. 1 2 3 4 5 6 7 8 9 10 
+No. of Defectives 4 3 2 3 4 4 4 1 3 2 
+Draw the ’p’ chart to show that the fraction defectives are under control. 
+(10) 5 3 
+ 
+PART- C (1 x 10 = 10 Marks) 
+(Q.No.26 is compulsory) 
+     Marks CO RBT 
+LEVEL 
+      26. An inspection of 10 samples of size 400 each from 10 lots revealed the 
+following number of defective units: 17, 15, 14, 26, 9, 4, 19, 12, 9, 15. 
+Calculate control limits for the number of defective units and state whether 
+the process is under control or not. 
+(10) 5 3 
+ 
+********** 

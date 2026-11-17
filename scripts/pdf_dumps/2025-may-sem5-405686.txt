@@ -1,0 +1,198 @@
+--- PAGE 1 ---
+Q. Code:405686
+                                                           
+B.E. / B.TECH. DEGREE EXAMINATIONS, MAY 2025
+Fifth Semester
+OM22001 –STATISTICAL METHODS FOR ENGINEERS    
+(Common to AE, CS, IT, ME & MN)
+ (Regulation 2022)
+Use of statistical tables are permitted
+TIME: 3 HOURS                                                                         MAX. MARKS: 100
+COURSE
+OUTCOMES
+STATEMENT RBT
+LEVEL
+CO 1 Have a fundamental knowledge of the concepts of Statistics. 3
+CO 2 Have a notion of sampling distributions and statistical techniques used in Engineering
+problems.
+3
+CO 3 Analyse and interpret the data based on the sample tests. 3
+CO 4 Apply the basic concepts of classification of design of Experiments in the field of
+Engineering.
+3
+CO 5 Design and interpret control charts for variables and attributes. 3
+PART- A (20 x 2 = 40 Marks)
+(Answer all Questions)
+CO RBT
+LEVEL
+1. Calculate median for the following data:
+No. of students 6 4 16 7 8 2
+Marks 20 9 25 50 40 80
+1 2
+2. Calculate the quartile deviation of the following observations:
+15, 20, 22, 28, 35, 27, 44, 48, 50, 55, and 60.
+1 2
+3. Find the variance of 2, 4, 7, 9, 10. 1 2
+4. If the first quartile is 142 and the semi-interquartile range is 18, find the median 
+(assuming the distribution to be symmetrical).
+1 2
+5. What are the critical region and acceptance region in hypothesis testing? 2 2
+6. A researcher claims that more than 70% of adults in a certain city are college
+graduates. A random sample of 400 adults is surveyed, and 290 of them are found to be
+college graduates. Test the researcher's claim at the 5% significance level.
+2 2
+7. In a random sample of 400 students of the university teaching departments, it was
+found that 300 students failed in the examination.  In another random sample of 500
+students of the affiliated colleges, the number of failures in the same examination was
+found to be 300. Compute the test statistics.
+2 2
+8. A beverage company claims that the average sugar content of its drinks is 10 grams per
+serving. A sample of 100 servings showed an average sugar content of 9.7 grams with
+a standard deviation of 0.5 grams. Compute the Z- value.
+2 2
+9.You are studying a new diet's effect on weight loss. The manufacturer claims that the average weight loss after 6 weeks on the diet is 5 kg. You take a
+sample of 12 participants, and their average weight loss is 4.5 kg with a standard
+3 3
+Page 1 of 4
+Reg. No.
+--- PAGE 2 ---
+Q. Code:405686
+deviation of 1.2 kg. Calculate the test statistic.
+10. An educator wants to determine if there is a significant difference in the average test
+scores of students taught using two different teaching methods. Sample 1 (n = 20) has
+an average score of 75 with a standard deviation of 8, and Sample 2 (n = 22) has an
+average score of 80 with a standard deviation of 7. Calculate the standard error for the
+average test scores of students taught using two different teaching methods.
+3 2
+11. A service manager wants to test if the variance in repair times for Service Center X
+(Sample size = 25) is different from that for Service Center Y (Sample size = 30). The
+sample variance for Service Center X is 64, and for Service Center Y, it is 81.
+Calculate the F- value.
+3 2
+12. When do you reject the null hypothesis in a chi-square test? 3 2
+13. What is the main difference between one-way and two-way classification? 4 2
+14. If you have a Latin Square Design with 4 levels of factor A and 4 levels of factor B,
+how many replications would be needed to ensure each treatment is tested once?
+4 2
+15. In which situation would you use an ANOVA instead of a t-test? 4 2
+16. Why a 2×2Latin square is not possible? Explain. 4 2
+17. The following figures give the number of defectives in 20 samples, containing 425,
+430, 216, 341, 225, 322, 280, 306, 337, 305, 356, 402, 216, 264, 126, 409, 193, 280,
+326, and 389. Calculate the values for central line and the control limits for p-chart.
+5 2
+18. 20 pieces of cloth out of different rolls contained respectively 1, 4, 3, 2, 4, 5, 6, 7, 2, 3,
+2, 5, 7, 6, 4, 5, 2, 1, 3 and 8 imperfections. Calculate the control chart limits for the
+number of defects.
+5 2
+19. When should a p-chart be used instead of a c-chart? 5 2
+20. What are tolerance limits? 5 2
+PART- B (5 x 10 = 50 Marks)
+Marks CO RBT
+LEVEL
+21. (a) For the two frequency distributions give below the mean calculated from the
+first was 25.4 and that from the second was 32.5. Find the values of x and y.
+Class Distribution I
+(Frequency)
+Distribution II
+(Frequency)
+10-20 20 4
+20-30 15 8
+30-40 10 4
+40-50 x 2x
+50-60 y y
+(10) 1 3
+(OR)
+    (b) Find Karl Pearson’s coefficient of Skewness for the following data:
+Range 20-
+40
+40-60 60-80 80-100 100-120
+Frequency 15 20 35 12 5
+(10) 1 3
+Page 2 of 4
+--- PAGE 3 ---
+Q. Code:405686
+22. (a) In two large populations, there are 30 and 25 per cent respectively of blue-
+eyed people. Is this difference likely to be hidden in samples of 1200 and 900
+respectively from the two populations?
+(10) 2 3
+(OR)
+      (b) A study compares the average income of two cities. City A has an average
+income of $50,000 with a standard deviation of $8,000 from 120 people,
+while City B has an average income of $48,000 with a standard deviation of
+$9,000 from 150 people. Test at the 5% significance level if the income in
+City A is higher.
+(10) 2 3
+23. (a) A pharmaceutical company is testing a new drug to determine if it reduces
+blood pressure more effectively than the standard drug. A sample of 10
+patients was given the new drug, while another group of 12 patients was
+given the standard drug. The reduction in blood pressure (in mmHg) was
+recorded as follows:
+New Drug: Mean = 15, Standard Deviation = 3
+Standard Drug: Mean = 12, Standard Deviation = 4
+Assume the samples are small and normally distributed. At a significance
+level of 0.05, test the hypothesis that the new drug reduces blood pressure
+more effectively than the standard drug.
+(10) 3 3
+(OR)
+     (b) A die is rolled 60 times, and the following results are observed: 1 appeared 8
+times, 2 appeared 10 times, 3 appeared 12 times, 4 appeared 9 times, 5
+appeared 11 times, and 6 appeared 10 times. Test if the die is fair at the 0.05
+significance level.
+(10) 3 3
+24. (a) The table shown below gives the samples got from normal population with
+equal variances. Test the hypothesis that the sample means are equal at 5%
+levels.
+A 8 10 12 8 7
+B 12 11 14 9 4
+C 18 16 12 8 6
+D 16 15 13 1 9
+(10) 4 3
+Page 3 of 4
+--- PAGE 4 ---
+Q. Code:405686
+2
+(OR)
+      (b) The table shows the yield of paddy in arbitrary units obtained from four
+different varieties planted in five blocks where each block is divided into four
+plots. Test at 5% level whether the yields vary significantly with (i) soil
+differences (ii) differences in the type of paddy.
+Block
+s
+Types of Paddy
+I II III IV
+A 12 15 10 14
+B 15 19 12 11
+C 14 18 15 12
+D 11 16 12 16
+E 16 17 11 14
+(10) 4 3
+25. (a) Ten samples each of size 5 are drawn at regular intervals from a
+manufacturing process. The sample means and their range are given below:
+Sample No. 1 2 3 4 5 6 7 8 9 10 Total
+Sample Mean 49 4
+5
+48 53 39 47 46 39 51 45 462
+Sample Range 7 5 7 9 5 8 8 6 7 6 68
+Construct a control chart for range. Comment on the state of control.
+(10) 5 3
+(OR)
+      (b) An inspection of 10 samples of size 400 each from 10 lots revealed the
+following number of defective units: 17, 15, 14, 26, 9, 4, 19, 12, 9, 15.
+Construct the appropriate control charts and state whether the process is
+under control or not.
+(10) 5 3
+P  ART  -   C (1     x 10   = 10   Ma  r  k  s)
+(Q.No.26 is compulsory)
+Marks CO RBT
+LEVEL
+26. An analysis was conducted on voting preferences based on gender. The 
+results are:
+Gende
+r Candidate X Candidate Y Candidate Z
+Male 50 30 20
+Female 45 35 20
+Test if voting preference is independent of gender at the 0.05 significance 
+level.
+(10) 3 3
+**********
+Page 4 of 4

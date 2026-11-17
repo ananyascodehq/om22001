@@ -1,0 +1,256 @@
+import json
+import os
+
+base_dir = r"d:\OM22001\om22001-stats-hub"
+sem_dir = os.path.join(base_dir, "content", "sem")
+out_path = os.path.join(base_dir, "content", "repeated-questions.json")
+
+repeated_groups = [
+  {
+    "id": "rep-anova-vs-ttest",
+    "title": "When to use ANOVA instead of t-test",
+    "unit": 4,
+    "topic": "Principles of Design of Experiments",
+    "frequency": 3,
+    "isHighProbability": True,
+    "marks": 2,
+    "description": "Explaining why ANOVA is preferred over pairwise t-tests for 3 or more groups to prevent family-wise Type I error inflation.",
+    "appearances": [
+      { "paperId": "2025-may-sem5-405686", "questionNumber": "15", "part": "A" },
+      { "paperId": "2025-dec-sem6-133554", "questionNumber": "13", "part": "A" },
+      { "paperId": "2026-may-sem6-323580", "questionNumber": "13", "part": "A" }
+    ]
+  },
+  {
+    "id": "rep-2x2-latin-square",
+    "title": "Why a 2x2 Latin Square Design is not possible",
+    "unit": 4,
+    "topic": "Latin Square Design (LSD)",
+    "frequency": 3,
+    "isHighProbability": True,
+    "marks": 2,
+    "description": "Explaining why error degrees of freedom $(m-1)(m-2) = 0$ prevents computing error variance and F-ratio.",
+    "appearances": [
+      { "paperId": "2024-dec-sem5-147184", "questionNumber": "16", "part": "A" },
+      { "paperId": "2025-may-sem5-405686", "questionNumber": "16", "part": "A" },
+      { "paperId": "2026-may-sem6-323580", "questionNumber": "16", "part": "A" }
+    ]
+  },
+  {
+    "id": "rep-f-ratio-service-center",
+    "title": "F-Test for Service Center Variances (64 and 81)",
+    "unit": 3,
+    "topic": "F-Test for Equality of Two Variances",
+    "frequency": 3,
+    "isHighProbability": True,
+    "marks": 2,
+    "description": "Service Center X ($s^2=64, n=25$) and Service Center Y ($s^2=81, n=30$), calculating variance ratio F = 1.266.",
+    "appearances": [
+      { "paperId": "2024-dec-sem5-147184", "questionNumber": "12", "part": "A" },
+      { "paperId": "2025-may-sem5-405686", "questionNumber": "11", "part": "A" },
+      { "paperId": "2025-dec-sem6-133554", "questionNumber": "11", "part": "A" }
+    ]
+  },
+  {
+    "id": "rep-mean-misread",
+    "title": "Mean of 100 students misread correction (53 misread as 85)",
+    "unit": 1,
+    "topic": "Arithmetic Mean",
+    "frequency": 2,
+    "isHighProbability": False,
+    "marks": 2,
+    "description": "Total score corrected from 4000 to 3968, finding corrected mean = 39.68.",
+    "appearances": [
+      { "paperId": "2024-dec-sem5-147184", "questionNumber": "1", "part": "A" },
+      { "paperId": "2026-may-sem6-323580", "questionNumber": "1", "part": "A" }
+    ]
+  },
+  {
+    "id": "rep-harmonic-mean-dividend",
+    "title": "Harmonic Mean of Dividend Yields (2-6, 6-10, 10-14)",
+    "unit": 1,
+    "topic": "Harmonic Mean and Geometric Mean",
+    "frequency": 2,
+    "isHighProbability": False,
+    "marks": 2,
+    "description": "Computing harmonic mean for continuous frequency data with midpoints 4, 8, 12, yielding H = 7.27%.",
+    "appearances": [
+      { "paperId": "2025-dec-sem6-133554", "questionNumber": "2", "part": "A" },
+      { "paperId": "2026-may-sem6-323580", "questionNumber": "2", "part": "A" }
+    ]
+  },
+  {
+    "id": "rep-symmetrical-median",
+    "title": "Median from Q1 = 142 and QD = 18 in symmetrical distribution",
+    "unit": 1,
+    "topic": "Quartiles and Quartile Deviation",
+    "frequency": 2,
+    "isHighProbability": False,
+    "marks": 2,
+    "description": "Using symmetrical property Median = Q1 + QD = 142 + 18 = 160.",
+    "appearances": [
+      { "paperId": "2025-may-sem5-405686", "questionNumber": "4", "part": "A" },
+      { "paperId": "2026-may-sem6-323580", "questionNumber": "4", "part": "A" }
+    ]
+  },
+  {
+    "id": "rep-oneway-anova-fratio",
+    "title": "One-Way ANOVA F-ratio with SSC=2580, SSE=1656",
+    "unit": 4,
+    "topic": "ANOVA Table Construction and F-Ratio Interpretation",
+    "frequency": 2,
+    "isHighProbability": False,
+    "marks": 2,
+    "description": "Given SSC=2580 (df=3) and SSE=1656 (df=16), finding F = 860 / 103.5 = 8.309.",
+    "appearances": [
+      { "paperId": "2025-dec-sem6-133554", "questionNumber": "14", "part": "A" },
+      { "paperId": "2026-may-sem6-323580", "questionNumber": "14", "part": "A" }
+    ]
+  },
+  {
+    "id": "rep-specification-limits",
+    "title": "Specification Limits in Quality Control Definition",
+    "unit": 5,
+    "topic": "Control Limits vs Specification and Tolerance Limits",
+    "frequency": 2,
+    "isHighProbability": False,
+    "marks": 2,
+    "description": "Engineering boundary limits (USL/LSL) defining acceptable part tolerances versus statistical control limits.",
+    "appearances": [
+      { "paperId": "2024-dec-sem5-147184", "questionNumber": "20", "part": "A" },
+      { "paperId": "2026-may-sem6-323580", "questionNumber": "17", "part": "A" }
+    ]
+  },
+  {
+    "id": "rep-r-chart-limits",
+    "title": "Range Chart Limits for 20 samples of 5 with R-bar = 7.0",
+    "unit": 5,
+    "topic": "Control Charts for Variables: Range Chart (R chart)",
+    "frequency": 2,
+    "isHighProbability": False,
+    "marks": 2,
+    "description": "Using D4 = 2.114, D3 = 0 for n = 5, finding UCL = 14.80, LCL = 0.",
+    "appearances": [
+      { "paperId": "2024-dec-sem5-147184", "questionNumber": "17", "part": "A" },
+      { "paperId": "2026-may-sem6-323580", "questionNumber": "18", "part": "A" }
+    ]
+  },
+  {
+    "id": "rep-c-chart-limits",
+    "title": "c-Chart Limits for 12 samples with average defects c-bar = 3",
+    "unit": 5,
+    "topic": "Control Charts for Attributes: Number of Defects Chart (c-chart)",
+    "frequency": 2,
+    "isHighProbability": False,
+    "marks": 2,
+    "description": "Using 3-sigma Poisson limits, finding UCL = 3 + 3*sqrt(3) = 8.20, LCL = 0.",
+    "appearances": [
+      { "paperId": "2025-dec-sem6-133554", "questionNumber": "20", "part": "A" },
+      { "paperId": "2026-may-sem6-323580", "questionNumber": "19", "part": "A" }
+    ]
+  },
+  {
+    "id": "rep-np-chart-limits",
+    "title": "np-Chart Limits for 15 subgroups of 200 with p-bar = 0.068",
+    "unit": 5,
+    "topic": "Control Charts for Attributes: Number of Defectives Chart (np-chart)",
+    "frequency": 2,
+    "isHighProbability": False,
+    "marks": 2,
+    "description": "Subgroups of n=200, finding CL = 13.6, UCL = 24.28, LCL = 2.92.",
+    "appearances": [
+      { "paperId": "2025-dec-sem6-133554", "questionNumber": "18", "part": "A" },
+      { "paperId": "2026-may-sem6-323580", "questionNumber": "20", "part": "A" }
+    ]
+  },
+  {
+    "id": "rep-weekly-sales",
+    "title": "Weekly Sales of Products A & B Fluctuation (CV Comparison)",
+    "unit": 1,
+    "topic": "Coefficient of Variation",
+    "frequency": 2,
+    "isHighProbability": False,
+    "marks": 10,
+    "description": "Comparing Product A (CV = 38.86%) and Product B (CV = 31.17%), proving Product A has greater sales fluctuation.",
+    "appearances": [
+      { "paperId": "2025-dec-sem6-133554", "questionNumber": "21(b)", "part": "B" },
+      { "paperId": "2026-may-sem6-323580", "questionNumber": "21(a)", "part": "B" }
+    ]
+  },
+  {
+    "id": "rep-nicotine-content",
+    "title": "Nicotine Content in Two Tobacco Samples (t-Test)",
+    "unit": 3,
+    "topic": "Student's t-Test for Difference of Two Means",
+    "frequency": 2,
+    "isHighProbability": False,
+    "marks": 10,
+    "description": "Two small samples (n1=5, n2=6), pooled t-test yielding t = -1.918 < 2.262, concluding same population mean.",
+    "appearances": [
+      { "paperId": "2024-dec-sem5-147184", "questionNumber": "23(a)", "part": "B" },
+      { "paperId": "2025-dec-sem6-133554", "questionNumber": "23(a)", "part": "B" }
+    ]
+  },
+  {
+    "id": "rep-inspection-400-defectives",
+    "title": "Inspection of 10 samples of size 400 defectives (np-chart)",
+    "unit": 5,
+    "topic": "Control Charts for Attributes: Number of Defectives Chart (np-chart)",
+    "frequency": 2,
+    "isHighProbability": False,
+    "marks": 10,
+    "description": "10 lots with defectives [17, 15, 14, 26, 9, 4, 19, 12, 9, 15], UCL = 25.03, detecting Lot 4 out of control.",
+    "appearances": [
+      { "paperId": "2024-dec-sem5-147184", "questionNumber": "26", "part": "C" },
+      { "paperId": "2025-may-sem5-405686", "questionNumber": "25(b)", "part": "B" }
+    ]
+  },
+  {
+    "id": "rep-visual-defects-pchart",
+    "title": "Visual Defects in 10 Samples of size 50 each (p-chart)",
+    "unit": 5,
+    "topic": "Control Charts for Attributes: Fraction Defective Chart (p-chart)",
+    "frequency": 2,
+    "isHighProbability": False,
+    "marks": 10,
+    "description": "10 samples of size 50 with defectives [4, 3, 2, 3, 4, 4, 4, 1, 3, 2], p-bar = 0.06, UCL = 0.1607, LCL = 0.",
+    "appearances": [
+      { "paperId": "2024-dec-sem5-147184", "questionNumber": "25(b)", "part": "B" },
+      { "paperId": "2026-may-sem6-323580", "questionNumber": "25(b)", "part": "B" }
+    ]
+  },
+  {
+    "id": "rep-voting-preference-gender",
+    "title": "Voting Preference by Gender (Chi-Square Independence)",
+    "unit": 3,
+    "topic": "Chi-Square Test for Independence of Attributes",
+    "frequency": 2,
+    "isHighProbability": False,
+    "marks": 10,
+    "description": "2x3 contingency table for Male/Female across Candidates X, Y, Z, finding Chi-Square = 0.648 < 5.991.",
+    "appearances": [
+      { "paperId": "2025-may-sem5-405686", "questionNumber": "26", "part": "C" },
+      { "paperId": "2025-dec-sem6-133554", "questionNumber": "23(b)", "part": "B" }
+    ]
+  },
+  {
+    "id": "rep-xbar-r-10samples-size4",
+    "title": "Mean & Range Charts for 10 samples of size 4 (Means 861, Ranges 57)",
+    "unit": 5,
+    "topic": "Control Charts for Variables: Mean Chart (X-bar chart)",
+    "frequency": 2,
+    "isHighProbability": False,
+    "marks": 10,
+    "description": "Grand Mean = 86.1, Range = 5.7, factors A2 = 0.729, D4 = 2.282, showing process in statistical control.",
+    "appearances": [
+      { "paperId": "2025-dec-sem6-133554", "questionNumber": "25(a)", "part": "B" },
+      { "paperId": "2026-may-sem6-323580", "questionNumber": "25(a)", "part": "B" }
+    ]
+  }
+]
+
+with open(out_path, "w", encoding="utf-8") as f:
+  json.dump(repeated_groups, f, indent=2)
+
+print(f"Generated {out_path} with {len(repeated_groups)} repeated question clusters.")
+

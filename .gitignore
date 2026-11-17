@@ -1,0 +1,52 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Next.js
+/.next/
+/out/
+/build
+
+# Production & Vercel
+.vercel
+.vercel/
+
+# Environment files
+.env*
+!.env.example
+
+# Local SQLite databases & Prisma engines
+prisma/*.db
+prisma/*.db-journal
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Local uploads & storage (handled by Vercel Blob in production)
+storage/
+/storage
+
+# TypeScript & logs
+*.tsbuildinfo
+next-env.d.ts
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+*.pem
+
+# Scratch & temporary processing files
+scratch_chat_*.json
+all_chats_summary.txt
+chatgpt_sample.html
+test_reportlab.pdf
+ocr_test.ps1
+check-paths.js

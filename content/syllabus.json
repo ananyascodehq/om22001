@@ -1,0 +1,122 @@
+{
+  "subjectCode": "OM22001",
+  "subjectName": "Statistical Methods for Engineers",
+  "regulation": "2022",
+  "departments": [
+    "AE", "CE", "CS", "EC", "EE", "IT", "ME", "MN", "BT", "CH"
+  ],
+  "credits": {
+    "lecture": 3,
+    "tutorial": 0,
+    "practical": 0,
+    "total": 3
+  },
+  "courseOutcomes": [
+    {
+      "co": "CO1",
+      "statement": "Have a fundamental knowledge of the concepts of Statistics.",
+      "rbtLevel": 3
+    },
+    {
+      "co": "CO2",
+      "statement": "Have a notion of sampling distributions and statistical techniques used in Engineering problems.",
+      "rbtLevel": 3
+    },
+    {
+      "co": "CO3",
+      "statement": "Analyse and interpret the data based on the sample tests.",
+      "rbtLevel": 3
+    },
+    {
+      "co": "CO4",
+      "statement": "Apply the basic concepts of classification of design of Experiments in the field of Engineering.",
+      "rbtLevel": 3
+    },
+    {
+      "co": "CO5",
+      "statement": "Design and interpret control charts for variables and attributes.",
+      "rbtLevel": 3
+    }
+  ],
+  "units": [
+    {
+      "unit": 1,
+      "co": "CO1",
+      "title": "Descriptive Statistics",
+      "description": "Measures of central tendency, dispersion, skewness, and kurtosis.",
+      "topics": [
+        "Arithmetic Mean",
+        "Median and Mode",
+        "Harmonic Mean and Geometric Mean",
+        "Quartiles and Quartile Deviation",
+        "Variance and Standard Deviation",
+        "Coefficient of Variation",
+        "Karl Pearson's Coefficient of Skewness",
+        "Bowley's Coefficient of Skewness",
+        "Kurtosis and Moments"
+      ]
+    },
+    {
+      "unit": 2,
+      "co": "CO2",
+      "title": "Sampling Distributions and Large Sample Tests",
+      "description": "Sampling distributions, hypothesis formulation, and large sample Z-tests.",
+      "topics": [
+        "Null and Alternative Hypotheses",
+        "Type I and Type II Errors",
+        "Critical Region and Level of Significance",
+        "Standard Error",
+        "Test of Significance for Single Mean (Z-test)",
+        "Test of Significance for Difference of Means (Z-test)",
+        "Test of Significance for Single Proportion (Z-test)",
+        "Test of Significance for Difference of Proportions (Z-test)",
+        "Test for Difference of Standard Deviations"
+      ]
+    },
+    {
+      "unit": 3,
+      "co": "CO3",
+      "title": "Small Sample Tests",
+      "description": "Exact sampling distributions including Student's t, Snedecor's F, and Chi-Square tests.",
+      "topics": [
+        "Student's t-Test for Single Mean",
+        "Student's t-Test for Difference of Two Means",
+        "Paired t-Test",
+        "F-Test for Equality of Two Variances",
+        "Chi-Square Test for Goodness of Fit",
+        "Chi-Square Test for Independence of Attributes",
+        "Contingency Tables"
+      ]
+    },
+    {
+      "unit": 4,
+      "co": "CO4",
+      "title": "Design of Experiments",
+      "description": "Principles of experimental design, analysis of variance, and experimental layouts.",
+      "topics": [
+        "Principles of Design of Experiments",
+        "One-Way Classification ANOVA",
+        "Two-Way Classification ANOVA (Randomized Block Design)",
+        "Latin Square Design (LSD)",
+        "ANOVA Table Construction and F-Ratio Interpretation",
+        "Degrees of Freedom Calculation"
+      ]
+    },
+    {
+      "unit": 5,
+      "co": "CO5",
+      "title": "Statistical Quality Control",
+      "description": "Theory of control charts, control limits, and process capability for variables and attributes.",
+      "topics": [
+        "Introduction to SQC and Causes of Variation",
+        "Control Limits vs Specification and Tolerance Limits",
+        "Control Charts for Variables: Mean Chart (X-bar chart)",
+        "Control Charts for Variables: Range Chart (R chart)",
+        "Control Charts for Attributes: Fraction Defective Chart (p-chart)",
+        "Control Charts for Attributes: Number of Defectives Chart (np-chart)",
+        "Control Charts for Attributes: Number of Defects Chart (c-chart)"
+      ]
+    }
+  ]
+}
+

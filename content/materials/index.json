@@ -1,0 +1,47 @@
+{
+  "units": [
+    {
+      "unit": 1,
+      "slug": "unit-1-descriptive-statistics",
+      "title": "Unit 1: Descriptive Statistics",
+      "materials": []
+    },
+    {
+      "unit": 2,
+      "slug": "unit-2-large-sample-tests",
+      "title": "Unit 2: Large Sample Tests",
+      "materials": []
+    },
+    {
+      "unit": 3,
+      "slug": "unit-3-small-sample-tests",
+      "title": "Unit 3: Small Sample Tests",
+      "materials": []
+    },
+    {
+      "unit": 4,
+      "slug": "unit-4-design-of-experiments",
+      "title": "Unit 4: Design of Experiments",
+      "materials": []
+    },
+    {
+      "unit": 5,
+      "slug": "unit-5-statistical-quality-control",
+      "title": "Unit 5: Statistical Quality Control",
+      "materials": []
+    },
+    {
+      "unit": 0,
+      "slug": "formula-sheets",
+      "title": "Formula Sheets",
+      "materials": []
+    },
+    {
+      "unit": 0,
+      "slug": "statistical-tables",
+      "title": "Statistical Tables",
+      "materials": []
+    }
+  ]
+}
+

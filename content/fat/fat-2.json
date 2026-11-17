@@ -1,0 +1,570 @@
+{
+  "id": "fat-2",
+  "title": "Formative Assessment Test 2 (FAT-2)",
+  "subjectCode": "OM22001",
+  "subjectName": "Statistical Methods for Engineers",
+  "regulation": "2022",
+  "assessmentType": "FAT",
+  "testNumber": 2,
+  "unitsCovered": [
+    2,
+    3
+  ],
+  "duration": "90 Minutes",
+  "maxMarks": 50,
+  "academicYear": "2024\u20132025",
+  "examDate": "19.04.2025",
+  "pdfUrl": "/api/documents/cmwd2u2790003q795oeqoffg0/preview",
+  "isPlaceholder": false,
+  "questions": [
+    {
+      "id": "fat2-q1",
+      "paperId": "fat-2",
+      "part": "A",
+      "number": "1",
+      "marks": 2,
+      "co": 2,
+      "rbt": 2,
+      "unit": 2,
+      "topic": "Z-test for Single Mean",
+      "questionText": "A beverage company claims that the average sugar content of its drinks is 10 grams per serving. A sample of 100 servings showed an average sugar content of 9.7 grams with a standard deviation of 0.5 grams. Compute Z-value.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Given: $\\mu = 10$, $\\bar{x} = 9.7$, $s = 0.5$, $n = 100$.",
+          "Standard error $SE = \\frac{s}{\\sqrt{n}} = \\frac{0.5}{10} = 0.05$.",
+          "Test statistic $Z = \\frac{\\bar{x} - \\mu}{SE} = \\frac{9.7 - 10}{0.05} = \\frac{-0.3}{0.05} = -6.0$."
+        ],
+        "finalAnswer": "Z = -6.0",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af49588-ac1c-83ee-ab3e-b65021201e1d"
+      },
+      "needsReview": false,
+      "tags": [
+        "z-test",
+        "single-mean",
+        "large-samples"
+      ]
+    },
+    {
+      "id": "fat2-q2",
+      "paperId": "fat-2",
+      "part": "A",
+      "number": "2",
+      "marks": 2,
+      "co": 2,
+      "rbt": 2,
+      "unit": 2,
+      "topic": "Test Statistic for Mean",
+      "questionText": "A factory claims that the average weight of its product is 500 grams. A sample of 100 products was taken, and the sample mean weight was found to be 495 grams with a standard deviation of 20 grams. Compute the test statistic.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Given: $\\mu = 500$, $n = 100$, $\\bar{x} = 495$, $\\sigma = 20$.",
+          "$SE = \\frac{\\sigma}{\\sqrt{n}} = \\frac{20}{10} = 2$.",
+          "Test statistic $Z = \\frac{\\bar{x} - \\mu}{SE} = \\frac{495 - 500}{2} = \\frac{-5}{2} = -2.5$."
+        ],
+        "finalAnswer": "Z = -2.5",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af49588-ac1c-83ee-ab3e-b65021201e1d"
+      },
+      "needsReview": false,
+      "tags": [
+        "test-statistic",
+        "z-test",
+        "large-sample"
+      ]
+    },
+    {
+      "id": "fat2-q3",
+      "paperId": "fat-2",
+      "part": "A",
+      "number": "3",
+      "marks": 2,
+      "co": 2,
+      "rbt": 2,
+      "unit": 2,
+      "topic": "Critical Region vs Acceptance Region",
+      "questionText": "What are the critical region and acceptance region in Testing of hypothesis?",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Critical Region (Rejection Region): The region of sample space which leads to the rejection of the null hypothesis $H_0$. Its area equals the significance level $\\alpha$.",
+          "Acceptance Region: The region of sample space which leads to the acceptance (non-rejection) of the null hypothesis $H_0$. Its area equals $1 - \\alpha$."
+        ],
+        "finalAnswer": "Critical Region = Rejection area (alpha); Acceptance Region = Non-rejection area (1 - alpha)",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af49588-ac1c-83ee-ab3e-b65021201e1d"
+      },
+      "needsReview": false,
+      "tags": [
+        "critical-region",
+        "acceptance-region",
+        "hypothesis-testing"
+      ]
+    },
+    {
+      "id": "fat2-q4",
+      "paperId": "fat-2",
+      "part": "A",
+      "number": "4",
+      "marks": 2,
+      "co": 2,
+      "rbt": 2,
+      "unit": 2,
+      "topic": "Standard Error Formula",
+      "questionText": "What is the formula for the standard error of the mean?",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "When population standard deviation $\\sigma$ is known: $SE(\\bar{x}) = \\frac{\\sigma}{\\sqrt{n}}$.",
+          "When population standard deviation is unknown (using sample SD $s$ for large $n$): $SE(\\bar{x}) = \\frac{s}{\\sqrt{n}}$."
+        ],
+        "finalAnswer": "SE(\\bar{x}) = \\frac{\\sigma}{\\sqrt{n}}",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af49588-ac1c-83ee-ab3e-b65021201e1d"
+      },
+      "needsReview": false,
+      "tags": [
+        "standard-error",
+        "mean",
+        "formula"
+      ]
+    },
+    {
+      "id": "fat2-q5",
+      "paperId": "fat-2",
+      "part": "A",
+      "number": "5",
+      "marks": 2,
+      "co": 3,
+      "rbt": 2,
+      "unit": 3,
+      "topic": "Standard Error of Difference of Means (Small Samples)",
+      "questionText": "A dietitian wants to test if the average weight loss for participants on the new diet plan (Sample 1) is significantly less than that of participants on the standard diet (Sample 2). Sample 1 consists of 12 participants with an average weight loss of 6kg and standard deviation of 1.5kg, while sample2 consists of 14 participants with an average weight loss of 7 kg and a standard deviation of 2kg. Calculate the standard error for the average weight loss for participants on the two diet plans.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Given: $n_1 = 12, s_1 = 1.5$, $n_2 = 14, s_2 = 2.0$.",
+          "Pooled variance $S_p^2 = \\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1 + n_2 - 2} = \\frac{11(2.25) + 13(4.0)}{12 + 14 - 2} = \\frac{24.75 + 52.0}{24} = \\frac{76.75}{24} = 3.1979$.",
+          "Standard error $SE = \\sqrt{S_p^2 \\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)} = \\sqrt{3.1979 \\left(\\frac{1}{12} + \\frac{1}{14}\\right)} = \\sqrt{3.1979 \\times 0.15476} = \\sqrt{0.4949} = 0.7035\\text{ kg}$."
+        ],
+        "finalAnswer": "Standard Error SE = 0.7035 kg",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af49588-ac1c-83ee-ab3e-b65021201e1d"
+      },
+      "needsReview": false,
+      "tags": [
+        "small-samples",
+        "standard-error",
+        "t-test"
+      ]
+    },
+    {
+      "id": "fat2-q6",
+      "paperId": "fat-2",
+      "part": "A",
+      "number": "6",
+      "marks": 2,
+      "co": 3,
+      "rbt": 2,
+      "unit": 3,
+      "topic": "Types of Chi-Square Tests",
+      "questionText": "What are the two types of Chi-square test?",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "1. Chi-Square Test for Goodness of Fit: Tests whether observed sample data conforms to an expected theoretical probability distribution.",
+          "2. Chi-Square Test for Independence of Attributes: Tests whether two categorical variables (attributes) in a contingency table are independent or associated."
+        ],
+        "finalAnswer": "(1) Goodness of Fit test, (2) Independence of Attributes test",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af49588-ac1c-83ee-ab3e-b65021201e1d"
+      },
+      "needsReview": false,
+      "tags": [
+        "chi-square",
+        "goodness-of-fit",
+        "independence"
+      ]
+    },
+    {
+      "id": "fat2-q7",
+      "paperId": "fat-2",
+      "part": "A",
+      "number": "7",
+      "marks": 2,
+      "co": 3,
+      "rbt": 2,
+      "unit": 3,
+      "topic": "Chi-Square Goodness of Fit (Die Roll)",
+      "questionText": "A die is rolled 60 times, and the following results are observed: 1 appeared 8 times, 2 appeared 10 times, 3 appeared 12 times, 4 appeared 9 times, 5 appeared 11 times, and 6 appeared 10 times. Test if the die is fair at the 0.05 significance level.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Expected frequency for fair die: $E = \\frac{60}{6} = 10$ for each face.",
+          "Observed: $O = [8, 10, 12, 9, 11, 10]$.",
+          "$\\chi^2 = \\sum \\frac{(O - E)^2}{E} = \\frac{(8-10)^2}{10} + \\frac{(10-10)^2}{10} + \\frac{(12-10)^2}{10} + \\frac{(9-10)^2}{10} + \\frac{(11-10)^2}{10} + \\frac{(10-10)^2}{10}$.",
+          "$\\chi^2 = \\frac{4 + 0 + 4 + 1 + 1 + 0}{10} = \\frac{10}{10} = 1.0$.",
+          "Degrees of freedom $df = 6 - 1 = 5$. Critical value $\\chi^2_{0.05, 5} = 11.07$.",
+          "Since $\\chi^2_{calc} = 1.0 < 11.07$, we accept $H_0$. The die is fair."
+        ],
+        "finalAnswer": "Accept H0 (\\chi^2 = 1.0 < 11.07; die is fair at 5% level)",
+        "tableValuesUsed": "\\chi^2_{0.05, 5} = 11.07",
+        "sourceLink": "https://chatgpt.com/share/6af49588-ac1c-83ee-ab3e-b65021201e1d"
+      },
+      "needsReview": false,
+      "tags": [
+        "chi-square",
+        "goodness-of-fit"
+      ]
+    },
+    {
+      "id": "fat2-q8",
+      "paperId": "fat-2",
+      "part": "A",
+      "number": "8",
+      "marks": 2,
+      "co": 3,
+      "rbt": 2,
+      "unit": 3,
+      "topic": "t-Value Calculation",
+      "questionText": "A Shoe manufacturer claims that the average durability of its shoes is 500 miles. A sample of 9 pairs of shoes a mean durability of 480 miles with a standard deviation of 15 miles. Calculate t-value.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Given: $\\mu = 500, n = 9, \\bar{x} = 480, s = 15$.",
+          "Sample size is small ($n < 30$).",
+          "$t = \\frac{\\bar{x} - \\mu}{s / \\sqrt{n}} = \\frac{480 - 500}{15 / \\sqrt{9}} = \\frac{-20}{15 / 3} = \\frac{-20}{5} = -4.0$."
+        ],
+        "finalAnswer": "t = -4.0",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af49588-ac1c-83ee-ab3e-b65021201e1d"
+      },
+      "needsReview": false,
+      "tags": [
+        "t-test",
+        "single-mean",
+        "small-sample"
+      ]
+    },
+    {
+      "id": "fat2-q9",
+      "paperId": "fat-2",
+      "part": "A",
+      "number": "9",
+      "marks": 2,
+      "co": 3,
+      "rbt": 2,
+      "unit": 3,
+      "topic": "Applications of F-test",
+      "questionText": "When do we use F-test?",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "1. To test the equality of two population variances (variance ratio test: $F = s_1^2 / s_2^2$).",
+          "2. In Analysis of Variance (ANOVA) to test the equality of three or more population means simultaneously.",
+          "3. To test the overall significance of multiple regression models."
+        ],
+        "finalAnswer": "1. Testing equality of two variances, 2. Testing equality of multiple means in ANOVA",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af49588-ac1c-83ee-ab3e-b65021201e1d"
+      },
+      "needsReview": false,
+      "tags": [
+        "f-test",
+        "variances",
+        "anova"
+      ]
+    },
+    {
+      "id": "fat2-q10",
+      "paperId": "fat-2",
+      "part": "A",
+      "number": "10",
+      "marks": 2,
+      "co": 3,
+      "rbt": 2,
+      "unit": 3,
+      "topic": "Chi-Square Genetic Ratio Test",
+      "questionText": "The theory predicts that the proportion of beans in 4 groups A, B, C, D should be 9:3:3:1. In an experiment among 1600 beans, the numbers in the four groups were 882, 313, 287 and 118. Calculate the chi-square value.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Total ratio parts = $9+3+3+1 = 16$. Total beans $N = 1600$.",
+          "Expected frequencies:",
+          "$E_A = 1600 \\times \\frac{9}{16} = 900$",
+          "$E_B = 1600 \\times \\frac{3}{16} = 300$",
+          "$E_C = 1600 \\times \\frac{3}{16} = 300$",
+          "$E_D = 1600 \\times \\frac{1}{16} = 100$",
+          "$\\chi^2 = \\frac{(882-900)^2}{900} + \\frac{(313-300)^2}{300} + \\frac{(287-300)^2}{300} + \\frac{(118-100)^2}{100}$",
+          "$\\chi^2 = \\frac{324}{900} + \\frac{169}{300} + \\frac{169}{300} + \\frac{324}{100} = 0.36 + 0.5633 + 0.5633 + 3.24 = 4.7266$."
+        ],
+        "finalAnswer": "\\chi^2 = 4.727",
+        "tableValuesUsed": "None",
+        "sourceLink": "https://chatgpt.com/share/6af49588-ac1c-83ee-ab3e-b65021201e1d"
+      },
+      "needsReview": false,
+      "tags": [
+        "chi-square",
+        "genetic-ratio",
+        "goodness-of-fit"
+      ]
+    },
+    {
+      "id": "fat2-q11a",
+      "paperId": "fat-2",
+      "part": "B",
+      "number": "11(a)",
+      "marks": 10,
+      "co": 2,
+      "rbt": 3,
+      "unit": 2,
+      "topic": "Difference of Two Means (Large Samples)",
+      "questionText": "A study compares the average income of two cities. City A has an average income of $50,000 with a standard deviation of $8000 from 120 people while City B has an average income of $48000 with a standard deviation of $90000 from 150 people. Test at the 5% significance level if the income in City A is higher.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "City A: $n_1 = 120, \\bar{x}_1 = 50000, s_1 = 8000$.",
+          "City B: $n_2 = 150, \\bar{x}_2 = 48000, s_2 = 9000$ (assuming standard deviation $9,000).",
+          "$H_0: \\mu_1 \\le \\mu_2$ vs $H_1: \\mu_1 > \\mu_2$ (Right-tailed test).",
+          "$SE = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}} = \\sqrt{\\frac{64000000}{120} + \\frac{81000000}{150}} = \\sqrt{533333.3 + 540000} = \\sqrt{1073333.3} = 1036.02$.",
+          "$Z = \\frac{50000 - 48000}{1036.02} = \\frac{2000}{1036.02} = 1.930$.",
+          "Critical value at $\\alpha = 0.05$ (right-tailed) is $1.645$.",
+          "Since $Z_{calc} = 1.930 > 1.645$, we reject $H_0$. The income in City A is significantly higher than in City B."
+        ],
+        "finalAnswer": "Reject H0 (Z = 1.93 > 1.645; income in City A is significantly higher)",
+        "tableValuesUsed": "Z_critical = 1.645 at 5% one-tailed",
+        "sourceLink": "https://chatgpt.com/share/6af49588-ac1c-83ee-ab3e-b65021201e1d"
+      },
+      "needsReview": false,
+      "tags": [
+        "difference-of-means",
+        "z-test",
+        "large-samples"
+      ]
+    },
+    {
+      "id": "fat2-q11b",
+      "paperId": "fat-2",
+      "part": "B",
+      "number": "11(b)",
+      "marks": 10,
+      "co": 2,
+      "rbt": 3,
+      "unit": 2,
+      "topic": "Difference of Means (Recovery Time)",
+      "questionText": "(OR) A Hospital wants to compare the average recovery time for two treatments. Treatment A has an average recovery time of 14 days with a standard deviation of 3 days from 50 patients. While Treatment B has an average recovery time of 16 days with a standard deviation of 4 days from 60 patients. Test at the 5% significance level if Treatment A is faster.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Treatment A: $n_1 = 50, \\bar{x}_1 = 14, s_1 = 3$.",
+          "Treatment B: $n_2 = 60, \\bar{x}_2 = 16, s_2 = 4$.",
+          "$H_0: \\mu_A \\ge \\mu_B$ vs $H_1: \\mu_A < \\mu_B$ (Left-tailed test for faster recovery).",
+          "$SE = \\sqrt{\\frac{9}{50} + \\frac{16}{60}} = \\sqrt{0.18 + 0.2667} = \\sqrt{0.4467} = 0.6683$.",
+          "$Z = \\frac{14 - 16}{0.6683} = \\frac{-2}{0.6683} = -2.99$.",
+          "Critical value at $\\alpha = 0.05$ (left-tailed) is $-1.645$.",
+          "Since $Z_{calc} = -2.99 < -1.645$, we reject $H_0$. Treatment A results in significantly faster recovery."
+        ],
+        "finalAnswer": "Reject H0 (Z = -2.99 < -1.645; Treatment A is significantly faster)",
+        "tableValuesUsed": "Z_critical = -1.645 at 5% one-tailed",
+        "sourceLink": "https://chatgpt.com/share/6af49588-ac1c-83ee-ab3e-b65021201e1d"
+      },
+      "needsReview": false,
+      "tags": [
+        "difference-of-means",
+        "z-test",
+        "recovery-time"
+      ]
+    },
+    {
+      "id": "fat2-q12a",
+      "paperId": "fat-2",
+      "part": "B",
+      "number": "12(a)",
+      "marks": 10,
+      "co": 3,
+      "rbt": 3,
+      "unit": 3,
+      "topic": "Student's t-test for Two Independent Samples",
+      "questionText": "The nicotine content in milligrams of two samples of tobacco were found to be as follows: Sample A: 24, 27, 26, 21, 25; Sample B: 27, 30, 28, 31, 22, 36. Can it be said that two samples come from normal populations having the same mean.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Sample A ($n_1 = 5$): $\\sum X_1 = 123 \\implies \\bar{X}_1 = 24.6$, $\\sum (X_1 - 24.6)^2 = 21.2$.",
+          "Sample B ($n_2 = 6$): $\\sum X_2 = 174 \\implies \\bar{X}_2 = 29.0$, $\\sum (X_2 - 29.0)^2 = 110.0$.",
+          "Pooled variance $S^2 = \\frac{21.2 + 110.0}{5 + 6 - 2} = \\frac{131.2}{9} = 14.5778 \\implies S = 3.818$.",
+          "$t = \\frac{\\bar{X}_1 - \\bar{X}_2}{S \\sqrt{\\frac{1}{n_1} + \\frac{1}{n_2}}} = \\frac{24.6 - 29.0}{3.818 \\sqrt{\\frac{1}{5} + \\frac{1}{6}}} = \\frac{-4.4}{3.818 \\times 0.6055} = \\frac{-4.4}{2.312} = -1.903$.",
+          "Degrees of freedom $df = 5 + 6 - 2 = 9$. Two-tailed critical value $t_{0.05, 9} = 2.262$.",
+          "Since $|t| = 1.903 < 2.262$, we fail to reject $H_0$. The two samples can be regarded as coming from populations with the same mean."
+        ],
+        "finalAnswer": "Fail to reject H0 (|t| = 1.903 < 2.262; means are not significantly different at 5% level)",
+        "tableValuesUsed": "t_{0.05, 9} = 2.262",
+        "sourceLink": "https://chatgpt.com/share/6af49588-ac1c-83ee-ab3e-b65021201e1d"
+      },
+      "needsReview": false,
+      "tags": [
+        "two-sample-t-test",
+        "small-samples"
+      ]
+    },
+    {
+      "id": "fat2-q12b",
+      "paperId": "fat-2",
+      "part": "B",
+      "number": "12(b)",
+      "marks": 10,
+      "co": 3,
+      "rbt": 3,
+      "unit": 3,
+      "topic": "F-Test for Equality of Variances",
+      "questionText": "(OR) In one sample of 10 observations from a normal population, the sum of squares of the deviations of the sample values from the sample mean is 102.4 and in another sample of 12 observations from another normal population the sum of squares of the deviations of the sample values from the sample mean is 120.5. Examine whether the two normal populations have the same variances.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "Sample 1: $n_1 = 10, \\sum (x - \\bar{x})^2 = 102.4 \\implies s_1^2 = \\frac{102.4}{9} = 11.378$.",
+          "Sample 2: $n_2 = 12, \\sum (y - \\bar{y})^2 = 120.5 \\implies s_2^2 = \\frac{120.5}{11} = 10.955$.",
+          "$H_0: \\sigma_1^2 = \\sigma_2^2$ vs $H_1: \\sigma_1^2 \\ne \\sigma_2^2$.",
+          "$F = \\frac{s_1^2}{s_2^2} = \\frac{11.378}{10.955} = 1.0386$.",
+          "Degrees of freedom: $\\nu_1 = 9, \\nu_2 = 11$. Critical value $F_{0.05}(9, 11) = 2.90$.",
+          "Since $F_{calc} = 1.039 < 2.90$, we accept $H_0$. The two populations have the same variance."
+        ],
+        "finalAnswer": "Accept H0 (F = 1.039 < 2.90; variances are equal at 5% level)",
+        "tableValuesUsed": "F_{0.05}(9, 11) = 2.90",
+        "sourceLink": "https://chatgpt.com/share/6af49588-ac1c-83ee-ab3e-b65021201e1d"
+      },
+      "needsReview": false,
+      "tags": [
+        "f-test",
+        "equality-of-variances"
+      ]
+    },
+    {
+      "id": "fat2-q13a",
+      "paperId": "fat-2",
+      "part": "B",
+      "number": "13(a)",
+      "marks": 10,
+      "co": 3,
+      "rbt": 3,
+      "unit": 3,
+      "topic": "Dual t-Test and F-Test",
+      "questionText": "Two random samples gave the following results: Sample I: Size = 16, Sample mean = 440, Variance = 40; Sample II: Size = 25, Sample mean = 460, Variance = 42. Can we conclude that the two samples have been drawn from the same normal population at 5% level? Use both t test and F test.",
+      "tables": [],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "1. F-test for variances: $F = \\frac{s_2^2}{s_1^2} = \\frac{42}{40} = 1.05$.",
+          "$df = (24, 15)$. Critical $F_{0.05}(24, 15) \\approx 2.29$. Since $1.05 < 2.29$, variances are homogeneous.",
+          "2. t-test for means: Pooled variance $S^2 = \\frac{15(40) + 24(42)}{16 + 25 - 2} = \\frac{600 + 1008}{39} = \\frac{1608}{39} = 41.23$.",
+          "$t = \\frac{440 - 460}{\\sqrt{41.23 \\left(\\frac{1}{16} + \\frac{1}{25}\\right)}} = \\frac{-20}{\\sqrt{41.23 \\times 0.1025}} = \\frac{-20}{\\sqrt{4.226}} = \\frac{-20}{2.056} = -9.73$.",
+          "Critical $t_{0.05, 39} \\approx 2.023$. Since $|t| = 9.73 > 2.023$, means are significantly different.",
+          "Conclusion: While the variances are equal, the means are significantly different. Therefore, the two samples cannot be concluded to come from the same normal population."
+        ],
+        "finalAnswer": "Cannot conclude from same population (F = 1.05 passes, but |t| = 9.73 > 2.02 rejects equality of means)",
+        "tableValuesUsed": "F_{0.05}(24,15) = 2.29, t_{0.05, 39} = 2.023",
+        "sourceLink": "https://chatgpt.com/share/6af49588-ac1c-83ee-ab3e-b65021201e1d"
+      },
+      "needsReview": false,
+      "tags": [
+        "f-test",
+        "t-test",
+        "normal-population"
+      ]
+    },
+    {
+      "id": "fat2-q13b",
+      "paperId": "fat-2",
+      "part": "B",
+      "number": "13(b)",
+      "marks": 10,
+      "co": 3,
+      "rbt": 3,
+      "unit": 3,
+      "topic": "Chi-Square Test for Independence (Contingency Table)",
+      "questionText": "(OR) A survey was conducted to see if technology usage is related to age group. The data are: Age 18-24 (Frequent: 50, Occasional: 25, Rare: 15); Age 25-34 (Frequent: 45, Occasional: 30, Rare: 15); Age 35-44 (Frequent: 30, Occasional: 25, Rare: 10); Age 45+ (Frequent: 15, Occasional: 20, Rare: 20). Test if technology usage is independent of age group at the 0.05 significance level.",
+      "tables": [
+        {
+          "headers": [
+            "Age Group",
+            "Frequent user",
+            "Occasional user",
+            "Rare user",
+            "Total"
+          ],
+          "rows": [
+            [
+              "18\u201324",
+              "50",
+              "25",
+              "15",
+              "90"
+            ],
+            [
+              "25\u201334",
+              "45",
+              "30",
+              "15",
+              "90"
+            ],
+            [
+              "35\u201344",
+              "30",
+              "25",
+              "10",
+              "65"
+            ],
+            [
+              "45+",
+              "15",
+              "20",
+              "20",
+              "55"
+            ],
+            [
+              "Total",
+              "140",
+              "100",
+              "60",
+              "N = 300"
+            ]
+          ]
+        }
+      ],
+      "answer": {
+        "status": "complete",
+        "steps": [
+          "$H_0$: Technology usage is independent of age group vs $H_1$: They are dependent.",
+          "Expected frequency $E_{ij} = \\frac{R_i \\times C_j}{N}$.",
+          "Calculated $\\chi^2 = \\sum \\frac{(O_{ij} - E_{ij})^2}{E_{ij}} = 16.48$.",
+          "Degrees of freedom $df = (r - 1)(c - 1) = (4 - 1)(3 - 1) = 3 \\times 2 = 6$.",
+          "Critical value at $\\alpha = 0.05$ with $df = 6$ is $\\chi^2_{0.05, 6} = 12.592$.",
+          "Since $\\chi^2_{calc} = 16.48 > 12.592$, we reject $H_0$. Technology usage is significantly associated with age group."
+        ],
+        "finalAnswer": "Reject H0 (\\chi^2 = 16.48 > 12.592; technology usage depends on age group)",
+        "tableValuesUsed": "\\chi^2_{0.05, 6} = 12.592",
+        "sourceLink": "https://chatgpt.com/share/6af49588-ac1c-83ee-ab3e-b65021201e1d"
+      },
+      "needsReview": false,
+      "tags": [
+        "chi-square",
+        "contingency-table",
+        "independence-of-attributes"
+      ]
+    }
+  ]
+}
