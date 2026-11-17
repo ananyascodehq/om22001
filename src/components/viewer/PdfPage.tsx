@@ -15,6 +15,7 @@ interface PdfPageProps {
 export function PdfPage({ pdf, pageNumber, width, aspect, overlay }: PdfPageProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const lastRender = useRef<Promise<unknown>>(Promise.resolve());
   const [visible, setVisible] = useState(false);
   const [pageAspect, setPageAspect] = useState(aspect);
 
@@ -35,8 +36,21 @@ export function PdfPage({ pdf, pageNumber, width, aspect, overlay }: PdfPageProp
     if (!visible || width <= 0) return;
     let cancelled = false;
     let task: { cancel: () => void; promise: Promise<unknown> } | null = null;
+    const previous = lastRender.current;
 
-    (async () => {
+    const run = (async () => {
+      // pdf.js refuses to render twice on one canvas, so wait for the cancelled render to settle.
+      await previous;
+      if (cancelled) return;
+      try {
+        await renderPage();
+      } catch (err) {
+        if (!cancelled) console.error("Error rendering PDF page:", err);
+      }
+    })();
+    lastRender.current = run;
+
+    async function renderPage() {
       const page = await pdf.getPage(pageNumber);
       if (cancelled) return;
       const base = page.getViewport({ scale: 1 });
@@ -60,7 +74,7 @@ export function PdfPage({ pdf, pageNumber, width, aspect, overlay }: PdfPageProp
       } catch {
         // cancelled by a re-render (zoom/resize); ignore
       }
-    })();
+    }
 
     return () => {
       cancelled = true;
