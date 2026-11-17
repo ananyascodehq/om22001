@@ -8,8 +8,6 @@ import {
   HardDrive,
   CheckCircle,
   Save,
-  Plus,
-  Trash2,
   RefreshCw,
   FolderArchive,
   Layers,
@@ -47,7 +45,7 @@ interface SettingsClientProps {
 
 export function SettingsClient({ initialSubject, initialStats }: SettingsClientProps) {
   const [subject, setSubject] = useState<SubjectData>(initialSubject);
-  const [stats, setStats] = useState<StorageStats>(initialStats);
+  const [stats] = useState<StorageStats>(initialStats);
   const [activeTab, setActiveTab] = useState<"syllabus" | "subject" | "storage">("syllabus");
   const [isSaving, setIsSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
@@ -137,8 +135,8 @@ export function SettingsClient({ initialSubject, initialStats }: SettingsClientP
       }
       setSaveSuccess(true);
       setTimeout(() => setSaveSuccess(false), 3000);
-    } catch (err: any) {
-      setErrorMessage(err.message || "Failed to save changes");
+    } catch (err: unknown) {
+      setErrorMessage(err instanceof Error && err.message ? err.message : "Failed to save changes");
     } finally {
       setIsSaving(false);
     }

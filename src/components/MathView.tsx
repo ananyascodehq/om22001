@@ -43,6 +43,15 @@ function cleanMath(raw: string): { formula: string; trailing: string } {
   return { formula: s.trim(), trailing };
 }
 
+/** Renders LaTeX to an HTML string, or returns null if KaTeX throws. */
+function renderKatex(formula: string, displayMode: boolean): string | null {
+  try {
+    return katex.renderToString(formula, { displayMode, throwOnError: false });
+  } catch {
+    return null;
+  }
+}
+
 export function MathView({ text, content, className = "", block = false }: MathViewProps) {
   const actualText = text || content || "";
 
@@ -51,20 +60,14 @@ export function MathView({ text, content, className = "", block = false }: MathV
 
     if (block) {
       const { formula, trailing } = cleanMath(actualText);
-      try {
-        const html = katex.renderToString(formula, {
-          displayMode: true,
-          throwOnError: false,
-        });
-        return (
-          <>
-            <span dangerouslySetInnerHTML={{ __html: html }} />
-            {trailing && <span>{trailing}</span>}
-          </>
-        );
-      } catch (e) {
-        return <span>{actualText}</span>;
-      }
+      const html = renderKatex(formula, true);
+      if (html === null) return <span>{actualText}</span>;
+      return (
+        <>
+          <span dangerouslySetInnerHTML={{ __html: html }} />
+          {trailing && <span>{trailing}</span>}
+        </>
+      );
     }
 
     // Split text by $$...$$, \[...\], \(...\), and $...$ (with optional trailing punctuation)
@@ -85,11 +88,10 @@ export function MathView({ text, content, className = "", block = false }: MathV
       const isBlock = raw.startsWith("$$") || raw.startsWith("\\[");
       const { formula, trailing } = cleanMath(raw);
 
-      try {
-        const html = katex.renderToString(formula, {
-          displayMode: isBlock,
-          throwOnError: false,
-        });
+      const html = renderKatex(formula, isBlock);
+      if (html === null) {
+        parts.push(<span key={`math-err-${matchIndex}`}>{raw}</span>);
+      } else {
         parts.push(
           <React.Fragment key={`math-frag-${matchIndex}`}>
             <span
@@ -99,8 +101,6 @@ export function MathView({ text, content, className = "", block = false }: MathV
             {trailing && <span>{trailing}</span>}
           </React.Fragment>
         );
-      } catch (err) {
-        parts.push(<span key={`math-err-${matchIndex}`}>{raw}</span>);
       }
 
       lastIndex = matchIndex + raw.length;

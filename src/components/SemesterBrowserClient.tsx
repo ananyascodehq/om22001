@@ -12,13 +12,7 @@ import {
   Trash2,
   Eye,
   CheckCircle2,
-  AlertCircle,
-  ArrowRight,
   Plus,
-  BookOpen,
-  Calendar,
-  Layers,
-  Sparkles,
   Edit2,
   ExternalLink,
 } from "lucide-react";
@@ -205,7 +199,7 @@ export function SemesterBrowserClient({
       if (data.success) {
         setDocuments(data.documents);
       }
-    } catch (e) {
+    } catch {
       // ignore
     }
   };

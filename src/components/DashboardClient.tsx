@@ -7,7 +7,6 @@ import {
   GraduationCap,
   ExternalLink,
   Eye,
-  Download,
   FileText,
   ArrowRight,
   Folder,

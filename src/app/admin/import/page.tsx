@@ -7,10 +7,7 @@ import {
   Copy, 
   Check, 
   Eye, 
-  Layers, 
   ExternalLink, 
-  Sparkles,
-  RefreshCw,
   FileJson
 } from "lucide-react";
 
@@ -49,7 +46,6 @@ export default function AdminImportPage() {
   const [finalAnswer, setFinalAnswer] = useState("");
   const [tableValuesUsed, setTableValuesUsed] = useState("");
   const [sourceLink, setSourceLink] = useState(CHATGPT_LINKS[0]);
-  const [tagsRaw, setTagsRaw] = useState("");
   const [needsReview, setNeedsReview] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -58,10 +54,6 @@ export default function AdminImportPage() {
     .map((s) => s.trim())
     .filter((s) => s.length > 0);
 
-  const tagsList = tagsRaw
-    .split(",")
-    .map((t) => t.trim().toLowerCase().replace(/[^a-z0-9-]+/g, "-"))
-    .filter((t) => t.length > 0);
 
   const generatedQuestionObject = {
     id: `${paperId}-q${qNum.toLowerCase().replace(/[^a-z0-9]/g, "")}`,
@@ -83,7 +75,7 @@ export default function AdminImportPage() {
       sourceLink,
     },
     needsReview,
-    tags: tagsList.length > 0 ? tagsList : ["om22001"],
+    tags: ["om22001"],
   };
 
   const jsonString = JSON.stringify(generatedQuestionObject, null, 2);
@@ -337,7 +329,7 @@ export default function AdminImportPage() {
                 onChange={(e) => setNeedsReview(e.target.checked)}
                 className="rounded border-slate-300 text-primary-600 focus:ring-primary-500"
               />
-              <span>Flag as "needsReview: true"</span>
+              <span>Flag as &quot;needsReview: true&quot;</span>
             </label>
           </div>
         </div>

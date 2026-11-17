@@ -5,14 +5,9 @@ import Link from "next/link";
 import {
   FolderOpen,
   Search,
-  Filter,
   FileText,
-  Eye,
   Download,
   Trash2,
-  Calendar,
-  Layers,
-  ArrowRight,
   RotateCcw,
   Edit2,
 } from "lucide-react";

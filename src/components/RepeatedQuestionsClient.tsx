@@ -8,10 +8,8 @@ import {
   Flame, 
   Sparkles, 
   BookOpen, 
-  Filter, 
   Search, 
   ArrowRight, 
-  CheckCircle2, 
   ChevronDown, 
   ChevronUp, 
   ExternalLink 

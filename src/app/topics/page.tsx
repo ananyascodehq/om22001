@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-import { getAllQuestions, getSyllabus } from "@/lib/data";
+import { getAllQuestions } from "@/lib/data";
 import { TopicsClient } from "@/components/TopicsClient";
 import { Layers } from "lucide-react";
 import Link from "next/link";
@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 
 export default function TopicsPage() {
   const allQuestions = getAllQuestions();
-  const syllabus = getSyllabus();
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-8">
@@ -44,7 +43,7 @@ export default function TopicsPage() {
       </div>
 
       {/* Main Client Content */}
-      <TopicsClient allQuestions={allQuestions} syllabus={syllabus} />
+      <TopicsClient allQuestions={allQuestions} />
     </div>
   );
 }

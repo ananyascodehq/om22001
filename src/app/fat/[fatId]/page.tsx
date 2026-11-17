@@ -119,7 +119,7 @@ export default async function FatPaperPage({ params }: PageProps) {
               Open <code className="font-mono bg-white dark:bg-slate-900 px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200">content/fat/{paper.id}.json</code>
             </li>
             <li>
-              Add question objects to the <code className="font-mono bg-white dark:bg-slate-900 px-1 py-0.5 rounded border">"questions": [...]</code> array following the standard schema.
+              Add question objects to the <code className="font-mono bg-white dark:bg-slate-900 px-1 py-0.5 rounded border">&quot;questions&quot;: [...]</code> array following the standard schema.
             </li>
             <li>
               Optional: Place the original question PDF at <code className="font-mono bg-white dark:bg-slate-900 px-1 py-0.5 rounded border">public/papers/fat/{paper.id}/question-paper.pdf</code>

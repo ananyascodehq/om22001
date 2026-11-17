@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Sigma, BookOpen, ExternalLink } from "lucide-react";
+import { Sigma } from "lucide-react";
 
 export function Footer() {
   return (

@@ -5,13 +5,9 @@ import Link from "next/link";
 import { UploadModal } from "@/components/UploadModal";
 import {
   Upload,
-  FileText,
   Folder,
-  Layers,
   Sparkles,
-  ArrowRight,
   ShieldCheck,
-  CheckCircle2,
 } from "lucide-react";
 
 export default function UploadPage() {

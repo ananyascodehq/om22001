@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { Table2, Search, Info, ExternalLink, ArrowRight, Check } from "lucide-react";
+import { Table2, Search, Info, ArrowRight } from "lucide-react";
 
 export default function StatisticalTablesPage() {
   const [activeTab, setActiveTab] = useState<"z" | "t" | "chi" | "f" | "sqc">("z");

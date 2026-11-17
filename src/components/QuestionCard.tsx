@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Question } from "@/lib/types";
+import { useStoredIdList, STORAGE_KEYS } from "@/hooks/useStoredIdList";
 import { MathView } from "./MathView";
 import { 
   Bookmark, 
@@ -11,7 +12,6 @@ import {
   ChevronUp, 
   AlertTriangle, 
   CheckCircle2, 
-  ExternalLink,
   Table as TableIcon
 } from "lucide-react";
 
@@ -62,61 +62,28 @@ export function QuestionCard({
   onDoneChange,
 }: QuestionCardProps) {
   const [isOpen, setIsOpen] = useState(showAnswerDefault);
-  const [isBookmarked, setIsBookmarked] = useState(false);
-  const [isDone, setIsDone] = useState(false);
+  const { ids: bookmarkedIds, toggle: toggleBookmarkId } = useStoredIdList(STORAGE_KEYS.bookmarks);
+  const { ids: doneIds, toggle: toggleDoneId } = useStoredIdList(STORAGE_KEYS.done);
+  const isBookmarked = bookmarkedIds.includes(question.id);
+  const isDone = doneIds.includes(question.id);
   const [copied, setCopied] = useState(false);
 
-  useEffect(() => {
-    // Check localStorage for bookmark and done status
-    try {
-      const savedBookmarks = JSON.parse(localStorage.getItem("om22001-bookmarks") || "[]");
-      setIsBookmarked(savedBookmarks.includes(question.id));
-
-      const savedDone = JSON.parse(localStorage.getItem("om22001-done") || "[]");
-      setIsDone(savedDone.includes(question.id));
-    } catch (e) {
-      // safe fallback
-    }
-  }, [question.id]);
-
-  useEffect(() => {
+  // Re-sync the open state when the parent's default changes (adjusting state
+  // during render instead of in an effect).
+  const [prevShowDefault, setPrevShowDefault] = useState(showAnswerDefault);
+  if (prevShowDefault !== showAnswerDefault) {
+    setPrevShowDefault(showAnswerDefault);
     setIsOpen(showAnswerDefault);
-  }, [showAnswerDefault]);
+  }
 
   const toggleBookmark = () => {
-    try {
-      const savedBookmarks: string[] = JSON.parse(localStorage.getItem("om22001-bookmarks") || "[]");
-      let nextBookmarks: string[];
-      if (savedBookmarks.includes(question.id)) {
-        nextBookmarks = savedBookmarks.filter((id) => id !== question.id);
-        setIsBookmarked(false);
-      } else {
-        nextBookmarks = [...savedBookmarks, question.id];
-        setIsBookmarked(true);
-      }
-      localStorage.setItem("om22001-bookmarks", JSON.stringify(nextBookmarks));
-      if (onBookmarkChange) onBookmarkChange();
-    } catch (e) {
-      console.error(e);
-    }
+    toggleBookmarkId(question.id);
+    onBookmarkChange?.();
   };
 
   const toggleDone = () => {
-    try {
-      const savedDone: string[] = JSON.parse(localStorage.getItem("om22001-done") || "[]");
-      let nextDone: string[];
-      if (savedDone.includes(question.id)) {
-        nextDone = savedDone.filter((id) => id !== question.id);
-        setIsDone(false);
-      } else {
-        nextDone = [...savedDone, question.id];
-        setIsDone(true);
-      }
-      localStorage.setItem("om22001-done", JSON.stringify(nextDone));
-      if (onDoneChange) onDoneChange();
-    } catch (e) {
-      console.error(e);
-    }
+    toggleDoneId(question.id);
+    onDoneChange?.();
   };
 
   const copyToClipboard = () => {

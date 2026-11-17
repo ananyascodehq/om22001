@@ -2,7 +2,7 @@ import React from "react";
 import { Metadata } from "next";
 import { getRepeatedQuestions, getAllQuestions } from "@/lib/data";
 import { RepeatedQuestionsClient } from "@/components/RepeatedQuestionsClient";
-import { Flame, ArrowLeft } from "lucide-react";
+import { Flame } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {

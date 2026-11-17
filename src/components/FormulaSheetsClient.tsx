@@ -17,7 +17,6 @@ import {
   FileText,
   Download,
   Eye,
-  CheckCircle2,
   Folder,
 } from "lucide-react";
 

@@ -10,15 +10,10 @@ import {
   ZoomIn,
   ZoomOut,
   FileText,
-  FileQuestion,
   CheckCircle2,
-  Calendar,
-  Layers,
   Link as LinkIcon,
-  BookOpen,
   ArrowRight,
   ArrowLeft,
-  AlertCircle,
 } from "lucide-react";
 import { getChatGptAnswerUrl } from "@/lib/answerLinks";
 import { PinCommentViewer } from "./PinCommentViewer";

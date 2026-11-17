@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
-import { Question, Syllabus } from "@/lib/types";
+import { Question } from "@/lib/types";
 import { QuestionCard } from "@/components/QuestionCard";
+import { useIsClient } from "@/hooks/useIsClient";
+import { useStoredIdList, STORAGE_KEYS } from "@/hooks/useStoredIdList";
 import {
   BarChart,
   Bar,
@@ -12,25 +14,20 @@ import {
   Tooltip,
   ResponsiveContainer,
   Cell,
-  PieChart,
-  Pie,
 } from "recharts";
 import {
   Filter,
   Search,
-  CheckCircle2,
   BookOpen,
   Layers,
   ChevronDown,
   ChevronUp,
   BarChart3,
-  Award,
   RotateCcw,
 } from "lucide-react";
 
 interface TopicsClientProps {
   allQuestions: Array<Question & { paperTitle: string; examMonthYear?: string }>;
-  syllabus: Syllabus;
 }
 
 const UNIT_META: Record<
@@ -74,13 +71,6 @@ const UNIT_META: Record<
   },
 };
 
-const RBT_LABELS: Record<number, string> = {
-  1: "L1: Remember",
-  2: "L2: Understand",
-  3: "L3: Apply",
-  4: "L4: Analyze",
-};
-
 const PAPERS = [
   { id: "2024-dec-sem5-147184", label: "Dec 2024 (Sem 5)" },
   { id: "2025-may-sem5-405686", label: "May 2025 (Sem 5)" },
@@ -88,9 +78,9 @@ const PAPERS = [
   { id: "2026-may-sem6-323580", label: "May 2026 (Sem 6)" },
 ];
 
-export function TopicsClient({ allQuestions, syllabus }: TopicsClientProps) {
-  const [mounted, setMounted] = useState(false);
-  const [doneIds, setDoneIds] = useState<string[]>([]);
+export function TopicsClient({ allQuestions }: TopicsClientProps) {
+  const mounted = useIsClient();
+  const { ids: doneIds } = useStoredIdList(STORAGE_KEYS.done);
 
   // Filter States
   const [selectedUnit, setSelectedUnit] = useState<number | "ALL">("ALL");
@@ -102,26 +92,6 @@ export function TopicsClient({ allQuestions, syllabus }: TopicsClientProps) {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [expandAll, setExpandAll] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<"questions" | "analytics">("questions");
-
-  // Load done state on mount
-  useEffect(() => {
-    setMounted(true);
-    try {
-      const savedDone = JSON.parse(localStorage.getItem("om22001-done") || "[]");
-      setDoneIds(savedDone);
-    } catch (e) {
-      // safe fallback
-    }
-  }, []);
-
-  const handleDoneUpdate = () => {
-    try {
-      const savedDone = JSON.parse(localStorage.getItem("om22001-done") || "[]");
-      setDoneIds(savedDone);
-    } catch (e) {
-      // fallback
-    }
-  };
 
   // Available topics for selected unit
   const availableTopics = useMemo(() => {
@@ -136,11 +106,10 @@ export function TopicsClient({ allQuestions, syllabus }: TopicsClientProps) {
   }, [allQuestions, selectedUnit]);
 
   // When unit changes, reset selectedTopic if it doesn't belong to the unit
-  useEffect(() => {
-    if (selectedTopic !== "ALL" && !availableTopics.includes(selectedTopic)) {
-      setSelectedTopic("ALL");
-    }
-  }, [selectedUnit, availableTopics, selectedTopic]);
+  // (adjusting state during render rather than in an effect).
+  if (selectedTopic !== "ALL" && !availableTopics.includes(selectedTopic)) {
+    setSelectedTopic("ALL");
+  }
 
   // Filter questions
   const filteredQuestions = useMemo(() => {
@@ -635,7 +604,6 @@ export function TopicsClient({ allQuestions, syllabus }: TopicsClientProps) {
                             <QuestionCard
                               question={q}
                               showAnswerDefault={expandAll}
-                              onDoneChange={handleDoneUpdate}
                             />
                           </div>
                         ))}

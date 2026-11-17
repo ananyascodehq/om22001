@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { Paper, Question } from "@/lib/types";
+import { Paper } from "@/lib/types";
 import { QuestionCard } from "./QuestionCard";
 import { 
-  FileText, 
   Download, 
   Eye, 
   EyeOff, 

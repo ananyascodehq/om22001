@@ -10,7 +10,6 @@ import {
   X, 
   Filter, 
   ArrowRight, 
-  FileText, 
   Sparkles, 
   BookOpen, 
   ChevronDown, 

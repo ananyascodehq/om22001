@@ -17,8 +17,7 @@ import {
   Sigma,
   Table2,
   Sparkles,
-  FileCode,
-  Image,
+  Image as ImageIcon,
 } from "lucide-react";
 import { DocumentViewerModal } from "./DocumentViewerModal";
 import { UploadModal } from "./UploadModal";
@@ -278,14 +277,14 @@ export function StudyMaterialsBrowserClient({
       if (data.success) {
         setDocuments(data.documents);
       }
-    } catch (e) {
+    } catch {
       // ignore
     }
   };
 
   const getFileIcon = (fileType: string) => {
     if (["jpg", "jpeg", "png"].includes(fileType.toLowerCase())) {
-      return <Image className="w-5 h-5 text-purple-500" />;
+      return <ImageIcon className="w-5 h-5 text-purple-500" />;
     }
     if (["doc", "docx"].includes(fileType.toLowerCase())) {
       return <FileText className="w-5 h-5 text-blue-500" />;
