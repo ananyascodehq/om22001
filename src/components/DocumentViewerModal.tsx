@@ -21,6 +21,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { getChatGptAnswerUrl } from "@/lib/answerLinks";
+import { PinCommentViewer } from "./PinCommentViewer";
 
 export interface ViewerDocument {
   id: string;
@@ -245,20 +246,22 @@ export function DocumentViewerModal({
                     <span>Open in Tab</span>
                   </a>
                 </div>
-                <iframe
-                  key={`pdf-${zoom}`}
-                  src={`${previewUrl}#toolbar=1&zoom=${zoom}`}
-                  className="w-full flex-1 rounded-xl border border-slate-200 dark:border-slate-800 shadow-inner dark:bg-[#060b18] bg-white min-h-[300px]"
+                <PinCommentViewer
+                  documentId={documentId}
+                  src={previewUrl}
+                  kind="pdf"
+                  zoom={zoom}
                   title={doc?.originalFilename}
                 />
               </div>
             ) : isImage ? (
-              <div className="max-w-full max-h-full overflow-auto flex items-center justify-center">
-                <img
+              <div className="w-full h-full">
+                <PinCommentViewer
+                  documentId={documentId}
                   src={previewUrl}
-                  alt={doc?.originalFilename}
-                  style={{ transform: `scale(${zoom / 100})`, transformOrigin: "center" }}
-                  className="rounded-xl shadow-lg max-w-full max-h-[80vh] object-contain transition-transform duration-200"
+                  kind="image"
+                  zoom={zoom}
+                  title={doc?.originalFilename}
                 />
               </div>
             ) : (

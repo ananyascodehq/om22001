@@ -79,6 +79,7 @@ model Document {
   answersFor               DocumentRelationship[] @relation("QuestionPaperRelation")
   questionPaperFor         DocumentRelationship[] @relation("AnswerRelation")
   questions                Question[]
+  comments                 DocumentComment[]
   
   createdAt                DateTime               @default(now())
   updatedAt                DateTime               @updatedAt
@@ -134,15 +135,18 @@ model FormulaSheet {
   updatedAt   DateTime @updatedAt
 }
 
+model DocumentComment {
+  id         String   @id @default(cuid())
+  documentId String
+  document   Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  page       Int      // 1-based PDF page (always 1 for images)
+  x          Float    // 0..1, fraction of page width
+  y          Float    // 0..1, fraction of page height
+  name       String
+  body       String
+  ipHash     String?  // salted hash, used only for rate limiting
+  createdAt  DateTime @default(now())
 
-model Comment {
-  id        String   @id @default(cuid())
-  pagePath  String   // e.g. "/sem/2024-dec-sem5-147184"
-  name      String
-  body      String
-  ipHash    String?  // salted hash, used only for rate limiting
-  createdAt DateTime @default(now())
-
-  @@index([pagePath, createdAt])
+  @@index([documentId, page, createdAt])
   @@index([ipHash, createdAt])
 }
