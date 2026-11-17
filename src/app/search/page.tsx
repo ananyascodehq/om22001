@@ -1,7 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import { getAllQuestions } from "@/lib/data";
-import { SearchClient } from "@/components/SearchClient";
+import { SearchClient } from "@/components/papers/SearchClient";
 import { Search } from "lucide-react";
 import Link from "next/link";
 

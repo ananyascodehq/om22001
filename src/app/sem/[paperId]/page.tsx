@@ -1,7 +1,7 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import { getAllSemPapers, getSemPaperById } from "@/lib/data";
-import { PaperViewClient } from "@/components/PaperViewClient";
+import { PaperViewClient } from "@/components/papers/PaperViewClient";
 
 interface PageProps {
   params: Promise<{ paperId: string }>;

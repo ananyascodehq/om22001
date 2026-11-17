@@ -1,6 +1,6 @@
 import React from "react";
 import { prisma } from "@/lib/prisma";
-import { FormulaSheetsClient } from "@/components/FormulaSheetsClient";
+import { FormulaSheetsClient } from "@/components/formulas/FormulaSheetsClient";
 
 export const dynamic = "force-dynamic";
 

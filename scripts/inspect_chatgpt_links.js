@@ -1,5 +1,3 @@
-const fs = require('fs');
-
 const URLS = [
   'https://chatgpt.com/share/6af49506-0a44-83ec-85c1-6ecbbadda047',
   'https://chatgpt.com/share/6af49517-7c80-83ec-a422-4c8bde96cd14',

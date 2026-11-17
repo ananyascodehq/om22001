@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import type { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
@@ -14,7 +15,7 @@ export async function GET(request: NextRequest) {
     const subfolder = searchParams.get("subfolder");
     const search = searchParams.get("search");
 
-    const where: any = {};
+    const where: Prisma.DocumentWhereInput = {};
 
     if (category) {
       where.category = category;

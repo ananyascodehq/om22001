@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Inter, Merriweather, JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "katex/dist/katex.min.css";
 import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import { TopNavbar } from "@/components/TopNavbar";
-import { Footer } from "@/components/Footer";
-import { NavigationProgress } from "@/components/NavigationProgress";
-import { CursorSoundEffects } from "@/components/CursorSoundEffects";
+import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { TopNavbar } from "@/components/layout/TopNavbar";
+import { Footer } from "@/components/layout/Footer";
+import { NavigationProgress } from "@/components/layout/NavigationProgress";
+import { CursorSoundEffects } from "@/components/layout/CursorSoundEffects";
 
 const inter = Inter({
   subsets: ["latin"],

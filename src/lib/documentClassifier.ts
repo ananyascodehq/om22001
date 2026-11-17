@@ -210,10 +210,6 @@ export function classifyDocument(
   const isAnswer =
     /\b(?:answer|solution|worked|key|steps|final answer|solved)\b/i.test(text);
 
-  const isQuestionPaper =
-    /\b(?:question paper|time:\s*3 hours|max(?:imum)? marks:\s*100|part a|part b|part c|answer all questions)\b/i.test(
-      text
-    );
 
   const isTwoMark =
     /\b2\s*marks?\b/i.test(text) ||

@@ -1,6 +1,8 @@
 import React, { Suspense } from "react";
 import { prisma } from "@/lib/prisma";
-import { FatBrowserClient } from "@/components/FatBrowserClient";
+import { FatBrowserClient } from "@/components/papers/FatBrowserClient";
+import { DOCUMENT_WITH_LINKS_INCLUDE, serializeDocument } from "@/lib/serializeDocument";
+import type { LinkedDocumentSummary } from "@/lib/documents";
 
 export const dynamic = "force-dynamic";
 
@@ -11,66 +13,22 @@ export const metadata = {
 };
 
 export default async function FatPage() {
-  let serializedDocs: any[] = [];
+  let documents: LinkedDocumentSummary[] = [];
 
   try {
-    const documents = await prisma.document.findMany({
-      where: {
-        category: "FAT",
-      },
-      include: {
-        examination: true,
-        unit: true,
-        answersFor: {
-          include: {
-            answerDoc: true,
-          },
-        },
-        questionPaperFor: {
-          include: {
-            questionPaper: true,
-          },
-        },
-      },
-      orderBy: {
-        createdAt: "desc",
-      },
+    const rows = await prisma.document.findMany({
+      where: { category: "FAT" },
+      include: DOCUMENT_WITH_LINKS_INCLUDE,
+      orderBy: { createdAt: "desc" },
     });
-
-    serializedDocs = documents.map((d) => ({
-      id: d.id,
-      originalFilename: d.originalFilename,
-      documentType: d.documentType,
-      subfolder: d.subfolder,
-      fileType: d.fileType,
-      fileSize: d.fileSize,
-      description: d.description,
-      tags: d.tags,
-      createdAt: d.createdAt.toISOString(),
-      examination: d.examination
-        ? { code: d.examination.code, title: d.examination.title }
-        : null,
-      unit: d.unit ? { unitNumber: d.unit.unitNumber, title: d.unit.title } : null,
-      answersFor: d.answersFor.map((r) => ({
-        answerDoc: {
-          id: r.answerDoc.id,
-          originalFilename: r.answerDoc.originalFilename,
-        },
-      })),
-      questionPaperFor: d.questionPaperFor.map((r) => ({
-        questionPaper: {
-          id: r.questionPaper.id,
-          originalFilename: r.questionPaper.originalFilename,
-        },
-      })),
-    }));
+    documents = rows.map(serializeDocument);
   } catch (error) {
     console.error("Failed to load FAT documents from database:", error);
   }
 
   return (
     <Suspense fallback={<div className="p-12 text-center text-slate-400">Loading FAT examination materials...</div>}>
-      <FatBrowserClient initialDocuments={serializedDocs} />
+      <FatBrowserClient initialDocuments={documents} />
     </Suspense>
   );
 }
