@@ -7,6 +7,7 @@ import { TopNavbar } from "@/components/TopNavbar";
 import { Footer } from "@/components/Footer";
 import { NavigationProgress } from "@/components/NavigationProgress";
 import { CursorSoundEffects } from "@/components/CursorSoundEffects";
+import { Comments } from "@/components/Comments";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -72,6 +73,7 @@ export default function RootLayout({
             <TopNavbar />
             <main id="main-content" tabIndex={-1} className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 dark:bg-[#060b18]">
               {children}
+              <Comments />
             </main>
             <Footer />
           </div>
